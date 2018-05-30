@@ -23,7 +23,6 @@ public class Page {
     }
 
     public Page(String filename){           // 从文件读入
-        //TODO
         ArrayList<String> file = FileTool.readFile(filename);
         currPage = new LinkedList<>();
         prevPage = new LinkedList<>();

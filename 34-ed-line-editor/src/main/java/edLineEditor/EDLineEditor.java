@@ -79,7 +79,7 @@ public class EDLineEditor {
                     if (line.charAt(0) == 'z' && page.currLine == page.currPage.size()){
                         System.out.println("?");
                         continue;
-                    }  //TODO 修正 判断是否有其他参数的条件(n)
+                    }
                     int index = newline.indexOf("z");
                     if (index == newline.length() - 1) FileTool.printLines(beginIndex, page.currPage.size(), page);
                     else {

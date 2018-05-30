@@ -1,8 +1,4 @@
 package edLineEditor;
-
-import com.sun.org.apache.xml.internal.security.keys.storage.implementations.CertsInFilesystemDirectoryResolver;
-
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class InputMode {
