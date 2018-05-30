@@ -41,7 +41,7 @@ public class EDLineEditor {
             beginIndex = Integer.parseInt(loc[0]);
             endIndex = Integer.parseInt(loc[1]);
 
-            if (beginIndex > endIndex || (beginIndex <= 0 && command != 'a')       // 检查是否符合
+            if (beginIndex > endIndex       // 检查是否符合
                     || endIndex > page.currPage.size()){
                 System.out.println("?");
                 continue;
