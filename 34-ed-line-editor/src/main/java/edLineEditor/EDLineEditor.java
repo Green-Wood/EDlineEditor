@@ -205,6 +205,10 @@ public class EDLineEditor {
             line = line.substring(0, index);
         }
         if (line.length() == 0) return Integer.toString(page.currLine) + "," + Integer.toString(page.currLine);
+	    if (line.charAt(0) == ';') {
+	        String command = line.substring(1, line.length());
+	        return Integer.toString(page.currLine) + "," + Integer.toString(page.currPage.size()) + " " + command;
+        }
         while (line.contains("'")){                // 转化标记符
             int i = line.indexOf("'");
             String o = line.substring(i, i + 2);

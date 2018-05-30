@@ -47,7 +47,7 @@ public class InputMode {
 //        page.currPage.add("ad");
         page.currPage.add(0, "insertion");
         page.currLine = 2;
-        String s = "1,2s";
+        String s = ";p";
 //        FileTool.saveFile(1, page.currPage.size(), page, "test.txt", false);
         System.out.println(EDLineEditor.transLoc(s, page));
 //        System.out.println(s.substring(3, 3).equals(""));
