@@ -21,9 +21,10 @@ public class EDLineEditor {
         Scanner in = new Scanner(System.in);
         String init = in.nextLine();
         Page page;
+        String filename;
         if (init.trim().equals("ed")) page = new Page();            // 两种初始化方法
         else {
-            String filename = init.trim().split(" ")[1];
+            filename = init.trim().split(" ")[1];
             page = new Page(filename);
         }
         String str = "";                          // 记录上一次替换的指令
@@ -95,8 +96,8 @@ public class EDLineEditor {
                 break;
             }
             else if (command == 'q'){
-                if (!page.isSaved && !isConfirmed && !page.filename.equals("")){ //TODO 检查文件是否被修改
-                        System.out.println("?");              // 提示后退出
+                if (!page.isSaved && !isConfirmed && page.hasChanged()){
+                    System.out.println("?");              // 提示后退出
                     isConfirmed = true;
                 }
                 else {

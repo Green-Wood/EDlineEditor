@@ -64,6 +64,11 @@ public class Page {
         return -1;
     }
 
+    public boolean hasChanged(){
+        LinkedList<String> first = pages.firstElement();
+        return first.equals(currPage);
+    }
+
     public static void main(String[] args){
         Page test = new Page();
         test.currPage.add("ZWQ");
