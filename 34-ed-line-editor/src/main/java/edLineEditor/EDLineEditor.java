@@ -134,9 +134,7 @@ public class EDLineEditor {
                 }
             }
             else if (command == 'm' || command == 't'){
-                String toLoc = newline.substring(newline.indexOf("m") + 1, newline.length());
-                String newToLoc = transLoc(toLoc, page);
-                int toIndex = Integer.parseInt(newToLoc.split(",")[0]);
+                int toIndex = Integer.parseInt(newline.split(Character.toString(command))[1]);
                 if (toIndex > page.currPage.size()) {
                     System.out.println("?");
                     continue;
@@ -235,7 +233,12 @@ public class EDLineEditor {
             line = line.replace(s, Integer.toString(lineNumber));
         }
         if (line.contains(".")){
-            line = line.replace(".", Integer.toString(page.currLine));
+	        if (line.contains(".-")){
+	            line = line.substring(1, line.length());
+            }
+            else {
+                line = line.replace(".", Integer.toString(page.currLine));
+            }
         }
         if (line.contains(",") && Character.isAlphabetic(line.charAt(line.indexOf(",") + 1))){
             line = line.replace(",", String.format("1,%d", page.currPage.size()));

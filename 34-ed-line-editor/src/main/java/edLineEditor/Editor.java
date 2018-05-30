@@ -15,6 +15,7 @@ public class Editor {
     void move(int toIndex){
         page.saveCurrent();
         if (toIndex > endIndex) toIndex = toIndex - (endIndex - beginIndex + 1) - 1;
+        else toIndex--;
         ArrayList<String> l = new ArrayList<>();
         for (int i = beginIndex; i <= endIndex; i++){
             l.add(page.currPage.get(beginIndex));

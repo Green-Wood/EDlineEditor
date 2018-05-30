@@ -24,7 +24,8 @@ public class InputMode {
         }
         // 追加在指定行前面
         else {
-            index = beginIndex;
+            if (beginIndex == -1) index = 0;
+            else index = beginIndex;
         }
         this.page = page;
     }
@@ -46,8 +47,8 @@ public class InputMode {
         page.currPage.add("cc");
 //        page.currPage.add("ad");
         page.currPage.add(0, "insertion");
-        page.currLine = 2;
-        String s = ".";
+        page.currLine = 4;
+        String s = "+3p";
 //        FileTool.saveFile(1, page.currPage.size(), page, "test.txt", false);
         System.out.println(EDLineEditor.transLoc(s, page));
 //        System.out.println(s.substring(3, 3).equals(""));
