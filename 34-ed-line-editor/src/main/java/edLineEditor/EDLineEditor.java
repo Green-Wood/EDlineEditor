@@ -96,14 +96,11 @@ public class EDLineEditor {
                     break;
                 }
                 else {
-                    if (page.isSaved){
+                    if (page.isSaved || isConfirmed){
                         break;
                     }
-                    else if (isConfirmed){
-                        break;
-                    }
-                    else if (!page.isSaved && !isConfirmed){
-                        System.out.print("?");              // 提示后退出
+                    if (!page.isSaved && !isConfirmed){
+//                        System.out.print("?");              // 提示后退出
                         isConfirmed = true;
                     }
                 }
