@@ -44,22 +44,22 @@ public class Page {
     }
 
     public int findDownLineNumber(String str){
-        for (int i = currLine - 1; i < currPage.size(); i++){
+        for (int i = currLine; i < currPage.size(); i++){
             String s = currPage.get(i);
             if (s.contains(str)) return i + 1;
         }
-        for (int i = 0; i < currLine - 1; i++){
+        for (int i = 0; i < currLine; i++){
             if (currPage.get(i).contains(str)) return i + 1;
         }
         return -1;
     }
 
     public int findUpLineNumber(String str){
-        for (int i = currLine - 1; i >= 0; i--){
+        for (int i = currLine - 2; i >= 0; i--){
             String s = currPage.get(i);
             if (s.contains(str)) return i + 1;
         }
-        for (int i = currPage.size() - 1; i > currLine - 1; i--){
+        for (int i = currPage.size() - 1; i > currLine - 2; i--){
             if (currPage.get(i).contains(str)) return i + 1;
         }
         return -1;
