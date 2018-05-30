@@ -48,7 +48,7 @@ public class InputMode {
 //        page.currPage.add("ad");
         page.currPage.add(0, "insertion");
         page.currLine = 4;
-        String s = "+3p";
+        String s = "+3m3";
 //        FileTool.saveFile(1, page.currPage.size(), page, "test.txt", false);
         System.out.println(EDLineEditor.transLoc(s, page));
 //        System.out.println(s.substring(3, 3).equals(""));

@@ -134,7 +134,13 @@ public class EDLineEditor {
                 }
             }
             else if (command == 'm' || command == 't'){
-                int toIndex = Integer.parseInt(newline.split(Character.toString(command))[1]);
+                int toIndex;
+                if (newline.indexOf(Character.toString(command)) == newline.length() - 1){
+                    toIndex = page.currLine;
+                }
+                else {
+                    toIndex = Integer.parseInt(newline.split(Character.toString(command))[1]);
+                }
                 if (toIndex > page.currPage.size()) {
                     System.out.println("?");
                     continue;
