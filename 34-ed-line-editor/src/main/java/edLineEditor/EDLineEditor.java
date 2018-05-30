@@ -66,7 +66,7 @@ public class EDLineEditor {
             }
             else if (command == 'p' || command == '='
                     || command == 'z'){
-                if (command == '=') System.out.println(page.currLine);  // 打印当前行号
+                if (command == '=') System.out.println(beginIndex);  // 打印当前行号
                 else if (command == 'p'){
                     FileTool.printLines(beginIndex, endIndex, page);       // 打印指定多行
                     page.currLine = endIndex;
