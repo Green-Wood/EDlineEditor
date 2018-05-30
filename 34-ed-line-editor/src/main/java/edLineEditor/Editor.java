@@ -25,7 +25,7 @@ public class Editor {
             toIndex++;
             page.currPage.add(toIndex, s);
         }
-        page.currLine = toIndex;
+        page.currLine = toIndex + 1;
     }
 
     void copy(int toIndex){
@@ -38,7 +38,7 @@ public class Editor {
             toIndex++;
             page.currPage.add(toIndex, s);
         }
-        page.currLine = toIndex;
+        page.currLine = toIndex + 1;
     }
 
     void union(){
@@ -73,7 +73,7 @@ public class Editor {
             page.currPage.remove(i);
             page.currPage.add(i, newLine);
         }
-        page.currLine = endIndex;
+        page.currLine = endIndex + 1;
         return true;
     }
 
@@ -88,6 +88,7 @@ public class Editor {
             page.currPage.remove(i);
             page.currPage.add(i, newLine);
         }
+        page.currLine = endIndex + 1;
         return true;
     }
     public static void main(String[] args){

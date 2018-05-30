@@ -29,10 +29,9 @@ public class EDLineEditor {
             String filename = init.trim().split(" ")[1];
             page = new Page(filename);
         }
-
+        String str = "";                          // 记录上一次替换的指令
         while (in.hasNextLine()){
             String line = in.nextLine();
-            String str = "";                          // 记录上一次替换的指令
             int beginIndex;
             int endIndex;
             char command;
@@ -111,7 +110,7 @@ public class EDLineEditor {
             }
             else if (command == 'f'){           // 设置文件名
                 if (newline.split(" ").length == 3){
-                    page.filename = line.split(" ")[2];
+                    page.filename = newline.split(" ")[2];
                 }
                 else {
                     if (page.filename.equals("")) System.out.println("?");
@@ -182,7 +181,9 @@ public class EDLineEditor {
                     isSuccess = editor.replace(splitLoc[0], splitLoc[1], 1);
                 }
                 if (!isSuccess) System.out.println("?");       // 未成功打问号
-                else str = line;
+                else {
+                    str = line;
+                }
             }
             else if (command == 'k'){
                 char c = newline.charAt(newline.indexOf('k') + 1);
