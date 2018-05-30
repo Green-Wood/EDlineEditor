@@ -81,10 +81,13 @@ public class EDLineEditor {
                     else {
                         String param = newline.split("z")[1];
                         int n = Integer.parseInt(param);
-                        if (beginIndex + n > page.currPage.size())
+                        if (beginIndex + n > page.currPage.size()){
                             FileTool.printLines(beginIndex, page.currPage.size(), page);
-                        else
+                        }
+                        else{
                             FileTool.printLines(beginIndex, beginIndex + n, page);
+                        }
+
                     }
                 }
             }
@@ -100,7 +103,7 @@ public class EDLineEditor {
                         break;
                     }
                     else if (!page.isSaved && !isConfirmed){
-                        System.out.println("?");              // 提示后退出
+//                        System.out.println("?");              // 提示后退出
                         isConfirmed = true;
                     }
                 }
