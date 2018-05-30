@@ -62,7 +62,7 @@ public class EDLineEditor {
                 for (int i = beginIndex; i <= endIndex; i++){
                     page.currPage.remove(beginIndex-1);
                 }
-
+                page.isSaved = false;
             }
             else if (command == 'p' || command == '='
                     || command == 'z'){
@@ -103,7 +103,7 @@ public class EDLineEditor {
                         break;
                     }
                     else if (!page.isSaved && !isConfirmed){
-//                        System.out.println("?");              // 提示后退出
+                        System.out.println("?");              // 提示后退出
                         isConfirmed = true;
                     }
                 }

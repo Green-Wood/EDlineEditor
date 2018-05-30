@@ -39,6 +39,7 @@ public class InputMode {
             index++;
         }
         page.currLine = index;
+        page.isSaved = false;
     }
 
     public static void main (String[] args){
@@ -48,7 +49,7 @@ public class InputMode {
 //        page.currPage.add("ad");
         page.currPage.add(0, "insertion");
         page.currLine = 4;
-        String s = "/a/=";
+        String s = "-2=";
 //        FileTool.saveFile(1, page.currPage.size(), page, "test.txt", false);
         System.out.println(EDLineEditor.transLoc(s, page));
 //        System.out.println(s.substring(3, 3).equals(""));

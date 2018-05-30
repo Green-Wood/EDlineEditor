@@ -26,6 +26,7 @@ public class Editor {
             page.currPage.add(toIndex, s);
         }
         page.currLine = toIndex + 1;
+        page.isSaved = false;
     }
 
     void copy(int toIndex){
@@ -40,6 +41,7 @@ public class Editor {
             page.currPage.add(toIndex, s);
         }
         page.currLine = toIndex + 1;
+        page.isSaved = false;
     }
 
     void union(){
@@ -51,6 +53,7 @@ public class Editor {
         }
         page.currPage.remove(beginIndex);
         page.currPage.add(beginIndex, str);
+        page.isSaved = false;
     }
 
     boolean replace(String Old, String New, int count){
@@ -75,6 +78,7 @@ public class Editor {
             page.currPage.add(i, newLine);
         }
         page.currLine = endIndex + 1;
+        page.isSaved = false;
         return true;
     }
 
@@ -90,6 +94,7 @@ public class Editor {
             page.currPage.add(i, newLine);
         }
         page.currLine = endIndex + 1;
+        page.isSaved = false;
         return true;
     }
     public static void main(String[] args){
