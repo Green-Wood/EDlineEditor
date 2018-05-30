@@ -23,7 +23,8 @@ public class FileTool {
         beginIndex--;
         endIndex--;
         for (int i = beginIndex; i <= endIndex; i++){
-            System.out.println(page.currPage.get(i));
+            if (i == endIndex) System.out.print(page.currPage.get(i));
+            else System.out.println(page.currPage.get(i));
         }
     }
 
