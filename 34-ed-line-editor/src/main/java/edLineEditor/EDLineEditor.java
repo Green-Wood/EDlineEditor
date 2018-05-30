@@ -103,7 +103,7 @@ public class EDLineEditor {
                         break;
                     }
                     else if (!page.isSaved && !isConfirmed){
-                        System.out.println("?");              // 提示后退出
+//                        System.out.print("?");              // 提示后退出
                         isConfirmed = true;
                     }
                 }
