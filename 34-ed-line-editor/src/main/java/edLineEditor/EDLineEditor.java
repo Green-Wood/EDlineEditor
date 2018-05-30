@@ -138,6 +138,10 @@ public class EDLineEditor {
                 String toLoc = newline.substring(newline.indexOf("m") + 1, newline.length());
                 String newToLoc = transLoc(toLoc, page);
                 int toIndex = Integer.parseInt(newToLoc.split(",")[0]);
+                if (toIndex > page.currPage.size()) {
+                    System.out.println("?");
+                    continue;
+                }
                 Editor editor = new Editor(beginIndex, endIndex, page);
                 if (command == 'm') editor.move(toIndex);
                 else editor.copy(toIndex);

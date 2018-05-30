@@ -36,7 +36,8 @@ public class FileTool {
             fw = new FileWriter(file, isAdd);
             for (int i = beginIndex; i <= endIndex; i++){
                 try {
-                    fw.write(page.currPage.get(i) + "\n");
+                    if (i == endIndex) fw.write(page.currPage.get(i));
+                    else fw.write(page.currPage.get(i) + "\n");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
