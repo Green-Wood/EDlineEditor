@@ -30,6 +30,7 @@ public class Editor {
 
     void copy(int toIndex){
         page.saveCurrent();
+        toIndex--;
         ArrayList<String> l = new ArrayList<>();
         for (int i = beginIndex; i <= endIndex; i++){
             l.add(page.currPage.get(i));
