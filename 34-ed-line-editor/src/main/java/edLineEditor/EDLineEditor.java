@@ -36,10 +36,7 @@ public class EDLineEditor {
             command = newline.split(" ")[1].charAt(0);
             String[] loc = newline.split(" ")[0].split(",");
             beginIndex = Integer.parseInt(loc[0]);
-            if (loc.length == 2){
-                endIndex = Integer.parseInt(loc[1]);
-            }
-            else endIndex = beginIndex;
+            endIndex = Integer.parseInt(loc[1]);
 
             if (beginIndex > endIndex || beginIndex < 0    // 检查是否符合
                     || endIndex > page.currPage.size()){
@@ -249,7 +246,8 @@ public class EDLineEditor {
                 line = line.replace(".", Integer.toString(page.currLine));
             }
         }
-        if (line.contains(",") && Character.isAlphabetic(line.charAt(line.indexOf(",") + 1))){
+        if (line.contains(",") && (Character.isAlphabetic(line.charAt(line.indexOf(",") + 1))
+                || line.charAt(line.indexOf(",") + 1) == '=')){
             line = line.replace(",", String.format("1,%d", page.currPage.size()));
         }
         if (Character.isAlphabetic(line.charAt(0)) || line.charAt(0) == '='){
@@ -291,7 +289,8 @@ public class EDLineEditor {
             line = line.replace("$", Integer.toString(page.currPage.size()));
         }
         if (line.contains(",") && Character.isDigit(line.charAt(line.indexOf(",") - 1))
-                && Character.isAlphabetic(line.charAt(line.indexOf(",") + 1))){
+                && (Character.isAlphabetic(line.charAt(line.indexOf(",") + 1))
+                || line.charAt(line.indexOf(",") + 1) == '=')){
             String old = line.substring(line.indexOf(",") - 1, line.indexOf(",") + 1);
             String New = old + Integer.toString(page.currLine);
             line = line.replace(old, New);
@@ -305,7 +304,7 @@ public class EDLineEditor {
         if (!line.contains(",")){
             int i;
             for (i = 0; i < line.length(); i++){
-                if (Character.isAlphabetic(line.charAt(i))){
+                if (Character.isAlphabetic(line.charAt(i)) || line.charAt(i) == '='){
                     break;
                 }
             }
