@@ -66,7 +66,7 @@ public class Page {
 
     public boolean hasChanged(){
         LinkedList<String> first = pages.firstElement();
-        return first.equals(currPage);
+        return !first.equals(currPage);
     }
 
     public static void main(String[] args){

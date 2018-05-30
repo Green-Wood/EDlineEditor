@@ -52,7 +52,7 @@ public class InputMode {
         page.currLine = 4;
         String s = "-2=";
 //        FileTool.saveFile(1, page.currPage.size(), page, "test.txt", false);
-        System.out.println(EDLineEditor.transLoc(s, page));
+        System.out.println(TransLoc.transLoc(s, page));
 //        System.out.println(s.substring(3, 3).equals(""));
     }
 }
