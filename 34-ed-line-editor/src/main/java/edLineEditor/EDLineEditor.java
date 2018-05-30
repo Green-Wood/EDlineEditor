@@ -36,7 +36,10 @@ public class EDLineEditor {
             command = newline.split(" ")[1].charAt(0);
             String[] loc = newline.split(" ")[0].split(",");
             beginIndex = Integer.parseInt(loc[0]);
-            endIndex = Integer.parseInt(loc[1]);
+            if (loc.length == 2){
+                endIndex = Integer.parseInt(loc[1]);
+            }
+            else endIndex = beginIndex;
 
             if (beginIndex > endIndex || beginIndex < 0    // 检查是否符合
                     || endIndex > page.currPage.size()){
