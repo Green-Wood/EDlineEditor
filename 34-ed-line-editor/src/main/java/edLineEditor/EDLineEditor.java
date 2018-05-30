@@ -30,7 +30,7 @@ public class EDLineEditor {
             page = new Page(filename);
         }
 
-        while (true){
+        while (in.hasNextLine()){
             String line = in.nextLine();
             String str = "";                          // 记录上一次替换的指令
             int beginIndex;
