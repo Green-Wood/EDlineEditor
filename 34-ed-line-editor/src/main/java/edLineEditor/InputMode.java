@@ -21,7 +21,12 @@ public class InputMode {
         page.saveCurrent();
         beginIndex--;
         if (command == 'a'){
-            index = beginIndex + 1;
+            if (beginIndex == 0){
+                index = beginIndex;
+            }
+            else {
+                index = beginIndex + 1;
+            }
         }
         // 追加在指定行前面
         else {

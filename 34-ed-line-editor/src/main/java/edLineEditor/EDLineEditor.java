@@ -77,6 +77,7 @@ public class EDLineEditor {
                         System.out.println("?");
                         continue;
                     }
+                    if (beginIndex == page.currLine) beginIndex++;            // 如果使用默认值，则加一
                     int index = newline.indexOf("z");
                     if (index == newline.length() - 1) FileTool.printLines(beginIndex, page.currPage.size(), page);
                     else {
