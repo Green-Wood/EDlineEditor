@@ -91,18 +91,16 @@ public class EDLineEditor {
                     }
                 }
             }
-            else if (command == 'q' || command == 'Q'){
-                if (command == 'Q'){          // 强制退出
-                    break;
+            else if (command == 'Q'){
+                break;
+            }
+            else if (command == 'q'){
+                if (!page.isSaved && !isConfirmed && !page.filename.equals("")){ //TODO 检查文件是否被修改
+                        System.out.println("?");              // 提示后退出
+                    isConfirmed = true;
                 }
                 else {
-                    if (page.isSaved || isConfirmed){
-                        break;
-                    }
-                    if (!page.isSaved && !isConfirmed){
-//                        System.out.print("?");              // 提示后退出
-                        isConfirmed = true;
-                    }
+                    break;
                 }
             }
             else if (command == 'f'){           // 设置文件名
@@ -197,7 +195,7 @@ public class EDLineEditor {
         in.close();
 	}
 
-    public static String transLoc(String line, Page page){
+    static String transLoc(String line, Page page){
 	    if (times(line, '/') % 2 != 0){             // 解决替换时'/'产生的冲突
 	        int count = 0;
 	        int index = 0;
