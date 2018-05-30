@@ -1,7 +1,6 @@
 package edLineEditor;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class Editor {
     private int beginIndex;
