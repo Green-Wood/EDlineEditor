@@ -3,11 +3,12 @@ package edLineEditor;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Stack;
 
 // 缓存文件类，在未保存之前，所有文件操作均在Page类中操作
 public class Page {
     LinkedList<String> currPage;        // 保存当前和上一个状态，用于撤销
-    LinkedList<String> prevPage;
+    Stack<LinkedList<String>> pages;
     String filename;
     int currLine;                        // 保存当前行
     HashMap<Character, Integer> mark;     // 保存标记符号
@@ -15,7 +16,7 @@ public class Page {
 
     public Page(){                       // 从ed直接进入
         currPage = new LinkedList<>();
-        prevPage = new LinkedList<>();
+        pages = new Stack<>();
         mark = new HashMap<>();
         filename = "";
         currLine = 0;
@@ -24,22 +25,21 @@ public class Page {
     public Page(String filename){           // 从文件读入
         ArrayList<String> file = FileTool.readFile(filename);
         currPage = new LinkedList<>();
-        prevPage = new LinkedList<>();
+        pages = new Stack<>();
         mark = new HashMap<>();
         this.filename = filename;
         currLine = file.size();
         currPage.addAll(file);
-        prevPage.addAll(file);
+        pages.push((LinkedList<String>) currPage.clone());
     }
 
     public void saveCurrent(){              // 在对文本操作前保存当前状态，修改前必须调用
-        prevPage = (LinkedList<String>) currPage.clone();
+        pages.push((LinkedList<String>) currPage.clone());
     }
 
     public void unDo(){                    // 撤销操作，返回至saveCurrent的状态
-        LinkedList<String> swap = (LinkedList<String>) currPage.clone();
-        currPage = (LinkedList<String>) prevPage.clone();
-        prevPage = (LinkedList<String>) swap.clone();
+        LinkedList<String> swap = pages.pop();
+        currPage = (LinkedList<String>) swap.clone();
     }
 
     public int findDownLineNumber(String str){
@@ -66,7 +66,6 @@ public class Page {
 
     public static void main(String[] args){
         Page test = new Page();
-        test.prevPage.add("GYS");
         test.currPage.add("ZWQ");
         test.saveCurrent();
         test.currPage.add("Love");
