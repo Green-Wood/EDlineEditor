@@ -96,7 +96,7 @@ public class EDLineEditor {
                 break;
             }
             else if (command == 'q'){
-                if (!page.isSaved && !isConfirmed && page.hasChanged()){
+                if (!page.isSaved && !isConfirmed && page.hasChanged() && !page.filename.equals("")){
                     System.out.println("?");              // 提示后退出
                     isConfirmed = true;
                 }
