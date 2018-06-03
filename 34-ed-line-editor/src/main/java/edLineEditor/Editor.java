@@ -111,13 +111,13 @@ public class Editor {
         return true;
     }
 
-    void printLines(){
+    void printLines(){               // 打印指定行
         for (int i = beginIndex; i <= endIndex; i++){
             System.out.println(page.currPage.get(i));
         }
     }
 
-    void saveFile(String fileName, boolean isAdd){
+    void saveFile(String fileName, boolean isAdd){               // 保存指定行
         File file = new File(fileName);
         FileWriter fw;
         try {

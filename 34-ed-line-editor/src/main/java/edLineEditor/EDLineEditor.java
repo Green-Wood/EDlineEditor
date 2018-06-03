@@ -22,13 +22,16 @@ public class EDLineEditor {
         String init = in.nextLine();
         Page page;
         String filename;
+
         if (init.trim().equals("ed")) page = new Page();            // 两种初始化方法
         else {
             filename = init.trim().split(" ")[1];
             page = new Page(filename);
         }
+
         Editor editor = new Editor(page);              // 初始化editor
         String str = "";                          // 记录上一次替换的指令
+
         while (in.hasNextLine()){
             String line = in.nextLine();
             String newline = TransLoc.transLoc(line, editor);
@@ -62,36 +65,35 @@ public class EDLineEditor {
                 }
                 page.isSaved = false;
             }
-            else if (command == 'p' || command == '='
-                    || command == 'z'){
-                if (command == '=') System.out.println(beginIndex);  // 打印当前行号
-                else if (command == 'p'){
-                    editor.printLines();       // 打印指定多行
-                    page.setCurrLine(endIndex);
+            else if (command == '=') {
+                System.out.println(beginIndex);  // 打印当前行号
+            }
+            else if (command == 'p'){
+                editor.printLines();       // 打印指定多行
+                page.setCurrLine(endIndex);
+            }
+            else if (command == 'z'){
+                if (line.charAt(0) == 'z' && page.getCurrLine() == page.currPage.size()){
+                    System.out.println("?");
+                    continue;
+                }
+                if (beginIndex == page.getCurrLine()) beginIndex++;            // 如果使用默认值，则加一
+                int index = newline.indexOf("z");
+                editor.setLines(beginIndex, page.currPage.size());               // 设置打印范围
+                if (index == newline.length() - 1) {                     // 若指令后无参数，则打印全部
+                    editor.printLines();
                 }
                 else {
-                    if (line.charAt(0) == 'z' && page.getCurrLine() == page.currPage.size()){
-                        System.out.println("?");
-                        continue;
-                    }
-                    if (beginIndex == page.getCurrLine()) beginIndex++;            // 如果使用默认值，则加一
-                    int index = newline.indexOf("z");
-                    editor.setLines(beginIndex, page.currPage.size());
-                    if (index == newline.length() - 1) {
+                    String param = newline.split("z")[1];           // 打印到参数位置
+                    int n = Integer.parseInt(param);
+                    if (beginIndex + n > page.currPage.size()){
                         editor.printLines();
                     }
-                    else {
-                        String param = newline.split("z")[1];
-                        int n = Integer.parseInt(param);
-                        if (beginIndex + n > page.currPage.size()){
-                            editor.printLines();
-                        }
-                        else{
-                            editor.setLines(beginIndex, beginIndex + n);
-                            editor.printLines();
-                        }
-
+                    else{
+                        editor.setLines(beginIndex, beginIndex + n);
+                        editor.printLines();
                     }
+
                 }
             }
             else if (command == 'Q'){
@@ -142,16 +144,18 @@ public class EDLineEditor {
                     System.out.println("?");
                     continue;
                 }
-                editor.setLines(beginIndex, endIndex);
                 if (command == 'm') editor.move(toIndex);
                 else editor.copy(toIndex);
             }
             else if (command == 'j'){
-                if (beginIndex == endIndex){
+                if (beginIndex == page.getCurrLine()){
                     endIndex++;
+                    editor.setLines(beginIndex, endIndex);
+                    editor.union();
                 }
-                editor.setLines(beginIndex, endIndex);
-                editor.union();
+                else if (beginIndex != endIndex){
+                    editor.union();
+                }
             }
             else if (command == 's'){
                 int count = 0;
@@ -172,7 +176,6 @@ public class EDLineEditor {
                 }
                 String toLoc = line.substring(index + 1, line.length());
                 String[] splitLoc = toLoc.split("/");
-                editor.setLines(beginIndex, endIndex);
                 boolean isSuccess;
                 if (splitLoc.length == 3){
                     if (splitLoc[2].equals("g")) isSuccess = editor.replace(splitLoc[0], splitLoc[1]);
