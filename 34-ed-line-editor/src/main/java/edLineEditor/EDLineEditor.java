@@ -98,7 +98,7 @@ public class EDLineEditor {
                 break;
             }
             else if (command == 'q'){
-                if (!page.isSaved && !isConfirmed && page.hasChanged() && !page.getFilename().equals("")){
+                if (!page.isSaved && !isConfirmed && page.hasChanged()){
                     System.out.println("?");              // 提示后退出
                     isConfirmed = true;
                 }
@@ -183,7 +183,7 @@ public class EDLineEditor {
                 }
                 if (!isSuccess) System.out.println("?");       // 未成功打问号
                 else {
-                    str = line;
+                    str = line;                     // 保存此次指令
                 }
             }
             else if (command == 'k'){
