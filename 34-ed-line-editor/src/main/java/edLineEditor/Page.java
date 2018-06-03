@@ -42,11 +42,11 @@ public class Page {
     }
 
     public int getCurrLine(){
-        return this.currLine + 1;
+        return this.currLine ;
     }
 
     public void setCurrLine(int line){
-        this.currLine = line - 1;
+        this.currLine = line;
     }
 
     public void saveCurrent(){              // 在对文本操作前保存当前状态，修改前必须调用
