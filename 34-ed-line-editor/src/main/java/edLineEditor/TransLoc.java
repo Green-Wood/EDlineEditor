@@ -23,7 +23,7 @@ public class TransLoc {
         }
         if (line.charAt(0) == ';') {
             String command = line.substring(1, line.length());
-            editor.setLines(currentLine, currentLine);
+            editor.setLines(currentLine, editor.page.currPage.size());
             return Integer.toString(currentLine) + "," + Integer.toString(currentLine) + " " + command;
         }
         while (line.contains("'")){                // 转化标记符
