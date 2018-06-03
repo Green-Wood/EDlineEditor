@@ -1,6 +1,5 @@
 package edLineEditor;
 import java.util.Scanner;
-import java.util.Stack;
 
 public class InputMode {
     private Page page;
@@ -39,7 +38,7 @@ public class InputMode {
             page.currPage.add(index, line);
             index++;
         }
-        page.currLine = index;
+        page.setCurrLine(index);
         page.isSaved = false;
     }
 
@@ -49,7 +48,7 @@ public class InputMode {
         page.currPage.add("cc");
 //        page.currPage.add("ad");
         page.currPage.add(0, "insertion");
-        page.currLine = 4;
+        page.setCurrLine(4);
         String s = "-2=";
 //        FileTool.saveFile(1, page.currPage.size(), page, "test.txt", false);
         System.out.println(TransLoc.transLoc(s, page));

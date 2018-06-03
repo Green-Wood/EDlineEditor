@@ -16,10 +16,10 @@ public class TransLoc {
             }
             line = line.substring(0, index);
         }
-        if (line.length() == 0) return Integer.toString(page.currLine) + "," + Integer.toString(page.currLine);
+        if (line.length() == 0) return Integer.toString(page.getCurrLine()) + "," + Integer.toString(page.getCurrLine());
         if (line.charAt(0) == ';') {
             String command = line.substring(1, line.length());
-            return Integer.toString(page.currLine) + "," + Integer.toString(page.currPage.size()) + " " + command;
+            return Integer.toString(page.getCurrLine()) + "," + Integer.toString(page.currPage.size()) + " " + command;
         }
         while (line.contains("'")){                // 转化标记符
             int i = line.indexOf("'");
@@ -46,7 +46,7 @@ public class TransLoc {
                 line = line.substring(1, line.length());
             }
             else {
-                line = line.replace(".", Integer.toString(page.currLine));
+                line = line.replace(".", Integer.toString(page.getCurrLine()));
             }
         }
         if (line.contains(",") && (Character.isAlphabetic(line.charAt(line.indexOf(",") + 1))
@@ -54,7 +54,7 @@ public class TransLoc {
             line = line.replace(",", String.format("1,%d", page.currPage.size()));
         }
         if (Character.isAlphabetic(line.charAt(0)) || line.charAt(0) == '='){
-            line = String.format("%d,%d", page.currLine, page.currLine) + line;
+            line = String.format("%d,%d", page.getCurrLine(), page.getCurrLine()) + line;
         }
         while (line.contains("-")){
             if (line.contains("$-")){
@@ -68,7 +68,7 @@ public class TransLoc {
                 int i = line.indexOf("-");
                 int n = Integer.parseInt(line.substring(i + 1, i + 2));
                 String formal = line.substring(i, i + 2);
-                String newS = Integer.toString(page.currLine - n);
+                String newS = Integer.toString(page.getCurrLine() - n);
                 line = line.replace(formal, newS);
             }
         }
@@ -84,7 +84,7 @@ public class TransLoc {
                 int i = line.indexOf("+");
                 int n = Integer.parseInt(line.substring(i + 1, i + 2));
                 String formal = line.substring(i, i + 2);
-                String newS = Integer.toString(page.currLine + n);
+                String newS = Integer.toString(page.getCurrLine() + n);
                 line = line.replace(formal, newS);
             }
         }
@@ -95,12 +95,12 @@ public class TransLoc {
                 && (Character.isAlphabetic(line.charAt(line.indexOf(",") + 1))
                 || line.charAt(line.indexOf(",") + 1) == '=')){
             String old = line.substring(line.indexOf(",") - 1, line.indexOf(",") + 1);
-            String New = old + Integer.toString(page.currLine);
+            String New = old + Integer.toString(page.getCurrLine());
             line = line.replace(old, New);
         }
         if (line.charAt(0) == ',' && Character.isDigit(line.charAt(line.indexOf(",") + 1))){
             String old = line.substring(0, 2);
-            String New = old + Integer.toString(page.currLine);
+            String New = old + Integer.toString(page.getCurrLine());
             line = line.replace(old, New);
         }
 

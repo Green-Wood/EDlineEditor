@@ -25,7 +25,7 @@ public class Editor {
             toIndex++;
             page.currPage.add(toIndex, s);
         }
-        page.currLine = toIndex + 1;
+        page.setCurrLine(toIndex + 1);
         page.isSaved = false;
     }
 
@@ -40,7 +40,7 @@ public class Editor {
             toIndex++;
             page.currPage.add(toIndex, s);
         }
-        page.currLine = toIndex + 1;
+        page.setCurrLine(toIndex + 1);
         page.isSaved = false;
     }
 
@@ -77,7 +77,7 @@ public class Editor {
             page.currPage.remove(i);
             page.currPage.add(i, newLine);
         }
-        page.currLine = endIndex + 1;
+        page.setCurrLine(endIndex + 1);
         page.isSaved = false;
         return true;
     }
@@ -93,7 +93,7 @@ public class Editor {
             page.currPage.remove(i);
             page.currPage.add(i, newLine);
         }
-        page.currLine = endIndex + 1;
+        page.setCurrLine(endIndex + 1);
         page.isSaved = false;
         return true;
     }

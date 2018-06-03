@@ -58,8 +58,8 @@ public class EDLineEditor {
             }
             else if (command == 'd'){         // 删除
                 page.saveCurrent();
-                if (endIndex == page.currPage.size()) page.currLine = beginIndex - 1;
-                else page.currLine = beginIndex;
+                if (endIndex == page.currPage.size()) page.setCurrLine(beginIndex - 1);
+                else page.setCurrLine(beginIndex);
                 for (int i = beginIndex; i <= endIndex; i++){
                     page.currPage.remove(beginIndex-1);
                 }
@@ -70,14 +70,14 @@ public class EDLineEditor {
                 if (command == '=') System.out.println(beginIndex);  // 打印当前行号
                 else if (command == 'p'){
                     FileTool.printLines(beginIndex, endIndex, page);       // 打印指定多行
-                    page.currLine = endIndex;
+                    page.setCurrLine(endIndex);
                 }
                 else {
-                    if (line.charAt(0) == 'z' && page.currLine == page.currPage.size()){
+                    if (line.charAt(0) == 'z' && page.getCurrLine() == page.currPage.size()){
                         System.out.println("?");
                         continue;
                     }
-                    if (beginIndex == page.currLine) beginIndex++;            // 如果使用默认值，则加一
+                    if (beginIndex == page.getCurrLine()) beginIndex++;            // 如果使用默认值，则加一
                     int index = newline.indexOf("z");
                     if (index == newline.length() - 1) FileTool.printLines(beginIndex, page.currPage.size(), page);
                     else {
@@ -97,7 +97,7 @@ public class EDLineEditor {
                 break;
             }
             else if (command == 'q'){
-                if (!page.isSaved && !isConfirmed && page.hasChanged() && !page.filename.equals("")){
+                if (!page.isSaved && !isConfirmed && page.hasChanged() && !page.getFilename().equals("")){
                     System.out.println("?");              // 提示后退出
                     isConfirmed = true;
                 }
@@ -107,11 +107,11 @@ public class EDLineEditor {
             }
             else if (command == 'f'){           // 设置文件名
                 if (newline.split(" ").length == 3){
-                    page.filename = newline.split(" ")[2];
+                    page.setFilename(newline.split(" ")[2]);
                 }
                 else {
-                    if (page.filename.equals("")) System.out.println("?");
-                    else System.out.println(page.filename);
+                    if (page.getFilename().equals("")) System.out.println("?");
+                    else System.out.println(page.getFilename());
                 }
             }
             else if (command == 'w' || command == 'W'){                 // 小写w与大写W只是是否追加的区别
@@ -126,14 +126,14 @@ public class EDLineEditor {
                     FileTool.saveFile(beginIndex, endIndex, page, line.split(" ")[1], isAdd);
                 }
                 else {
-                    if (page.filename.equals("")) System.out.println("?");
-                    else FileTool.saveFile(beginIndex, endIndex, page, page.filename, isAdd);
+                    if (page.getFilename().equals("")) System.out.println("?");
+                    else FileTool.saveFile(beginIndex, endIndex, page, page.getFilename(), isAdd);
                 }
             }
             else if (command == 'm' || command == 't'){
                 int toIndex;
                 if (newline.indexOf(Character.toString(command)) == newline.length() - 1){
-                    toIndex = page.currLine;
+                    toIndex = page.getCurrLine();
                 }
                 else {
                     toIndex = Integer.parseInt(newline.split(Character.toString(command))[1]);
