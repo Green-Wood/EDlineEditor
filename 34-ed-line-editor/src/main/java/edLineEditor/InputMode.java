@@ -43,15 +43,5 @@ public class InputMode {
     }
 
     public static void main (String[] args){
-        Page page = new Page();
-        page.currPage.add("ab");
-        page.currPage.add("cc");
-//        page.currPage.add("ad");
-        page.currPage.add(0, "insertion");
-        page.setCurrLine(4);
-        String s = "-2=";
-//        FileTool.saveFile(1, page.currPage.size(), page, "test.txt", false);
-        System.out.println(TransLoc.transLoc(s, page));
-//        System.out.println(s.substring(3, 3).equals(""));
     }
 }
