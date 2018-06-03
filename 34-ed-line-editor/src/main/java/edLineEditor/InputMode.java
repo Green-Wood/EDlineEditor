@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class InputMode {
     private Page page;
     private int index;
-    public InputMode(int beginIndex, int endIndex, Page page){
+    InputMode(int beginIndex, int endIndex, Page page){
         // 替换模式
         beginIndex--;
         endIndex--;
@@ -15,7 +15,7 @@ public class InputMode {
         index = beginIndex;
         this.page = page;
     }
-    public InputMode(int beginIndex, char command, Page page){
+    InputMode(int beginIndex, char command, Page page){
         // 追加在指定行后面
         beginIndex--;
         page.saveCurrent();
@@ -30,7 +30,7 @@ public class InputMode {
         this.page = page;
     }
 
-    public void insert(Scanner in){
+    void insert(Scanner in){
         page.saveCurrent();
         while (true){
             String line = in.nextLine();

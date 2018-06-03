@@ -1,5 +1,8 @@
 package edLineEditor;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Editor {
@@ -9,16 +12,16 @@ public class Editor {
     Editor(Page page){
         this.page = page;
     }
-    public void setLines(int beginIndex, int endIndex){
+    void setLines(int beginIndex, int endIndex){
         this.beginIndex = beginIndex - 1;
         this.endIndex = endIndex - 1;
     }
 
-    public int getBeginIndex(){
+    int getBeginIndex(){
         return beginIndex;
     }
 
-    public int getEndIndex(){
+    int getEndIndex(){
         return endIndex;
     }
 
@@ -106,6 +109,31 @@ public class Editor {
         page.setCurrLine(endIndex + 1);
         page.isSaved = false;
         return true;
+    }
+
+    void printLines(){
+        for (int i = beginIndex; i <= endIndex; i++){
+            System.out.println(page.currPage.get(i));
+        }
+    }
+
+    void saveFile(String fileName, boolean isAdd){
+        File file = new File(fileName);
+        FileWriter fw;
+        try {
+            fw = new FileWriter(file, isAdd);
+            for (int i = beginIndex; i <= endIndex; i++){
+                try {
+                    fw.write(page.currPage.get(i) + "\n");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        page.isSaved = true;
     }
     public static void main(String[] args){
 

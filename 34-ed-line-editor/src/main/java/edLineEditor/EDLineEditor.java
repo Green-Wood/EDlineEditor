@@ -66,7 +66,7 @@ public class EDLineEditor {
                     || command == 'z'){
                 if (command == '=') System.out.println(beginIndex);  // 打印当前行号
                 else if (command == 'p'){
-                    FileTool.printLines(beginIndex, endIndex, page);       // 打印指定多行
+                    editor.printLines();       // 打印指定多行
                     page.setCurrLine(endIndex);
                 }
                 else {
@@ -76,15 +76,19 @@ public class EDLineEditor {
                     }
                     if (beginIndex == page.getCurrLine()) beginIndex++;            // 如果使用默认值，则加一
                     int index = newline.indexOf("z");
-                    if (index == newline.length() - 1) FileTool.printLines(beginIndex, page.currPage.size(), page);
+                    editor.setLines(beginIndex, page.currPage.size());
+                    if (index == newline.length() - 1) {
+                        editor.printLines();
+                    }
                     else {
                         String param = newline.split("z")[1];
                         int n = Integer.parseInt(param);
                         if (beginIndex + n > page.currPage.size()){
-                            FileTool.printLines(beginIndex, page.currPage.size(), page);
+                            editor.printLines();
                         }
                         else{
-                            FileTool.printLines(beginIndex, beginIndex + n, page);
+                            editor.setLines(beginIndex, beginIndex + n);
+                            editor.printLines();
                         }
 
                     }
@@ -116,15 +120,14 @@ public class EDLineEditor {
                 if (command =='w') isAdd = false;
                 else isAdd = true;
                 if (Character.isAlphabetic(line.charAt(0))) {             // 未指定时，保存全文
-                    beginIndex = 1;
-                    endIndex = page.currPage.size();
+                    editor.setLines(1, page.currPage.size());
                 }
                 if (newline.split(" ").length == 3){
-                    FileTool.saveFile(beginIndex, endIndex, page, line.split(" ")[1], isAdd);
+                    editor.saveFile(line.split(" ")[1], isAdd);
                 }
                 else {
                     if (page.getFilename().equals("")) System.out.println("?");
-                    else FileTool.saveFile(beginIndex, endIndex, page, page.getFilename(), isAdd);
+                    else editor.saveFile(page.getFilename(), isAdd);
                 }
             }
             else if (command == 'm' || command == 't'){
