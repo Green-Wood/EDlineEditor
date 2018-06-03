@@ -33,8 +33,8 @@ public class EDLineEditor {
             String line = in.nextLine();
             String newline = TransLoc.transLoc(line, editor);
             char command = newline.split(" ")[1].charAt(0);   // 获取命令
-            int beginIndex = editor.getBeginIndex();    // 获取开始和终止行
-            int endIndex = editor.getEndIndex();
+            int beginIndex = editor.getBeginIndex() + 1;    // 获取开始和终止行
+            int endIndex = editor.getEndIndex() + 1;
 
             if (beginIndex > endIndex || beginIndex < 0    // 检查是否符合
                     || endIndex > page.currPage.size()){

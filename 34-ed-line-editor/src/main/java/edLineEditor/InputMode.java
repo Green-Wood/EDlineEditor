@@ -6,9 +6,9 @@ public class InputMode {
     private int index;
     public InputMode(int beginIndex, int endIndex, Page page){
         // 替换模式
-        page.saveCurrent();
         beginIndex--;
         endIndex--;
+        page.saveCurrent();
         for (int i = beginIndex; i <= endIndex; i++){
             page.currPage.remove(beginIndex);
         }
@@ -17,8 +17,8 @@ public class InputMode {
     }
     public InputMode(int beginIndex, char command, Page page){
         // 追加在指定行后面
-        page.saveCurrent();
         beginIndex--;
+        page.saveCurrent();
         if (command == 'a'){
             index = beginIndex + 1;
         }
