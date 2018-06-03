@@ -5,11 +5,21 @@ import java.util.ArrayList;
 public class Editor {
     private int beginIndex;
     private int endIndex;
-    private Page page;
-    Editor(int beginIndex, int endIndex, Page page){
+    Page page;
+    Editor(Page page){
+        this.page = page;
+    }
+    public void setLines(int beginIndex, int endIndex){
         this.beginIndex = beginIndex - 1;
         this.endIndex = endIndex - 1;
-        this.page = page;
+    }
+
+    public int getBeginIndex(){
+        return beginIndex;
+    }
+
+    public int getEndIndex(){
+        return endIndex;
     }
 
     void move(int toIndex){

@@ -27,17 +27,14 @@ public class EDLineEditor {
             filename = init.trim().split(" ")[1];
             page = new Page(filename);
         }
+        Editor editor = new Editor(page);              // 初始化editor
         String str = "";                          // 记录上一次替换的指令
         while (in.hasNextLine()){
             String line = in.nextLine();
-            int beginIndex;
-            int endIndex;
-            char command;
-            String newline = TransLoc.transLoc(line, page);
-            command = newline.split(" ")[1].charAt(0);
-            String[] loc = newline.split(" ")[0].split(",");
-            beginIndex = Integer.parseInt(loc[0]);
-            endIndex = Integer.parseInt(loc[1]);
+            String newline = TransLoc.transLoc(line, editor);
+            char command = line.split(" ")[1].charAt(0);   // 获取命令
+            int beginIndex = editor.getBeginIndex();    // 获取开始和终止行
+            int endIndex = editor.getEndIndex();
 
             if (beginIndex > endIndex || beginIndex < 0    // 检查是否符合
                     || endIndex > page.currPage.size()){
@@ -142,7 +139,7 @@ public class EDLineEditor {
                     System.out.println("?");
                     continue;
                 }
-                Editor editor = new Editor(beginIndex, endIndex, page);
+                editor.setLines(beginIndex, endIndex);
                 if (command == 'm') editor.move(toIndex);
                 else editor.copy(toIndex);
             }
@@ -150,7 +147,7 @@ public class EDLineEditor {
                 if (beginIndex == endIndex){
                     endIndex++;
                 }
-                Editor editor = new Editor(beginIndex, endIndex, page);
+                editor.setLines(beginIndex, endIndex);
                 editor.union();
             }
             else if (command == 's'){
@@ -172,7 +169,7 @@ public class EDLineEditor {
                 }
                 String toLoc = line.substring(index + 1, line.length());
                 String[] splitLoc = toLoc.split("/");
-                Editor editor = new Editor(beginIndex, endIndex, page);
+                editor.setLines(beginIndex, endIndex);
                 boolean isSuccess;
                 if (splitLoc.length == 3){
                     if (splitLoc[2].equals("g")) isSuccess = editor.replace(splitLoc[0], splitLoc[1]);
