@@ -7,11 +7,11 @@ import java.util.Stack;
 
 // 缓存文件类，在未保存之前，所有文件操作均在Page类中操作
 public class Page {
-    LinkedList<String> currPage;        // 保存当前和上一个状态，用于撤销
+    LinkedList<String> currPage;        // 保存当前和以前的状态，用于撤销
     Stack<LinkedList<String>> allPages;
     private String filename;                     // 文件名称
     private int currLine;                        // 保存当前行
-    HashMap<Character, Integer> mark;     // 保存标记符号
+    private HashMap<Character, Integer> mark;     // 保存标记符号
     boolean isSaved;
 
     public Page(){                       // 从ed直接进入
@@ -49,13 +49,19 @@ public class Page {
         this.currLine = line;
     }
 
+    public void setMark(char c, int lineNumber){
+        mark.put(c, lineNumber);
+    }
+    public int getMark(char c){
+        return mark.get(c);
+    }
+
     public void saveCurrent(){              // 在对文本操作前保存当前状态，修改前必须调用
         allPages.push((LinkedList<String>) currPage.clone());
     }
 
     public void unDo(){                    // 撤销操作，返回至saveCurrent的状态
-        LinkedList<String> swap = allPages.pop();
-        currPage = (LinkedList<String>) swap.clone();
+        currPage = allPages.pop();
     }
 
     public int findDownLineNumber(String str){           // 从本行往下寻找相匹配的字符串

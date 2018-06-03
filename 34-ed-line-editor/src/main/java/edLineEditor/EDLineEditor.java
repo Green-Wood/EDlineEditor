@@ -188,7 +188,7 @@ public class EDLineEditor {
             }
             else if (command == 'k'){
                 char c = newline.charAt(newline.indexOf('k') + 1);
-                page.mark.put(c, beginIndex);
+                page.setMark(c, beginIndex);
             }
             else if (command == 'u'){
                 page.unDo();

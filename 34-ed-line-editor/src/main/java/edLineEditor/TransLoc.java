@@ -24,7 +24,7 @@ public class TransLoc {
         while (line.contains("'")){                // 转化标记符
             int i = line.indexOf("'");
             String o = line.substring(i, i + 2);
-            int lineNumber = page.mark.get(o.charAt(1));
+            int lineNumber = page.getMark(o.charAt(1));
             line = line.replace(o, Integer.toString(lineNumber));
         }
         while (line.contains("/")){              // 转化匹配字符
