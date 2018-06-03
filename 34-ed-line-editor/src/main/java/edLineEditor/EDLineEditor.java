@@ -32,7 +32,7 @@ public class EDLineEditor {
         while (in.hasNextLine()){
             String line = in.nextLine();
             String newline = TransLoc.transLoc(line, editor);
-            char command = line.split(" ")[1].charAt(0);   // 获取命令
+            char command = newline.split(" ")[1].charAt(0);   // 获取命令
             int beginIndex = editor.getBeginIndex();    // 获取开始和终止行
             int endIndex = editor.getEndIndex();
 
