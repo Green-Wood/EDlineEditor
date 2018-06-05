@@ -18,11 +18,11 @@ public class Editor {
     }
 
     int getBeginIndex(){
-        return beginIndex;
+        return beginIndex + 1;
     }
 
     int getEndIndex(){
-        return endIndex;
+        return endIndex + 1;
     }
 
     void move(int toIndex){
