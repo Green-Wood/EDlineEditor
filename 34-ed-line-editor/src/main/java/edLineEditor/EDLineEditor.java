@@ -220,7 +220,12 @@ public class EDLineEditor {
                         isSuccess = editor.replace(splitLoc[0], splitLoc[1]);          // 替换全部
                     }
                     else {
-                        isSuccess = editor.replace(splitLoc[0], splitLoc[1], Integer.parseInt(splitLoc[2]));
+                        try {
+                            isSuccess = editor.replace(splitLoc[0], splitLoc[1], Integer.parseInt(splitLoc[2]));
+                        }catch (Exception e){
+                            System.out.println("?");
+                            continue;
+                        }
                     }
                 }
                 else if (splitLoc.length == 2){
