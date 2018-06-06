@@ -17,10 +17,6 @@ public class TransLoc {
             }
             commandLine = commandLine.substring(0, index);
         }
-//        if (commandLine.length() == 0){
-//            editor.setLines(currentLine, currentLine);
-//            return Integer.toString(currentLine) + "," + Integer.toString(currentLine);
-//        }
         if (commandLine.charAt(0) == ';') {
             String command = commandLine.substring(1, commandLine.length());
             editor.setLines(currentLine, editor.page.currPage.size());
