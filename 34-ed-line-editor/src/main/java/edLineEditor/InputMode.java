@@ -1,4 +1,5 @@
 package edLineEditor;
+import java.util.Map;
 import java.util.Scanner;
 
 public class InputMode {
@@ -9,6 +10,13 @@ public class InputMode {
         beginIndex--;
         endIndex--;
         page.saveCurrent();
+        for (Map.Entry<Character, Integer> entry: page.getMarkedEntry()){         // 删除符号
+            char c = entry.getKey();
+            int lineNumber = entry.getValue() - 1;
+            if (lineNumber >= beginIndex && lineNumber <= endIndex) {
+                page.deleteMark(c);
+            }
+        }
         for (int i = beginIndex; i <= endIndex; i++){
             page.currPage.remove(beginIndex);
         }
@@ -31,12 +39,22 @@ public class InputMode {
     }
 
     void insert(Scanner in){
-        page.saveCurrent();
+        int countAddline = 0;
+        int startIndex = index;
         while (true){
             String line = in.nextLine();
             if (line.equals(".")) break;            // 检测到句号时退出
             page.currPage.add(index, line);
             index++;
+            countAddline++;
+        }
+        for (Map.Entry<Character, Integer> entry: page.getMarkedEntry()){         // 调整符号
+            char c = entry.getKey();
+            int lineNumber = entry.getValue() - 1;
+            if (lineNumber >= startIndex) {
+                lineNumber = lineNumber + countAddline;
+                page.setMark(c, lineNumber + 1);
+            }
         }
         page.setCurrLine(index);
         page.isSaved = false;

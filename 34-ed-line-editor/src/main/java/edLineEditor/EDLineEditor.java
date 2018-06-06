@@ -140,7 +140,8 @@ public class EDLineEditor {
                 else {
                     toIndex = Integer.parseInt(newline.split(Character.toString(command))[1]);
                 }
-                if (toIndex > page.currPage.size()) {
+                if (toIndex > page.currPage.size() ||
+                        (command == 'm' && beginIndex <= toIndex && endIndex >= toIndex)) {
                     System.out.println("?");
                     continue;
                 }
@@ -148,8 +149,9 @@ public class EDLineEditor {
                 else editor.copy(toIndex);
             }
             else if (command == 'j'){
-                if (beginIndex == page.getCurrLine()){
-                    endIndex++;
+                if (line.charAt(0) == 'j'){
+                    beginIndex = page.getCurrLine();
+                    endIndex = beginIndex + 1;
                     editor.setLines(beginIndex, endIndex);
                     editor.union();
                 }
@@ -178,8 +180,12 @@ public class EDLineEditor {
                 String[] splitLoc = toLoc.split("/");
                 boolean isSuccess;
                 if (splitLoc.length == 3){
-                    if (splitLoc[2].equals("g")) isSuccess = editor.replace(splitLoc[0], splitLoc[1]);
-                    else isSuccess = editor.replace(splitLoc[0], splitLoc[1], Integer.parseInt(splitLoc[2]));
+                    if (splitLoc[2].equals("g")) {
+                        isSuccess = editor.replace(splitLoc[0], splitLoc[1], 1);
+                    }
+                    else {
+                        isSuccess = editor.replace(splitLoc[0], splitLoc[1], Integer.parseInt(splitLoc[2]));
+                    }
                 }
                 else {
                     isSuccess = editor.replace(splitLoc[0], splitLoc[1], 1);

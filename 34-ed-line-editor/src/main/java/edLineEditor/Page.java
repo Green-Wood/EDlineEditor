@@ -51,8 +51,17 @@ public class Page {
     void setMark(char c, int lineNumber){
         mark.put(c, lineNumber);
     }
+
     int getMark(char c){
-        return mark.get(c);
+        return mark.getOrDefault(c, -1);
+    }
+
+    Set<Map.Entry<Character, Integer>> getMarkedEntry(){
+        return mark.entrySet();
+    }
+
+    void deleteMark(char c){
+        mark.remove(c);
     }
 
     void saveCurrent(){              // 在对文本操作前保存当前状态，修改前必须调用

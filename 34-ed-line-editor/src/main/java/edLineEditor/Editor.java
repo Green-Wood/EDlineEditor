@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Editor {
     private int beginIndex;
@@ -27,38 +28,49 @@ public class Editor {
 
     void move(int toIndex){
         page.saveCurrent();
-        if (toIndex > endIndex) toIndex = toIndex - (endIndex - beginIndex + 1) - 1;
-        else toIndex--;
+        keepMark(toIndex, true);
+        if (toIndex > endIndex) toIndex = toIndex - (endIndex - beginIndex + 1);
         ArrayList<String> l = new ArrayList<>();
         for (int i = beginIndex; i <= endIndex; i++){
             l.add(page.currPage.get(beginIndex));
             page.currPage.remove(beginIndex);
         }
         for (String s: l){
-            toIndex++;
             page.currPage.add(toIndex, s);
+            toIndex++;
         }
-        page.setCurrLine(toIndex + 1);
+        page.setCurrLine(toIndex);
         page.isSaved = false;
     }
 
     void copy(int toIndex){
         page.saveCurrent();
-        toIndex--;
+        keepMark(toIndex, false);
         ArrayList<String> l = new ArrayList<>();
         for (int i = beginIndex; i <= endIndex; i++){
             l.add(page.currPage.get(i));
         }
         for (String s: l){
-            toIndex++;
             page.currPage.add(toIndex, s);
+            toIndex++;
         }
-        page.setCurrLine(toIndex + 1);
+        page.setCurrLine(toIndex);
         page.isSaved = false;
     }
 
     void union(){
         page.saveCurrent();
+        for (Map.Entry<Character, Integer> entry: page.getMarkedEntry()){         // 调整符号
+            char c = entry.getKey();
+            int lineNumber = entry.getValue() - 1;
+            if (lineNumber > beginIndex && lineNumber <= endIndex) {
+                page.deleteMark(c);
+            }
+            else if (lineNumber > endIndex){
+                lineNumber = lineNumber - (endIndex - beginIndex + 1);
+                page.setMark(c, lineNumber + 1);
+            }
+        }
         String str = page.currPage.get(beginIndex);
         for (int i = beginIndex + 1; i <= endIndex; i++){
             str += page.currPage.get(beginIndex + 1);
@@ -79,6 +91,13 @@ public class Editor {
                 if (from == -1) return false;
             }
         }
+        for (Map.Entry<Character, Integer> entry: page.getMarkedEntry()){         // 调整符号
+            char c = entry.getKey();
+            int lineNumber = entry.getValue() - 1;
+            if (lineNumber >= beginIndex && lineNumber <= endIndex) {
+                page.deleteMark(c);
+            }
+        }
         for (int i = beginIndex; i <= endIndex; i++){
             String line = page.currPage.get(i);
             int from = -1;
@@ -95,21 +114,21 @@ public class Editor {
         return true;
     }
 
-    boolean replace(String Old, String New){
-        page.saveCurrent();
-        for (int i = beginIndex; i <= endIndex; i++){   // 先检查一遍
-            if (!page.currPage.get(i).contains(Old)) return false;
-        }
-        for (int i = beginIndex; i <= endIndex; i++){
-            String line = page.currPage.get(i);
-            String newLine = line.replace(Old, New);
-            page.currPage.remove(i);
-            page.currPage.add(i, newLine);
-        }
-        page.setCurrLine(endIndex + 1);
-        page.isSaved = false;
-        return true;
-    }
+//    boolean replace(String Old, String New){
+//        page.saveCurrent();
+//        for (int i = beginIndex; i <= endIndex; i++){   // 先检查一遍
+//            if (!page.currPage.get(i).contains(Old)) return false;
+//        }
+//        for (int i = beginIndex; i <= endIndex; i++){
+//            String line = page.currPage.get(i);
+//            String newLine = line.replace(Old, New);
+//            page.currPage.remove(i);
+//            page.currPage.add(i, newLine);
+//        }
+//        page.setCurrLine(endIndex + 1);
+//        page.isSaved = false;
+//        return true;
+//    }
 
     void printLines(){               // 打印指定行
         for (int i = beginIndex; i <= endIndex; i++){
@@ -135,6 +154,32 @@ public class Editor {
         }
         page.isSaved = true;
     }
+
+    private void keepMark(int toIndex, boolean isMove){               // 调整符号
+        int originToIndex = toIndex;
+        if (toIndex > endIndex && isMove) toIndex = toIndex - (endIndex - beginIndex + 1);
+        for (Map.Entry<Character, Integer> entry: page.getMarkedEntry()){
+            char c = entry.getKey();
+            int lineNumber = entry.getValue() - 1;
+            if (lineNumber <= endIndex && lineNumber >= beginIndex){
+                lineNumber = toIndex + (lineNumber - beginIndex);            // 以零开始
+                page.setMark(c, lineNumber + 1);
+            }
+            if (isMove && lineNumber > endIndex && originToIndex > lineNumber){     // 从上往下剪切
+                lineNumber = lineNumber - (endIndex - beginIndex + 1);
+                page.setMark(c, lineNumber + 1);
+            }
+            if (isMove && lineNumber < beginIndex && originToIndex <= lineNumber){   // 从下往上剪切
+               lineNumber = lineNumber + (endIndex - beginIndex + 1);
+               page.setMark(c, lineNumber + 1);
+            }
+            if (toIndex <= lineNumber && !isMove){
+                lineNumber = lineNumber + (endIndex - beginIndex + 1);
+                page.setMark(c, lineNumber + 1);
+            }
+        }
+    }
+
     public static void main(String[] args){
 
     }

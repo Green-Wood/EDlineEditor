@@ -42,7 +42,7 @@ public class TransLoc {
             int lineNumber = editor.page.findUpLineNumber(s.substring(1, s.length() - 1));
             commandLine = commandLine.replace(s, Integer.toString(lineNumber));
         }
-        if (commandLine.contains(".")){
+        while (commandLine.contains(".")){
             if (commandLine.contains(".-")){
                 commandLine = commandLine.substring(1, commandLine.length());
             }
