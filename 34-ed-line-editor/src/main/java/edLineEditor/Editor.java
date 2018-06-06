@@ -114,21 +114,21 @@ public class Editor {
         return true;
     }
 
-//    boolean replace(String Old, String New){
-//        page.saveCurrent();
-//        for (int i = beginIndex; i <= endIndex; i++){   // 先检查一遍
-//            if (!page.currPage.get(i).contains(Old)) return false;
-//        }
-//        for (int i = beginIndex; i <= endIndex; i++){
-//            String line = page.currPage.get(i);
-//            String newLine = line.replace(Old, New);
-//            page.currPage.remove(i);
-//            page.currPage.add(i, newLine);
-//        }
-//        page.setCurrLine(endIndex + 1);
-//        page.isSaved = false;
-//        return true;
-//    }
+    boolean replace(String Old, String New){               // 替换全部
+        page.saveCurrent();
+        for (int i = beginIndex; i <= endIndex; i++){   // 先检查一遍
+            if (!page.currPage.get(i).contains(Old)) return false;
+        }
+        for (int i = beginIndex; i <= endIndex; i++){
+            String line = page.currPage.get(i);
+            String newLine = line.replace(Old, New);
+            page.currPage.remove(i);
+            page.currPage.add(i, newLine);
+        }
+        page.setCurrLine(endIndex + 1);
+        page.isSaved = false;
+        return true;
+    }
 
     void printLines(){               // 打印指定行
         for (int i = beginIndex; i <= endIndex; i++){

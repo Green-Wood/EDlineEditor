@@ -179,17 +179,18 @@ public class EDLineEditor {
                 String toLoc = line.substring(index + 1, line.length());
                 String[] splitLoc = toLoc.split("/");
                 boolean isSuccess;
-                if (splitLoc.length == 3){
+                if (splitLoc.length == 3){                // 有指定次数
                     if (splitLoc[2].equals("g")) {
-                        isSuccess = editor.replace(splitLoc[0], splitLoc[1], 1);
+                        isSuccess = editor.replace(splitLoc[0], splitLoc[1]);          // 替换全部
                     }
                     else {
                         isSuccess = editor.replace(splitLoc[0], splitLoc[1], Integer.parseInt(splitLoc[2]));
                     }
                 }
-                else {
+                else if (splitLoc.length == 2){
                     isSuccess = editor.replace(splitLoc[0], splitLoc[1], 1);
                 }
+                else isSuccess = false;
                 if (!isSuccess) System.out.println("?");       // 未成功打问号
                 else {
                     str = line;                     // 保存此次指令
