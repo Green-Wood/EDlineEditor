@@ -170,10 +170,18 @@ public class EDLineEditor {
                 if (line.charAt(0) == 'j'){
                     beginIndex = page.getCurrLine();
                     endIndex = beginIndex + 1;
+                    if (endIndex > page.currPage.size()){
+                        System.out.println("?");
+                        continue;
+                    }
                     editor.setLines(beginIndex, endIndex);
                     editor.union();
                 }
                 else if (beginIndex != endIndex){
+                    if (beginIndex == 0){
+                        System.out.println("?");
+                        continue;
+                    }
                     editor.union();
                 }
             }
