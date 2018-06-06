@@ -215,7 +215,7 @@ public class TransLoc {
         return commandLine;
     }
 
-    private static int times(String s, char c){
+    static int times(String s, char c){
         int n = 0;
         for (int i = 0; i < s.length(); i++){
             if (s.charAt(i) == c) n++;

@@ -33,12 +33,17 @@ public class EDLineEditor {
         String str = "";                          // 记录上一次替换的指令
 
         while (in.hasNextLine()){
-            String line = in.nextLine();
-            if (line.trim().length() == 0) {
+            String line = in.nextLine().trim();
+            if (line.length() == 0) {
                 System.out.println("?");
                 continue;
             }
-            String newline = TransLoc.transLoc(line.trim(), editor);
+            if (line.contains("$") && ((line.contains("/") && TransLoc.times(line, '/') % 2 == 0)
+                    || line.contains("?"))){
+                System.out.println("?");
+                continue;
+            }
+            String newline = TransLoc.transLoc(line, editor);
             if (newline.split(" ").length == 1){
                 System.out.println("?");
                 continue;
@@ -158,11 +163,11 @@ public class EDLineEditor {
                     editor.setLines(beginIndex, endIndex);
                     toIndex = Integer.parseInt(newTo.split(",")[0]);
                 }
-                if (toIndex > page.currPage.size() ||
-                        (command == 'm' && beginIndex <= toIndex && endIndex >= toIndex)) {
-                    System.out.println("?");
-                    continue;
-                }
+//                if (toIndex > page.currPage.size() ||
+//                        (command == 'm' && beginIndex <= toIndex && endIndex >= toIndex)) {
+//                    System.out.println("?");
+//                    continue;
+//                }
                 if (command == 'm') editor.move(toIndex);
                 else editor.copy(toIndex);
             }
