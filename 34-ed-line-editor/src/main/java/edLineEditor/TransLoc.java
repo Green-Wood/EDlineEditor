@@ -59,8 +59,8 @@ public class TransLoc {
         }
         while (commandLine.contains("-")){
             if (commandLine.contains("$-")){
-                int i = commandLine.indexOf("-");
-                int n = Integer.parseInt(commandLine.substring(i + 1, i + 2));
+                int i = commandLine.indexOf("$-");
+                int n = Integer.parseInt(commandLine.substring(i + 2, i + 3));
                 String formal = commandLine.substring(i - 1, i + 2);
                 String newS = Integer.toString(editor.page.currPage.size() - n);
                 commandLine = commandLine.replace(formal, newS);
@@ -75,8 +75,8 @@ public class TransLoc {
         }
         while (commandLine.contains("+")){
             if (commandLine.contains("$+")){
-                int i = commandLine.indexOf("+");
-                int n = Integer.parseInt(commandLine.substring(i + 1, i + 2));
+                int i = commandLine.indexOf("$+");
+                int n = Integer.parseInt(commandLine.substring(i + 2, i + 3));
                 String formal = commandLine.substring(i - 1, i + 2);
                 String newS = Integer.toString(editor.page.currPage.size() + n);
                 commandLine = commandLine.replace(formal, newS);
