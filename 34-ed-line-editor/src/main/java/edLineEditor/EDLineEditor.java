@@ -163,11 +163,11 @@ public class EDLineEditor {
                     editor.setLines(beginIndex, endIndex);
                     toIndex = Integer.parseInt(newTo.split(",")[0]);
                 }
-//                if (toIndex > page.currPage.size() ||
-//                        (command == 'm' && beginIndex <= toIndex && endIndex >= toIndex)) {
-//                    System.out.println("?");
-//                    continue;
-//                }
+                if (toIndex > page.currPage.size() ||
+                        (command == 'm' && beginIndex <= toIndex && endIndex >= toIndex)) {
+                    System.out.println("?");
+                    continue;
+                }
                 if (command == 'm') editor.move(toIndex);
                 else editor.copy(toIndex);
             }
