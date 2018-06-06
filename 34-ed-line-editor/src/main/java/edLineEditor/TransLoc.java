@@ -1,7 +1,5 @@
 package edLineEditor;
 
-import java.util.LinkedList;
-
 public class TransLoc {
     static String transLoc(String commandLine, Editor editor){
         int currentLine = editor.page.getCurrLine();

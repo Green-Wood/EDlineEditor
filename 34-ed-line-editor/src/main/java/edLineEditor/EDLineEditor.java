@@ -123,8 +123,7 @@ public class EDLineEditor {
             }
             else if (command == 'w' || command == 'W'){                 // 小写w与大写W只是是否追加的区别
                 boolean isAdd;
-                if (command =='w') isAdd = false;
-                else isAdd = true;
+                isAdd = command != 'w';
                 if (Character.isAlphabetic(line.charAt(0))) {             // 未指定时，保存全文
                     editor.setLines(1, page.currPage.size());
                 }
