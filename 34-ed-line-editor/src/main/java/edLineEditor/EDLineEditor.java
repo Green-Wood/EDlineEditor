@@ -38,7 +38,7 @@ public class EDLineEditor {
                 System.out.println("?");
                 continue;
             }
-            String newline = TransLoc.transLoc(line, editor);
+            String newline = TransLoc.transLoc(line.trim(), editor);
             char command = newline.split(" ")[1].charAt(0);   // 获取命令
             int beginIndex = editor.getBeginIndex();    // 获取开始和终止行
             int endIndex = editor.getEndIndex();
@@ -66,6 +66,10 @@ public class EDLineEditor {
             }
             else if (command == 'd'){         // 删除
                 page.saveCurrent();
+                if (beginIndex == 0){
+                    System.out.println("?");
+                    continue;
+                }
                 if (endIndex == page.currPage.size()) page.setCurrLine(beginIndex - 1);
                 else page.setCurrLine(beginIndex);
                 for (int i = beginIndex; i <= endIndex; i++){
@@ -145,7 +149,10 @@ public class EDLineEditor {
                     toIndex = page.getCurrLine();
                 }
                 else {
-                    toIndex = Integer.parseInt(newline.split(Character.toString(command))[1]);
+                    String to = newline.substring(newline.indexOf(Character.toString(command)) + 1, newline.length());
+                    String newTo = TransLoc.transLoc(to + "m", editor);
+                    editor.setLines(beginIndex, endIndex);
+                    toIndex = Integer.parseInt(newTo.split(",")[0]);
                 }
                 if (toIndex > page.currPage.size() ||
                         (command == 'm' && beginIndex <= toIndex && endIndex >= toIndex)) {

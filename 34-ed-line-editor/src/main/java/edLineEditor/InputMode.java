@@ -41,7 +41,7 @@ public class InputMode {
     void insert(Scanner in){
         int countAddline = 0;
         int startIndex = index;
-        while (true){
+        while (in.hasNextLine()){
             String line = in.nextLine();
             if (line.equals(".")) break;            // 检测到句号时退出
             page.currPage.add(index, line);

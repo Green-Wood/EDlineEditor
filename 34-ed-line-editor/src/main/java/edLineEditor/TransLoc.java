@@ -61,7 +61,7 @@ public class TransLoc {
         if (commandLine.contains("-")){                   // 处理减号
             int index = 0;
             for (int i = 0; i < commandLine.length(); i++){
-                if (Character.isAlphabetic(commandLine.charAt(i))) break;
+                if (Character.isAlphabetic(commandLine.charAt(i)) || commandLine.charAt(i) == '=') break;
                 index++;
             }
             String loc = commandLine.substring(0, index);
