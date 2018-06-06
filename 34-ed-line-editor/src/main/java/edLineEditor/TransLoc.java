@@ -73,7 +73,7 @@ public class TransLoc {
                     int beginIndex;
                     int endIndex;
                     if (s1.indexOf("-") == 0) {
-                        beginIndex = editor.page.currPage.size();
+                        beginIndex = currentLine;
                     }
                     else {
                         beginIndex = Integer.parseInt(s1.split("-")[0]);
@@ -85,7 +85,7 @@ public class TransLoc {
                     int beginIndex;
                     int endIndex;
                     if (s2.indexOf("-") == 0) {
-                        beginIndex = editor.page.currPage.size();
+                        beginIndex = currentLine;
                     }
                     else {
                         beginIndex = Integer.parseInt(s2.split("-")[0]);
@@ -100,7 +100,7 @@ public class TransLoc {
                     int beginIndex;
                     int endIndex;
                     if (loc.indexOf("-") == 0) {
-                        beginIndex = editor.page.currPage.size();
+                        beginIndex = currentLine;
                     }
                     else {
                         beginIndex = Integer.parseInt(loc.split("-")[0]);
@@ -127,7 +127,7 @@ public class TransLoc {
                     int beginIndex;
                     int endIndex;
                     if (s1.indexOf("+") == 0) {
-                        beginIndex = editor.page.currPage.size();
+                        beginIndex = currentLine;
                     }
                     else {
                         beginIndex = Integer.parseInt(s1.split("\\+")[0]);
@@ -139,7 +139,7 @@ public class TransLoc {
                     int beginIndex;
                     int endIndex;
                     if (s2.indexOf("+") == 0) {
-                        beginIndex = editor.page.currPage.size();
+                        beginIndex = currentLine;
                     }
                     else {
                         beginIndex = Integer.parseInt(s2.split("\\+")[0]);
@@ -154,7 +154,7 @@ public class TransLoc {
                     int beginIndex;
                     int endIndex;
                     if (loc.indexOf("+") == 0) {
-                        beginIndex = editor.page.currPage.size();
+                        beginIndex = currentLine;
                     }
                     else {
                         beginIndex = Integer.parseInt(loc.split("\\+")[0]);

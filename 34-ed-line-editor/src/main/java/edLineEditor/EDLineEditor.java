@@ -39,6 +39,10 @@ public class EDLineEditor {
                 continue;
             }
             String newline = TransLoc.transLoc(line.trim(), editor);
+            if (newline.split(" ").length == 1){
+                System.out.println("?");
+                continue;
+            }
             char command = newline.split(" ")[1].charAt(0);   // 获取命令
             int beginIndex = editor.getBeginIndex();    // 获取开始和终止行
             int endIndex = editor.getEndIndex();

@@ -72,8 +72,11 @@ public class Editor {
             }
         }
         String str = page.currPage.get(beginIndex);
-        for (int i = beginIndex + 1; i <= endIndex; i++){
+        for (int i = beginIndex; i < endIndex; i++){
             str += page.currPage.get(beginIndex + 1);
+            if (beginIndex + 1 == page.currPage.size()){
+                break;
+            }
             page.currPage.remove(beginIndex + 1);
         }
         page.currPage.remove(beginIndex);
