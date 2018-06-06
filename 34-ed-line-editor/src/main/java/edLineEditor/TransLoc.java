@@ -1,5 +1,7 @@
 package edLineEditor;
 
+import javax.swing.*;
+
 public class TransLoc {
     static String transLoc(String commandLine, Editor editor){
         int currentLine = editor.page.getCurrLine();
@@ -51,9 +53,10 @@ public class TransLoc {
         while (commandLine.contains("$")){
             commandLine = commandLine.replace("$", Integer.toString(editor.page.currPage.size()));
         }
-        if (commandLine.contains(",") && (Character.isAlphabetic(commandLine.charAt(commandLine.indexOf(",") + 1))
-                || commandLine.charAt(commandLine.indexOf(",") + 1) == '=')){
-            commandLine = commandLine.replace(",", String.format("1,%d", editor.page.currPage.size()));
+        if (commandLine.charAt(0) == ',' && (Character.isAlphabetic(commandLine.charAt(commandLine.indexOf(",") + 1))
+                || commandLine.charAt(commandLine.indexOf(",") + 1) == '=')){           // 文中所有行
+            commandLine = String.format("1,%d", editor.page.currPage.size())
+                    + commandLine.substring(1, commandLine.length());
         }
         if (Character.isAlphabetic(commandLine.charAt(0)) || commandLine.charAt(0) == '='){
             commandLine = String.format("%d,%d", currentLine, currentLine) + commandLine;
@@ -165,15 +168,21 @@ public class TransLoc {
                 commandLine = loc + commandLine.substring(index, commandLine.length());
             }
         }
-        if (commandLine.contains(",") && Character.isDigit(commandLine.charAt(commandLine.indexOf(",") - 1))
-                && (Character.isAlphabetic(commandLine.charAt(commandLine.indexOf(",") + 1))
-                || commandLine.charAt(commandLine.indexOf(",") + 1) == '=')){
-            String old = commandLine.substring(commandLine.indexOf(",") - 1, commandLine.indexOf(",") + 1);
-            String New = old + Integer.toString(currentLine);
+        if (commandLine.charAt(0) == ',' &&
+                Character.isDigit(commandLine.charAt(commandLine.indexOf(",") + 1))){ // 逗号右边有数字，左边没有
+            int i;
+            for (i = 0; i < commandLine.length(); i++){
+                if (Character.isAlphabetic(commandLine.charAt(i)) || commandLine.charAt(i) == '=') break;
+            }
+            String old = commandLine.substring(0, i);
+            String New = Integer.toString(currentLine) + old;
             commandLine = commandLine.replace(old, New);
         }
-        if (commandLine.charAt(0) == ',' && Character.isDigit(commandLine.charAt(commandLine.indexOf(",") + 1))){
-            String old = commandLine.substring(0, 2);
+        if (commandLine.contains(",") &&
+                Character.isDigit(commandLine.charAt(commandLine.indexOf(",") - 1))
+                && (Character.isAlphabetic(commandLine.charAt(commandLine.indexOf(",") + 1))
+                || commandLine.charAt(commandLine.indexOf(",") + 1) == '=')){  // 逗号左边有数字，右边没有
+            String old = commandLine.substring(0, commandLine.indexOf(",") + 1);
             String New = old + Integer.toString(currentLine);
             commandLine = commandLine.replace(old, New);
         }
