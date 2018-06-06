@@ -33,7 +33,7 @@ public class EDLineEditor {
         String str = "";                          // 记录上一次替换的指令
 
         while (in.hasNextLine()){
-            String line = in.nextLine().trim();
+            String line = in.nextLine();
             if (line.length() == 0) {
                 System.out.println("?");
                 continue;
