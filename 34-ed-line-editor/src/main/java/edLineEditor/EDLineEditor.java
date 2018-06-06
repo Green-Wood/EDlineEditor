@@ -34,7 +34,7 @@ public class EDLineEditor {
 
         while (in.hasNextLine()){
             String line = in.nextLine();
-            if (line.length() == 0) {
+            if (line.trim().length() == 0) {
                 System.out.println("?");
                 continue;
             }
