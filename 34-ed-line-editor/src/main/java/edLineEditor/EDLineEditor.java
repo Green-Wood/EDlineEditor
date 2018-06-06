@@ -190,7 +190,7 @@ public class EDLineEditor {
                 int index = 0;
                 for (int i = line.length() - 1; i >= 0; i--){
                     if (line.charAt(i) == '/')   break;
-                    if (line.charAt(i) == 's') {
+                    if (line.charAt(i) == 's' && str.length() != 0) {
                         line = str;                         // 如果不含参数，则使用上一条s指令的参数
                         TransLoc.transLoc(line, editor);
                         break;
