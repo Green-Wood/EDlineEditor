@@ -49,6 +49,10 @@ public class EDLineEditor {
                     || command == 'c'){
                 InputMode input;
                 if (command == 'c'){
+                    if (beginIndex == 0) {
+                        System.out.println("?");
+                        continue;
+                    }
                     input = new InputMode(beginIndex, endIndex, page);
                 }
                 else {

@@ -50,6 +50,9 @@ public class TransLoc {
                 commandLine = commandLine.replace(".", Integer.toString(editor.page.getCurrLine()));
             }
         }
+        while (commandLine.contains("$")){
+            commandLine = commandLine.replace("$", Integer.toString(editor.page.currPage.size()));
+        }
         if (commandLine.contains(",") && (Character.isAlphabetic(commandLine.charAt(commandLine.indexOf(",") + 1))
                 || commandLine.charAt(commandLine.indexOf(",") + 1) == '=')){
             commandLine = commandLine.replace(",", String.format("1,%d", editor.page.currPage.size()));
@@ -57,40 +60,112 @@ public class TransLoc {
         if (Character.isAlphabetic(commandLine.charAt(0)) || commandLine.charAt(0) == '='){
             commandLine = String.format("%d,%d", currentLine, currentLine) + commandLine;
         }
-        while (commandLine.contains("-")){
-            if (commandLine.contains("$-")){
-                int i = commandLine.indexOf("$-");
-                int n = Integer.parseInt(commandLine.substring(i + 2, i + 3));
-                String formal = commandLine.substring(i, i + 3);
-                String newS = Integer.toString(editor.page.currPage.size() - n);
-                commandLine = commandLine.replace(formal, newS);
+        if (commandLine.contains("-")){                   // 处理减号
+            int index = 0;
+            for (int i = 0; i < commandLine.length(); i++){
+                if (Character.isAlphabetic(commandLine.charAt(i))) break;
+                index++;
             }
-            else {                      // 在当前行进行修改
-                int i = commandLine.indexOf("-");
-                int n = Integer.parseInt(commandLine.substring(i + 1, i + 2));
-                String formal = commandLine.substring(i, i + 2);
-                String newS = Integer.toString(currentLine - n);
-                commandLine = commandLine.replace(formal, newS);
+            String loc = commandLine.substring(0, index);
+
+            if (loc.contains(",")){
+                String s1 = loc.split(",")[0];
+                String s2 = loc.split(",")[1];
+                if (s1.contains("-")){
+                    int beginIndex;
+                    int endIndex;
+                    if (s1.indexOf("-") == 0) {
+                        beginIndex = editor.page.currPage.size();
+                    }
+                    else {
+                        beginIndex = Integer.parseInt(s1.split("-")[0]);
+                    }
+                    endIndex = Integer.parseInt(s1.split("-")[1]);
+                    s1 = Integer.toString(beginIndex - endIndex);
+                }
+                if (s2.contains("-")){
+                    int beginIndex;
+                    int endIndex;
+                    if (s2.indexOf("-") == 0) {
+                        beginIndex = editor.page.currPage.size();
+                    }
+                    else {
+                        beginIndex = Integer.parseInt(s2.split("-")[0]);
+                    }
+                    endIndex = Integer.parseInt(s2.split("-")[1]);
+                    s2 = Integer.toString(beginIndex - endIndex);
+                }
+                commandLine = s1 + "," + s2 + commandLine.substring(index, commandLine.length());
+            }
+            else {
+                if (loc.contains("-")){
+                    int beginIndex;
+                    int endIndex;
+                    if (loc.indexOf("-") == 0) {
+                        beginIndex = editor.page.currPage.size();
+                    }
+                    else {
+                        beginIndex = Integer.parseInt(loc.split("-")[0]);
+                    }
+                    endIndex = Integer.parseInt(loc.split("-")[1]);
+                    loc = Integer.toString(beginIndex - endIndex);
+                }
+                commandLine = loc + commandLine.substring(index, commandLine.length());
             }
         }
-        while (commandLine.contains("+")){
-            if (commandLine.contains("$+")){
-                int i = commandLine.indexOf("$+");
-                int n = Integer.parseInt(commandLine.substring(i + 2, i + 3));
-                String formal = commandLine.substring(i, i + 3);
-                String newS = Integer.toString(editor.page.currPage.size() + n);
-                commandLine = commandLine.replace(formal, newS);
+
+        if (commandLine.contains("+")){
+            int index = 0;
+            for (int i = 0; i < commandLine.length(); i++){
+                if (Character.isAlphabetic(commandLine.charAt(i))) break;
+                index++;
             }
-            else {                      // 在当前行进行修改
-                int i = commandLine.indexOf("+");
-                int n = Integer.parseInt(commandLine.substring(i + 1, i + 2));
-                String formal = commandLine.substring(i, i + 2);
-                String newS = Integer.toString(currentLine + n);
-                commandLine = commandLine.replace(formal, newS);
+            String loc = commandLine.substring(0, index);
+
+            if (loc.contains(",")){
+                String s1 = loc.split(",")[0];
+                String s2 = loc.split(",")[1];
+                if (s1.contains("+")){
+                    int beginIndex;
+                    int endIndex;
+                    if (s1.indexOf("+") == 0) {
+                        beginIndex = editor.page.currPage.size();
+                    }
+                    else {
+                        beginIndex = Integer.parseInt(s1.split("\\+")[0]);
+                    }
+                    endIndex = Integer.parseInt(s1.split("\\+")[1]);
+                    s1 = Integer.toString(beginIndex + endIndex);
+                }
+                if (s2.contains("+")){
+                    int beginIndex;
+                    int endIndex;
+                    if (s2.indexOf("+") == 0) {
+                        beginIndex = editor.page.currPage.size();
+                    }
+                    else {
+                        beginIndex = Integer.parseInt(s2.split("\\+")[0]);
+                    }
+                    endIndex = Integer.parseInt(s2.split("\\+")[1]);
+                    s2 = Integer.toString(beginIndex + endIndex);
+                }
+                commandLine = s1 + "," + s2 + commandLine.substring(index, commandLine.length());
             }
-        }
-        if (commandLine.contains("$")){
-            commandLine = commandLine.replace("$", Integer.toString(editor.page.currPage.size()));
+            else {
+                if (loc.contains("+")){
+                    int beginIndex;
+                    int endIndex;
+                    if (loc.indexOf("+") == 0) {
+                        beginIndex = editor.page.currPage.size();
+                    }
+                    else {
+                        beginIndex = Integer.parseInt(loc.split("\\+")[0]);
+                    }
+                    endIndex = Integer.parseInt(loc.split("\\+")[1]);
+                    loc = Integer.toString(beginIndex + endIndex);
+                }
+                commandLine = loc + commandLine.substring(index, commandLine.length());
+            }
         }
         if (commandLine.contains(",") && Character.isDigit(commandLine.charAt(commandLine.indexOf(",") - 1))
                 && (Character.isAlphabetic(commandLine.charAt(commandLine.indexOf(",") + 1))
@@ -142,10 +217,5 @@ public class TransLoc {
     }
 
     public static void main(String[] args){
-        LinkedList<String> a = new LinkedList<>();
-        LinkedList<String> b = new LinkedList<>();
-        a.add("love");
-        b.add("love");
-        System.out.println(a.equals(b));
     }
 }
