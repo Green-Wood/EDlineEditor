@@ -192,6 +192,7 @@ public class EDLineEditor {
                     if (line.charAt(i) == '/')   break;
                     if (line.charAt(i) == 's') {
                         line = str;                         // 如果不含参数，则使用上一条s指令的参数
+                        TransLoc.transLoc(line, editor);
                         break;
                     }
                 }
@@ -233,6 +234,7 @@ public class EDLineEditor {
             else if (command == 'u'){
                 page.unDo();
             }
+            else System.out.println("?");
         }
         in.close();
 	}
