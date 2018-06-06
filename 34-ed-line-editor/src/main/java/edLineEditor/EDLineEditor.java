@@ -187,6 +187,10 @@ public class EDLineEditor {
                         System.out.println("?");
                         continue;
                     }
+                    if (Character.isDigit(line.charAt(0)) && line.charAt(1) == 'j'){
+                        System.out.println("?");
+                        continue;
+                    }
                     editor.union();
                 }
             }
