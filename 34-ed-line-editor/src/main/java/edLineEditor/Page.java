@@ -4,99 +4,116 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-// 缓存文件类，在未保存之前，所有文件操作均在Page类中操作
 public class Page {
-    LinkedList<String> currPage;        // 保存当前和以前的状态，用于撤销
-    private Stack<LinkedList<String>> allPages;
-    private String filename;                     // 文件名称
-    private int currLine;                        // 保存当前行
-    private HashMap<Character, Integer> mark;     // 保存标记符号
-    boolean isSaved;
 
-    Page(){                       // 从ed直接进入
+    private LinkedList<String> currPage;            // 当前正在使用的页面
+    private Stack<LinkedList<String>> allPages;          // 保存所有页面
+    private HashMap<Character, String> mark;      // 保存标记
+    private String fileName;             // 文件名称
+    private int currLine;            // 当前行
+    public boolean isSaved;              // 是否已经保存为文件
+
+    public Page(){
         currPage = new LinkedList<>();
         allPages = new Stack<>();
         mark = new HashMap<>();
         setFilename("");
-        currLine = 0;
+        currLine = -1;
     }
 
-    Page(String filename){           // 从文件读入
-        ArrayList<String> file = readFile(filename);
+    public Page(String fileName){
+        ArrayList<String> file = readFile(fileName);
         currPage = new LinkedList<>();
         allPages = new Stack<>();
         mark = new HashMap<>();
-        setFilename(filename);
-        currLine = file.size();
+        setFilename(fileName);
+        currLine = file.size() - 1;
         currPage.addAll(file);
         allPages.push((LinkedList<String>) currPage.clone());
     }
-
-    String getFilename(){
-        return this.filename;
+    public int getSize(){
+        return currPage.size();
+    }
+    public String getFilename(){
+        return this.fileName;
     }
 
-    void setFilename(String filename) {
-        this.filename = filename;
+    public void setFilename(String filename) {
+        this.fileName = filename;
     }
 
-    int getCurrLine(){
+    public int getCurrLine(){
         return this.currLine ;
     }
 
-    void setCurrLine(int line){
+    public void setCurrLine(int line){
         this.currLine = line;
     }
 
-    void setMark(char c, int lineNumber){
-        mark.put(c, lineNumber);
+    public void setMark(char c, int lineNum){
+        mark.put(c, currPage.get(lineNum));
     }
 
-    int getMark(char c){
-        return mark.getOrDefault(c, -1);
+    public int getMark(char c){
+        return searchLine(mark.getOrDefault(c, ""));
     }
 
-    Set<Map.Entry<Character, Integer>> getMarkedEntry(){
-        return mark.entrySet();
+    public void addLine(int index, String s){
+        currPage.add(index, s);
     }
 
-    void deleteMark(char c){
-        mark.remove(c);
+    public void deleteLine(int index){
+        currPage.remove(index);
     }
 
-    void saveCurrent(){              // 在对文本操作前保存当前状态，修改前必须调用
+    public String getLine(int index){
+        return currPage.get(index);
+    }
+
+    public void saveCurrent(){     // 保存当前状态
         allPages.push((LinkedList<String>) currPage.clone());
     }
 
-    void unDo(){                    // 撤销操作，返回至saveCurrent的状态
+    public void unDo(){    // 撤销操作
         currPage = allPages.pop();
     }
 
-    int findDownLineNumber(String str){           // 从本行往下寻找相匹配的字符串
-        for (int i = currLine; i < currPage.size(); i++){
-            String s = currPage.get(i);
-            if (s.contains(str)) return i + 1;
-        }
-        for (int i = 0; i < currLine; i++){
-            if (currPage.get(i).contains(str)) return i + 1;
-        }
-        return -1;
-    }
-
-    int findUpLineNumber(String str){                  // 从本行往上寻找匹配的字符串
-        for (int i = currLine - 2; i >= 0; i--){
-            String s = currPage.get(i);
-            if (s.contains(str)) return i + 1;
-        }
-        for (int i = currPage.size() - 1; i > currLine - 2; i--){
-            if (currPage.get(i).contains(str)) return i + 1;
-        }
-        return -1;
-    }
-
-    boolean hasChanged(){                          // 对比文本是否发生更改
+    public boolean hasChanged(){          // 对比文本是否发生更改
         LinkedList<String> first = allPages.firstElement();
         return !first.equals(currPage);
+    }
+
+    private int searchLine(String s){          // 由string指针寻找地址相同的string
+        for (int i = 0; i < currPage.size(); i++){
+            if (currPage.get(i) == s){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int findDownLineNumber(String str){      // 从本行往下寻找相匹配的字符串
+        for (int i = currLine + 1; i < currPage.size(); i++){
+            String s = currPage.get(i);
+            if (s.contains(str)) return i;
+        }
+        for (int i = 0; i <= currLine; i++){
+            String s = currPage.get(i);
+            if (s.contains(str)) return i;
+        }
+        return -1;
+    }
+
+    public int findUpLineNumber(String str){
+        for (int i = currLine - 1; i >= 0; i--){
+            String s = currPage.get(i);
+            if (s.contains(str)) return i;
+        }
+        for (int i = currPage.size() - 1; i >= currLine; i--){
+            String s = currPage.get(i);
+            if (s.contains(str)) return i;
+        }
+        return -1;
     }
 
     private ArrayList<String> readFile(String filename){            // 从文件读入
@@ -105,20 +122,12 @@ public class Page {
         try {
             Scanner in = new Scanner(file);
             while (in.hasNextLine()){
-                list.add(in.nextLine());
+                String s = new String(in.nextLine());
+                list.add(s);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         return list;
-    }
-
-    public static void main(String[] args){
-        Page test = new Page();
-        test.currPage.add("ZWQ");
-        test.saveCurrent();
-        test.currPage.add("Love");
-        System.out.println(test.currPage.toString());
-        test.unDo();
     }
 }
