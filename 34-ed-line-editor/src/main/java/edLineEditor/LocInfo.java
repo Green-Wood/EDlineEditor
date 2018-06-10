@@ -9,7 +9,7 @@ public class LocInfo {
     private Page page;
     private int BeginIndex;
     private int EndIndex;
-    private int toIndex;           // TODO 未指定就设为-1
+    private int toIndex;
     private char commandMark;
     private boolean isDefaultLoc;
     private String fileName;
@@ -38,7 +38,11 @@ public class LocInfo {
         else if (command.charAt(0) == ','){
             BeginIndex = 0;
             EndIndex = page.getSize() - 1;
-            commandMark = command.charAt(1);
+            try {
+                commandMark = command.charAt(1);
+            }catch (StringIndexOutOfBoundsException e){
+                throw new FalseInputFormatException();
+            }
         }
         else {
             while (command.contains("/")){              // 转化匹配字符
@@ -46,20 +50,20 @@ public class LocInfo {
                 int i2 = command.indexOf("/", i1 + 1);
                 String s = command.substring(i1, i2 + 1);
                 int lineNumber = page.findDownLineNumber(s.substring(1, s.length() - 1));
-                command = command.replaceFirst(s, Integer.toString(lineNumber + 1));
+                command = command.replace(s, Integer.toString(lineNumber + 1));
             }
             while (command.contains("?")){
                 int i1 = command.indexOf("?");
                 int i2 = command.indexOf("?", i1 + 1);
                 String s = command.substring(i1, i2 + 1);
                 int lineNumber = page.findUpLineNumber(s.substring(1, s.length() - 1));
-                command = command.replaceFirst(s, Integer.toString(lineNumber + 1));
+                command = command.replace(s, Integer.toString(lineNumber + 1));
             }
             while (command.contains("'")){                // 转化标记符
                 int i = command.indexOf("'");
                 String o = command.substring(i, i + 2);
                 int lineNumber =page.getMark(o.charAt(1));
-                command = command.replaceFirst(o, Integer.toString(lineNumber + 1));
+                command = command.replace(o, Integer.toString(lineNumber + 1));
             }
             if (command.contains(".")){                // 替换默认地址
                 command = command.replace(".", Integer.toString(page.getCurrLine() + 1));
@@ -129,6 +133,13 @@ public class LocInfo {
             int i = command.indexOf("k");
             markChara = command.charAt(i+1);
         }
+
+    }
+
+    private void checkIslegal() throws FalseInputFormatException {
+        if (BeginIndex < -1 || EndIndex < BeginIndex || EndIndex >= page.getSize()){
+            throw new FalseInputFormatException();
+        }
     }
 
     private static void check$AndStr(String command) throws FalseInputFormatException {
@@ -151,7 +162,7 @@ public class LocInfo {
         }
     }
 
-    private String dealReplace(String command){
+    private String dealReplace(String command) throws FalseInputFormatException {
         Pattern p = Pattern.compile("s/.+/.+/(g|\\d*)");
         Matcher m = p.matcher(command);
         if (!m.find()) return command;
@@ -163,7 +174,11 @@ public class LocInfo {
                 replaceTimes = -1;
             }
             else {
-                replaceTimes = Integer.parseInt(s.split("/")[2]);
+                try {
+                    replaceTimes = Integer.parseInt(s.split("/")[2]);
+                }catch (Exception e){
+                    throw new FalseInputFormatException();
+                }
             }
         }
         else {

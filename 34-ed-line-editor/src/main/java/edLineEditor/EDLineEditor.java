@@ -17,7 +17,6 @@ public class EDLineEditor {
 	 */
 
 	public static void main(String[] args) {
-		// TODO quit and Input write for special
         Page page;
         LocInfo info;
         Command command;
