@@ -26,6 +26,7 @@ public class PrintLinesTo extends Command{
         for (int i = begIndex; i <= endIndex; i++){
             System.out.println(page.getLine(i));
         }
+        page.setCurrLine(endIndex);
         return true;
     }
 }

@@ -43,6 +43,7 @@ public class EDLineEditor {
                     continue;
                 }
                 else if (c == 'Q' || c == 'q'){
+                    if (!info.isDefaultLoc()) throw new FalseInputFormatException();
                     if (c == 'Q'){
                         break;
                     }
@@ -89,6 +90,8 @@ public class EDLineEditor {
                         info = new LocInfo(line, page);
                     }
                     command = new Replace(info, page);
+                    ((Replace) command).isContain(info.originStr());
+                    str = line;
                 }
                 else if (c == 'k'){
                     command = new MarkLine(info, page);
@@ -97,8 +100,7 @@ public class EDLineEditor {
                     command = new Undo(info, page);
                 }
                 else throw new FalseInputFormatException();
-                command.run();
-                str = line;
+                command.run();                                  // 开始操作
             }catch (FalseInputFormatException e){
                 System.out.println("?");
             }

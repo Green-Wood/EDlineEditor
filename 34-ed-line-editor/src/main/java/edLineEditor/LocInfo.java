@@ -20,6 +20,7 @@ public class LocInfo {
 
     public LocInfo(String command, Page page) throws FalseInputFormatException{
         this.page = page;
+        if (command.length() == 0 || command == null) throw new FalseInputFormatException();
         String originStr = command;
         check$AndStr(command);       // 检查是否含有 $-/str/
         command = dealReplace(command);    // 检查是否为替换,进行特殊处理
@@ -123,6 +124,14 @@ public class LocInfo {
         if (commandMark == 'm' || commandMark == 't'){
             dealMoveAndCopy(command, commandMark);
         }
+        else if (commandMark == 'z'){
+            if (originStr.charAt(originStr.length() - 1) == 'z'){
+                toIndex = -1;
+            }
+            else {
+                toIndex = Integer.parseInt(originStr.split("z")[1]);
+            }
+        }
         else if (commandMark == 'w' || commandMark == 'W' || commandMark == 'f'){
             if (originStr.split(" ").length == 2){
                 fileName = originStr.split(" ")[1];
@@ -133,7 +142,7 @@ public class LocInfo {
             int i = command.indexOf("k");
             markChara = command.charAt(i+1);
         }
-
+        checkIslegal();
     }
 
     private void checkIslegal() throws FalseInputFormatException {
@@ -166,7 +175,8 @@ public class LocInfo {
         Pattern p = Pattern.compile("s/.+/.+/(g|\\d*)");
         Matcher m = p.matcher(command);
         if (!m.find()) return command;
-        String s = m.group();
+        String cutStr = m.group();
+        String s = cutStr.substring(2, cutStr.length());
         originStr = s.split("/")[0];
         changeToStr = s.split("/")[1];
         if (s.split("/").length == 3){
@@ -184,8 +194,8 @@ public class LocInfo {
         else {
             replaceTimes = 1;
         }
-        int i = command.indexOf(s);
-        return command.substring(0, i);
+        int i = command.indexOf(cutStr);
+        return command.substring(0, i + 1);
     }
 
     private String dealMin(String commandLine){

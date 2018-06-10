@@ -9,6 +9,8 @@ public class FileName extends Command{
         super(info, page);
         if (info.fileName().equals("") && page.getFilename().equals(""))
             throw new FalseInputFormatException();
+        if (!info.isDefaultLoc())
+            throw new FalseInputFormatException();
     }
 
     @Override

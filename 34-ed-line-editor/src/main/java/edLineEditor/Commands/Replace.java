@@ -10,7 +10,7 @@ public class Replace extends Command{
     }
 
     @Override
-    public boolean run() throws FalseInputFormatException {
+    public boolean run(){
         if (info.replaceTimes() == -1){            // 全部替换
             replaceAll(info.originStr(), info.changeToStr());
         }
@@ -20,9 +20,8 @@ public class Replace extends Command{
         return true;
     }
 
-    private void replace(String Old, String New, int count) throws FalseInputFormatException {
+    private void replace(String Old, String New, int count){
         page.saveCurrent();
-        isContain(Old);                // 检查能否成功替换
         for (int i = begIndex; i <= endIndex; i++){
             String line = page.getLine(i);
             for (int j = 0; j < count; j++){
@@ -35,9 +34,8 @@ public class Replace extends Command{
         page.isSaved = false;
     }
 
-    private void replaceAll(String Old, String New) throws FalseInputFormatException {
+    private void replaceAll(String Old, String New){
         page.saveCurrent();
-        isContain(Old);
         for (int i = begIndex; i <= endIndex; i++){
             String line = page.getLine(i);
             String newLine = line.replace(Old, New);
@@ -48,7 +46,7 @@ public class Replace extends Command{
         page.isSaved = false;
     }
 
-    private void isContain(String s) throws FalseInputFormatException {         // 只要有一行有目标，就能够替换
+    public void isContain(String s) throws FalseInputFormatException {         // 只要有一行有目标，就能够替换
         for (int i = begIndex; i <= endIndex; i++){
             String line = page.getLine(i);
             if (line.contains(s)) return;
