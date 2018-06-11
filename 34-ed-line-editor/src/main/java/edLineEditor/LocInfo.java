@@ -175,7 +175,7 @@ public class LocInfo {
         Pattern p1 = Pattern.compile("\\$(\\+|-)(/.+/|\\?.+\\?)");
         Pattern p2 = Pattern.compile("\\$(\\+|-)\\$");
         Pattern p3 = Pattern.compile("(/.+/|\\?.+\\?)(\\+|-)(/.+/|\\?.+\\?)");
-        Pattern p4 = Pattern.compile("(\\?.+/|/.+\\?|//|\\?\\?)");
+        Pattern p4 = Pattern.compile("(//|\\?\\?)");
         Pattern p5 = Pattern.compile("[a-z],[a-z]");
         Matcher m1 = p1.matcher(command);
         Matcher m2 = p2.matcher(command);
@@ -184,6 +184,9 @@ public class LocInfo {
         Matcher m5 = p5.matcher(command);
         if (m1.find() || m2.find() || m3.find() || m4.find() || m5.find())
             throw new FalseInputFormatException();
+        if (Replace.times(command, "?") == 1 || Replace.times(command, "/") == 1){
+            throw new FalseInputFormatException();
+        }
     }
 
     private void dealMoveAndCopy(String command, char commandMark) throws FalseInputFormatException {
@@ -376,8 +379,8 @@ public class LocInfo {
     }
 
     public static void main(String[] args){
-        Pattern pattern = Pattern.compile("\\$(\\+|-)\\?.+\\?");
-        Matcher matcher = pattern.matcher("$-?str?");
+        Pattern pattern = Pattern.compile("");
+        Matcher matcher = pattern.matcher("?123ab/c");
         if (matcher.find()){
             System.out.println(matcher.group());
         }

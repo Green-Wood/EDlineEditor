@@ -77,6 +77,7 @@ public class Replace extends Command{
     }
 
     public static int times(String line, String sub){
+        if (sub.equals("?")) sub = "\\?";
         Pattern p = Pattern.compile(sub);
         Matcher m = p.matcher(line);
         int times = 0;
