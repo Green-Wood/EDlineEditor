@@ -15,7 +15,7 @@ public class LocInfo {
     private String fileName;
     private String originStr;
     private String changeToStr;
-    private int replaceTimes;
+    private int replaceCount;
     private char markChara;
 
     public LocInfo(String command, Page page) throws FalseInputFormatException{
@@ -142,10 +142,10 @@ public class LocInfo {
             int i = command.indexOf("k");
             markChara = command.charAt(i+1);
         }
-        checkIslegal();
+        checkIsllegal();
     }
 
-    private void checkIslegal() throws FalseInputFormatException {
+    private void checkIsllegal() throws FalseInputFormatException {
         if (BeginIndex < -1 || EndIndex < BeginIndex || EndIndex >= page.getSize()){
             throw new FalseInputFormatException();
         }
@@ -181,18 +181,18 @@ public class LocInfo {
         changeToStr = s.split("/")[1];
         if (s.split("/").length == 3){
             if (s.split("/")[2].equals("g")){
-                replaceTimes = -1;
+                replaceCount = -1;
             }
             else {
                 try {
-                    replaceTimes = Integer.parseInt(s.split("/")[2]);
+                    replaceCount = Integer.parseInt(s.split("/")[2]);
                 }catch (Exception e){
                     throw new FalseInputFormatException();
                 }
             }
         }
         else {
-            replaceTimes = 1;
+            replaceCount = 1;
         }
         int i = command.indexOf(cutStr);
         return command.substring(0, i + 1);
@@ -341,8 +341,8 @@ public class LocInfo {
         return changeToStr;
     }
 
-    public int replaceTimes() {
-        return replaceTimes;
+    public int replaceCount() {
+        return replaceCount;
     }
 
     public char markChara() {

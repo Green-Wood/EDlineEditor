@@ -89,9 +89,11 @@ public class EDLineEditor {
                         line = str;
                         info = new LocInfo(line, page);
                     }
-                    command = new Replace(info, page);
-                    ((Replace) command).isContain(info.originStr());
+                    Replace replace = new Replace(info, page);
+                    replace.isContain(info.originStr());
+                    replace.run();
                     str = line;
+                    continue;
                 }
                 else if (c == 'k'){
                     command = new MarkLine(info, page);

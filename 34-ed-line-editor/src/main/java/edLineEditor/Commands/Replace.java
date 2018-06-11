@@ -4,31 +4,44 @@ import edLineEditor.FalseInputFormatException;
 import edLineEditor.LocInfo;
 import edLineEditor.Page;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Replace extends Command{
+    private boolean isReplaceAll;
+    private int replaceCount;
     public Replace(LocInfo info, Page page) {
         super(info, page);
+        replaceCount = info.replaceCount();
+        if (info.replaceCount() == -1) isReplaceAll = true;
+        else isReplaceAll = false;
     }
 
     @Override
     public boolean run(){
-        if (info.replaceTimes() == -1){            // 全部替换
+        if (isReplaceAll){            // 全部替换
             replaceAll(info.originStr(), info.changeToStr());
         }
         else {
-            replace(info.originStr(), info.changeToStr(), info.replaceTimes());
+            replace(info.originStr(), info.changeToStr());
         }
         return true;
     }
 
-    private void replace(String Old, String New, int count){
+    private void replace(String Old, String New){
         page.saveCurrent();
         for (int i = begIndex; i <= endIndex; i++){
             String line = page.getLine(i);
-            for (int j = 0; j < count; j++){
-                line = line.replaceFirst(Old, New);
+            int from = -1;
+            for (int j = 0; j < replaceCount; j++){
+                from = line.indexOf(Old, from + 1);
             }
-            page.deleteLine(i);
-            page.addLine(i, line);
+            if (from != -1){
+                String newLine = line.substring(0, from) + New +
+                        line.substring(from + Old.length(), line.length());
+                page.deleteLine(i);
+                page.addLine(i, newLine);
+            }
         }
         page.setCurrLine(endIndex);
         page.isSaved = false;
@@ -47,10 +60,28 @@ public class Replace extends Command{
     }
 
     public void isContain(String s) throws FalseInputFormatException {         // 只要有一行有目标，就能够替换
-        for (int i = begIndex; i <= endIndex; i++){
-            String line = page.getLine(i);
-            if (line.contains(s)) return;
+        if (isReplaceAll){
+            for (int i = begIndex; i <= endIndex; i++){
+                String line = page.getLine(i);
+                if (line.contains(s)) return;
+            }
+        }
+        else {
+            for (int i = begIndex; i <= endIndex; i++){
+                String line = page.getLine(i);
+                if (times(line, info.originStr()) >= replaceCount) return;
+            }
         }
         throw new FalseInputFormatException();
+    }
+
+    private int times(String line, String sub){
+        Pattern p = Pattern.compile(sub);
+        Matcher m = p.matcher(line);
+        int times = 0;
+        while (m.find()){
+            times++;
+        }
+        return times;
     }
 }
