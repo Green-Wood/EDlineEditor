@@ -1,4 +1,6 @@
 package edLineEditor;
+import edLineEditor.Commands.*;
+
 import java.util.Scanner;
 
 public class EDLineEditor {
@@ -15,9 +17,95 @@ public class EDLineEditor {
 	 */
 
 	public static void main(String[] args) {
-	    Scanner in = new Scanner(System.in);
-	    while (in.hasNextLine()){
-	        System.out.println(in.nextLine());
+        Page page;
+        LocInfo info;
+        Command command;
+        String fileName;
+        boolean isConfirmed = false;                      // 是否确定退出
+        String str = "";                        // 记录上一次命令
+
+        Scanner in = new Scanner(System.in);
+        String init = in.nextLine();
+        if (init.equals("ed"))                  // 初始化Page
+            page = new Page();
+        else {
+            fileName = init.split(" ")[1];
+            page = new Page(fileName);
+        }
+        while (in.hasNextLine()){
+            try {
+                String line = in.nextLine();
+                info = new LocInfo(line, page);
+                char c = info.getCommand();
+                if (c == 'a' || c == 'i' || c == 'c'){
+                    Input input = new Input(info, page);
+                    input.insert(in);
+                    continue;
+                }
+                else if (c == 'Q' || c == 'q'){
+                    if (!info.isDefaultLoc()) throw new FalseInputFormatException();
+                    if (c == 'Q'){
+                        break;
+                    }
+                    else {
+                        if (!page.isSaved && !isConfirmed && page.hasChanged()){
+                            isConfirmed = true;
+                            throw new FalseInputFormatException();
+                        }
+                        else {
+                            break;
+                        }
+                    }
+                }
+                else if (c == 'd'){
+                    command = new Delete(info, page);
+                }
+                else if (c == '='){
+                    command = new PrintLineNumber(info, page);
+                }
+                else if (c == 'p'){
+                    command = new PrintLines(info, page);
+                }
+                else if (c == 'z'){
+                    command = new PrintLinesTo(info, page);
+                }
+                else if (c == 'f'){
+                    command = new FileName(info, page);
+                }
+                else if (c == 'w' || c == 'W'){
+                    command = new SaveFile(info, page);
+                }
+                else if (c == 'm'){
+                    command = new Move(info, page);
+                }
+                else if (c == 't'){
+                    command = new Copy(info, page);
+                }
+                else if (c == 'j'){
+                    command = new Union(info, page);
+                }
+                else if (c == 's'){
+                    if (line.charAt(line.length() - 1) == 's'){    // 不指定参数则使用以前的
+                        line = str;
+                        info = new LocInfo(line, page);
+                    }
+                    Replace replace = new Replace(info, page);
+                    replace.isContain(info.originStr());
+                    replace.run();
+                    str = line;
+                    continue;
+                }
+                else if (c == 'k'){
+                    command = new MarkLine(info, page);
+                }
+                else if (c == 'u'){
+                    command = new Undo(info, page);
+                }
+                else throw new FalseInputFormatException();
+                command.run();                                  // 开始操作
+            }catch (FalseInputFormatException e){
+                System.out.println("?");
+            }
         }
 	}
 }
