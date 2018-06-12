@@ -9,10 +9,13 @@ public class MarkLine extends Command{
         super(info, page);
         if (endIndex != begIndex)
             throw new FalseInputFormatException();
+        char c = info.markChara();
+        if (!Character.isLowerCase(c))
+            throw new FalseInputFormatException();
     }
 
     @Override
-    public boolean run() throws FalseInputFormatException {
+    public boolean run(){
         char c = info.markChara();
         page.setMark(c, begIndex);
         return true;

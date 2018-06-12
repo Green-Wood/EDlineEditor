@@ -8,6 +8,7 @@ public class Page {
 
     private LinkedList<String> currPage;            // 当前正在使用的页面
     private Stack<LinkedList<String>> allPages;          // 保存所有页面
+    private Stack<Integer> allCurrLine;
     private HashMap<Character, String> mark;      // 保存标记
     private String fileName;             // 文件名称
     private int currLine;            // 当前行
@@ -16,6 +17,7 @@ public class Page {
     public Page(){
         currPage = new LinkedList<>();
         allPages = new Stack<>();
+        allCurrLine = new Stack<>();
         mark = new HashMap<>();
         setFilename("");
         currLine = -1;
@@ -25,11 +27,13 @@ public class Page {
         ArrayList<String> file = readFile(fileName);
         currPage = new LinkedList<>();
         allPages = new Stack<>();
+        allCurrLine = new Stack<>();
         mark = new HashMap<>();
         setFilename(fileName);
         currLine = file.size() - 1;
         currPage.addAll(file);
         allPages.push((LinkedList<String>) currPage.clone());
+        allCurrLine.push(currLine);
     }
     public int getSize(){
         return currPage.size();
@@ -54,7 +58,7 @@ public class Page {
         mark.put(c, currPage.get(lineNum));
     }
 
-    public int getMark(char c){
+    int getMark(char c) throws FalseInputFormatException {
         return searchLine(mark.getOrDefault(c, ""));
     }
 
@@ -70,7 +74,7 @@ public class Page {
         return currPage.get(index);
     }
 
-    public void clear(){                 // 用于清除无字符的空行
+    void clear(){                 // 用于清除无字符的空行
         int i = 0;
         while (i < currPage.size()){
             if (currPage.get(i).equals("")){
@@ -83,24 +87,26 @@ public class Page {
 
     public void saveCurrent(){     // 保存当前状态
         allPages.push((LinkedList<String>) currPage.clone());
+        allCurrLine.push(currLine);
     }
 
     public void unDo(){    // 撤销操作
         currPage = allPages.pop();
+        currLine = allCurrLine.pop();
     }
 
-    public boolean hasChanged(){          // 对比文本是否发生更改
+    boolean hasChanged(){          // 对比文本是否发生更改
         LinkedList<String> first = allPages.firstElement();
         return !first.equals(currPage);
     }
 
-    private int searchLine(String s){          // 由string指针寻找地址相同的string
+    private int searchLine(String s) throws FalseInputFormatException {          // 由string指针寻找地址相同的string
         for (int i = 0; i < currPage.size(); i++){
             if (currPage.get(i) == s){
                 return i;
             }
         }
-        return -1;
+        throw new FalseInputFormatException();
     }
 
     public int findDownLineNumber(String str){      // 从本行往下寻找相匹配的字符串
@@ -115,7 +121,7 @@ public class Page {
         return -1;
     }
 
-    public int findUpLineNumber(String str){
+    int findUpLineNumber(String str){
         for (int i = currLine - 1; i >= 0; i--){
             String s = currPage.get(i);
             if (s.contains(str)) return i;

@@ -36,7 +36,7 @@ public class EDLineEditor {
         }
         while (in.hasNextLine()){
             try {
-                page.clear();
+                page.clear();                 // 清除空字符的行
                 String line = in.nextLine();
                 info = new LocInfo(line, page);
                 char c = info.getCommand();
