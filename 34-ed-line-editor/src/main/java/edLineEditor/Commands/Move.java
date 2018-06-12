@@ -24,7 +24,7 @@ public class Move extends Command {
         page.saveCurrent();
         if (toIndex > endIndex)
             toIndex = toIndex - (endIndex - begIndex + 1);
-        if (toIndex == endIndex){
+        else if (toIndex == endIndex){
             toIndex = endIndex - 1;
         }
         ArrayList<String> l = new ArrayList<>();

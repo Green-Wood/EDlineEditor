@@ -24,7 +24,7 @@ public class EDLineEditor {
         boolean isConfirmed = false;                      // 是否确定退出
         String oldStr = "";                        // 记录上一次参数
         String newStr = "";
-        int count = 0;
+        int count = -1;
 
         Scanner in = new Scanner(System.in);
         String init = in.nextLine();
@@ -88,6 +88,7 @@ public class EDLineEditor {
                 }
                 else if (c == 's'){
                     if (line.charAt(line.length() - 1) == 's'){    // 不指定参数则使用以前的
+                        if (count == -1) throw new FalseInputFormatException();
                         info.set_S_Param(oldStr, newStr, count);
                     }
                     Replace replace = new Replace(info, page);

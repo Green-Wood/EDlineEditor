@@ -10,8 +10,9 @@ import java.util.regex.Pattern;
 public class Replace extends Command{
     private boolean isReplaceAll;
     private int replaceCount;
-    public Replace(LocInfo info, Page page) {
+    public Replace(LocInfo info, Page page) throws FalseInputFormatException {
         super(info, page);
+        if (info.getBeginIndex() <= -1) throw new FalseInputFormatException();
         replaceCount = info.replaceCount();
         isReplaceAll = info.replaceCount() == -1;
     }
@@ -34,6 +35,7 @@ public class Replace extends Command{
             int from = -1;
             for (int j = 0; j < replaceCount; j++){
                 from = line.indexOf(Old, from + 1);
+                if (from == -1) break;
             }
             if (from != -1){
                 String newLine = line.substring(0, from) + New +
