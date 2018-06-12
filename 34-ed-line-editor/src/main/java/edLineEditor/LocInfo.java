@@ -163,19 +163,19 @@ public class LocInfo {
             int i = command.indexOf("k");
             markChara = command.charAt(i+1);
         }
-        checkllegal();
+        check();
     }
 
-    private void checkllegal() throws FalseInputFormatException {
+    private void check() throws FalseInputFormatException {
         if (BeginIndex < -1 || EndIndex < BeginIndex || EndIndex >= page.getSize()){
             throw new FalseInputFormatException();
         }
     }
 
     private static void check$AndStr(String command) throws FalseInputFormatException {
-        Pattern p1 = Pattern.compile("\\$([+\\-])(/.+/|\\?.+\\?)");          // 不合法 $(+-)(/str/|?str?)
-        Pattern p2 = Pattern.compile("\\$([+\\-])\\$");                      // 不合法 $(+-)$
-        Pattern p3 = Pattern.compile("(/.+/|\\?.+\\?)([+\\-])(/.+/|\\?.+\\?)");  // 不合法 /str/+-/str/
+        Pattern p1 = Pattern.compile("\\$([+-])(/.+/|\\?.+\\?)");          // 不合法 $(+-)(/str/|?str?)
+        Pattern p2 = Pattern.compile("\\$([+-])\\$");                      // 不合法 $(+-)$
+        Pattern p3 = Pattern.compile("(/.+/|\\?.+\\?)([+-])(/.+/|\\?.+\\?)");  // 不合法 /str/+-/str/
         Pattern p4 = Pattern.compile("(^[/])*[a-z],[a-z](^[/])+");
         Pattern p5 = Pattern.compile("/.*\\?.*/|\\?.*/.*\\?");          // 合法的模式/?/ or ?/?
         Matcher m1 = p1.matcher(command);
