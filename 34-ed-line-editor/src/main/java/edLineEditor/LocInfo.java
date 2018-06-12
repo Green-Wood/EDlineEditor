@@ -176,15 +176,17 @@ public class LocInfo {
         Pattern p2 = Pattern.compile("\\$(\\+|-)\\$");
         Pattern p3 = Pattern.compile("(/.+/|\\?.+\\?)(\\+|-)(/.+/|\\?.+\\?)");
         Pattern p4 = Pattern.compile("(//|\\?\\?)");
-        Pattern p5 = Pattern.compile("[a-z],[a-z]");
+        Pattern p5 = Pattern.compile("(^[/])*[a-z],[a-z](^[/])+");
+        Pattern p6 = Pattern.compile("/.*\\?.*/|\\?.*/.*\\?");          // 合法的模式/?/ or ?/?
         Matcher m1 = p1.matcher(command);
         Matcher m2 = p2.matcher(command);
         Matcher m3 = p3.matcher(command);
         Matcher m4 = p4.matcher(command);
         Matcher m5 = p5.matcher(command);
+        Matcher m6 = p6.matcher(command);
         if (m1.find() || m2.find() || m3.find() || m4.find() || m5.find())
             throw new FalseInputFormatException();
-        if (Replace.times(command, "?") == 1 || Replace.times(command, "/") == 1){
+        if ((Replace.times(command, "?") == 1 || Replace.times(command, "/") == 1) && !m6.find()){
             throw new FalseInputFormatException();
         }
     }
@@ -337,6 +339,11 @@ public class LocInfo {
         return commandLine;
     }
 
+    public void set_S_Param(String old, String New, int count){
+        originStr = old;
+        changeToStr = New;
+        replaceCount = count;
+    }
 
     public int getBeginIndex(){
         return this.BeginIndex;
@@ -379,8 +386,8 @@ public class LocInfo {
     }
 
     public static void main(String[] args){
-        Pattern pattern = Pattern.compile("");
-        Matcher matcher = pattern.matcher("?123ab/c");
+        Pattern pattern = Pattern.compile("(^[/])*[a-z],[a-z](^[/])+");
+        Matcher matcher = pattern.matcher("/m,nm/");
         if (matcher.find()){
             System.out.println(matcher.group());
         }

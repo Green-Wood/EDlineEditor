@@ -22,7 +22,9 @@ public class EDLineEditor {
         Command command;
         String fileName;
         boolean isConfirmed = false;                      // 是否确定退出
-        String str = "";                        // 记录上一次命令
+        String oldStr = "";                        // 记录上一次参数
+        String newStr = "";
+        int count = 0;
 
         Scanner in = new Scanner(System.in);
         String init = in.nextLine();
@@ -86,13 +88,14 @@ public class EDLineEditor {
                 }
                 else if (c == 's'){
                     if (line.charAt(line.length() - 1) == 's'){    // 不指定参数则使用以前的
-                        line = str;
-                        info = new LocInfo(line, page);
+                        info.set_S_Param(oldStr, newStr, count);
                     }
                     Replace replace = new Replace(info, page);
                     replace.isContain(info.originStr());
                     replace.run();
-                    str = line;
+                    oldStr = info.originStr();
+                    newStr = info.changeToStr();
+                    count = info.replaceCount();
                     continue;
                 }
                 else if (c == 'k'){
