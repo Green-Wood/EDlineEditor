@@ -25,6 +25,15 @@ public class Replace extends Command{
         else {
             replace(info.originStr(), info.changeToStr());
         }
+
+        int i = 0;                          // 清除可能由替换产生的空行
+        while (i < page.getSize()){
+            if (page.getLine(i).equals("")){
+                page.deleteLine(i);
+                i--;
+            }
+            i++;
+        }
     }
 
     private void replace(String Old, String New){
@@ -33,7 +42,7 @@ public class Replace extends Command{
             String line = page.getLine(i);
             int from = -1;
             for (int j = 0; j < replaceCount; j++){
-                from = line.indexOf(Old, from + 1);
+                from = line.indexOf(Old, from + 1);        // 不断寻找下一个匹配的字符串，找不到就退出
                 if (from == -1) break;
             }
             if (from != -1){
@@ -51,11 +60,11 @@ public class Replace extends Command{
         page.saveCurrent();
         for (int i = begIndex; i <= endIndex; i++){
             String line = page.getLine(i);
-            if (times(line, Old) >= 1){
+            if (line.contains(Old)){               // 有就替换
                 String newLine = line.replace(Old, New);
                 page.deleteLine(i);
                 page.addLine(i, newLine);
-                page.setCurrLine(i);
+                page.setCurrLine(i);           // 每次替换成功才更改当前行
             }
         }
         page.isSaved = false;
@@ -71,20 +80,10 @@ public class Replace extends Command{
         else {
             for (int i = begIndex; i <= endIndex; i++){
                 String line = page.getLine(i);
-                if (times(line, info.originStr()) >= replaceCount) return;
+                if (LocInfo.times(line, info.originStr()) >= replaceCount) return;
             }
         }
         throw new FalseInputFormatException();
     }
 
-    public static int times(String line, String sub){
-        if (sub.equals("?")) sub = "\\?";
-        Pattern p = Pattern.compile(sub);
-        Matcher m = p.matcher(line);
-        int times = 0;
-        while (m.find()){
-            times++;
-        }
-        return times;
-    }
 }

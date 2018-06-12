@@ -25,10 +25,10 @@ public class LocInfo {
         this.page = page;
         if (command.length() == 0 || command == null) throw new FalseInputFormatException();
         String originStr = command;
-        command = dealReplace(command);    // 检查是否为替换,进行特殊处理
-        check$AndStr(command);       // 检查是否含有 $-/str/
+        command = dealReplace(command);                            // 检查是否为替换,进行特殊处理
+        check$AndStr(command);                          // 检查是否含有 $-/str/
         if (Character.isAlphabetic(command.charAt(0))
-                || command.charAt(0) == '=') {  // 检查是否为默认地址
+                || command.charAt(0) == '=') {              // 检查是否为默认地址
             isDefaultLoc = true;
             BeginIndex = page.getCurrLine();
             EndIndex = page.getCurrLine();
@@ -49,7 +49,7 @@ public class LocInfo {
             }
         }
         else {
-            if (Replace.times(command, "/") % 2 != 0){              // 判断？/？
+            if (times(command, "/") % 2 != 0){              // 判断？/？
                 while (command.contains("?")){
                     int i1 = command.indexOf("?");
                     int i2 = command.indexOf("?", i1 + 1);
@@ -173,21 +173,21 @@ public class LocInfo {
     }
 
     private static void check$AndStr(String command) throws FalseInputFormatException {
-        Pattern p1 = Pattern.compile("\\$(\\+|-)(/.+/|\\?.+\\?)");
-        Pattern p2 = Pattern.compile("\\$(\\+|-)\\$");
-        Pattern p3 = Pattern.compile("(/.+/|\\?.+\\?)(\\+|-)(/.+/|\\?.+\\?)");
-        Pattern p4 = Pattern.compile("(//|\\?\\?)");
+        Pattern p1 = Pattern.compile("\\$(\\+|-)(/.+/|\\?.+\\?)");          // 不合法 $(+-)(/str/|?str?)
+        Pattern p2 = Pattern.compile("\\$(\\+|-)\\$");                      // 不合法 $(+-)$
+        Pattern p3 = Pattern.compile("(/.+/|\\?.+\\?)(\\+|-)(/.+/|\\?.+\\?)");  // 不合法 /str/+-/str/
+//        Pattern p4 = Pattern.compile("(//|\\?\\?)");                     // 地址不合法 //  ??
         Pattern p5 = Pattern.compile("(^[/])*[a-z],[a-z](^[/])+");
         Pattern p6 = Pattern.compile("/.*\\?.*/|\\?.*/.*\\?");          // 合法的模式/?/ or ?/?
         Matcher m1 = p1.matcher(command);
         Matcher m2 = p2.matcher(command);
         Matcher m3 = p3.matcher(command);
-        Matcher m4 = p4.matcher(command);
+//        Matcher m4 = p4.matcher(command);
         Matcher m5 = p5.matcher(command);
         Matcher m6 = p6.matcher(command);
-        if (m1.find() || m2.find() || m3.find() || m4.find() || m5.find())
+        if (m1.find() || m2.find() || m3.find() || m5.find())
             throw new FalseInputFormatException();
-        if ((Replace.times(command, "?") == 1 || Replace.times(command, "/") == 1) && !m6.find()){
+        if ((times(command, "?") == 1 || times(command, "/") == 1) && !m6.find()){
             throw new FalseInputFormatException();
         }
     }
@@ -350,10 +350,21 @@ public class LocInfo {
         return commandLine;
     }
 
-    public void set_S_Param(String old, String New, int count){
+    void set_S_Param(String old, String New, int count){
         originStr = old;
         changeToStr = New;
         replaceCount = count;
+    }
+
+    public static int times(String line, String sub){
+        if (sub.equals("?")) sub = "\\?";
+        Pattern p = Pattern.compile(sub);
+        Matcher m = p.matcher(line);
+        int times = 0;
+        while (m.find()){
+            times++;
+        }
+        return times;
     }
 
     public int getBeginIndex(){
@@ -394,17 +405,5 @@ public class LocInfo {
 
     public char markChara() {
         return markChara;
-    }
-
-    public static void main(String[] args){
-//        Pattern pattern = Pattern.compile("(^[/])*[a-z],[a-z](^[/])+");
-//        Matcher matcher = pattern.matcher("/m,nm/");
-//        if (matcher.find()){
-//            System.out.println(matcher.group());
-        String[] s = "abc/1/".split("/");
-        for (String i: s){
-            System.out.println(i);
-        }
-//        }
     }
 }

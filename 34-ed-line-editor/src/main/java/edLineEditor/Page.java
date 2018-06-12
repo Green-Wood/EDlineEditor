@@ -74,17 +74,6 @@ public class Page {
         return currPage.get(index);
     }
 
-    void clear(){                 // 用于清除无字符的空行
-        int i = 0;
-        while (i < currPage.size()){
-            if (currPage.get(i).equals("")){
-                currPage.remove(i);
-                i--;
-            }
-            i++;
-        }
-    }
-
     public void saveCurrent(){     // 保存当前状态
         allPages.push((LinkedList<String>) currPage.clone());
         allCurrLine.push(currLine);

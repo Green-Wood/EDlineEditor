@@ -22,7 +22,7 @@ public class EDLineEditor {
         Command command;
         String fileName;
         boolean isConfirmed = false;                      // 是否确定退出
-        String oldStr = "";                        // 记录上一次参数
+        String oldStr = "";                        // 记录上一次替换指令的参数
         String newStr = "";
         int count = -1;
 
@@ -36,7 +36,6 @@ public class EDLineEditor {
         }
         while (in.hasNextLine()){
             try {
-                page.clear();                 // 清除空字符的行
                 String line = in.nextLine();
                 info = new LocInfo(line, page);
                 char c = info.getCommand();
