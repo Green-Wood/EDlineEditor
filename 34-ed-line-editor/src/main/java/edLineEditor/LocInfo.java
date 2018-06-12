@@ -3,6 +3,7 @@ package edLineEditor;
 
 import edLineEditor.Commands.Replace;
 
+import java.util.Arrays;
 import java.util.Dictionary;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,8 +25,8 @@ public class LocInfo {
         this.page = page;
         if (command.length() == 0 || command == null) throw new FalseInputFormatException();
         String originStr = command;
-        check$AndStr(command);       // 检查是否含有 $-/str/
         command = dealReplace(command);    // 检查是否为替换,进行特殊处理
+        check$AndStr(command);       // 检查是否含有 $-/str/
         if (Character.isAlphabetic(command.charAt(0))
                 || command.charAt(0) == '=') {  // 检查是否为默认地址
             isDefaultLoc = true;
@@ -203,13 +204,22 @@ public class LocInfo {
     }
 
     private String dealReplace(String command) throws FalseInputFormatException {
-        Pattern p = Pattern.compile("s/.+/.+/(g|\\d*)");
+        Pattern p = Pattern.compile("s/.+/.*/(g|\\d*)");
+        Pattern p1 = Pattern.compile(".+//(g|\\d)");
         Matcher m = p.matcher(command);
+        Matcher m1 = p1.matcher(command);
         if (!m.find()) return command;
         String cutStr = m.group();
         String s = cutStr.substring(2, cutStr.length());
-        originStr = s.split("/")[0];
-        changeToStr = s.split("/")[1];
+        if (m1.find()){
+            originStr = s.split("/")[0];
+            changeToStr = "";
+            s = s.replace(originStr + "//", originStr + "/null/");
+        }
+        else {
+            originStr = s.split("/")[0];
+            changeToStr = s.split("/")[1];
+        }
         if (s.split("/").length == 3){
             if (s.split("/")[2].equals("g")){
                 replaceCount = -1;
@@ -386,10 +396,14 @@ public class LocInfo {
     }
 
     public static void main(String[] args){
-        Pattern pattern = Pattern.compile("(^[/])*[a-z],[a-z](^[/])+");
-        Matcher matcher = pattern.matcher("/m,nm/");
-        if (matcher.find()){
-            System.out.println(matcher.group());
+//        Pattern pattern = Pattern.compile("(^[/])*[a-z],[a-z](^[/])+");
+//        Matcher matcher = pattern.matcher("/m,nm/");
+//        if (matcher.find()){
+//            System.out.println(matcher.group());
+        String[] s = "abc/1/".split("/");
+        for (String i: s){
+            System.out.println(i);
         }
+//        }
     }
 }
