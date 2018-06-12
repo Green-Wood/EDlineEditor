@@ -36,6 +36,7 @@ public class EDLineEditor {
         }
         while (in.hasNextLine()){
             try {
+                page.clear();
                 String line = in.nextLine();
                 info = new LocInfo(line, page);
                 char c = info.getCommand();

@@ -205,7 +205,7 @@ public class LocInfo {
 
     private String dealReplace(String command) throws FalseInputFormatException {
         Pattern p = Pattern.compile("s/.+/.*/(g|\\d*)");
-        Pattern p1 = Pattern.compile(".+//(g|\\d)");
+        Pattern p1 = Pattern.compile(".+//(g|\\d*)");                 // 匹配/str//模式
         Matcher m = p.matcher(command);
         Matcher m1 = p1.matcher(command);
         if (!m.find()) return command;
