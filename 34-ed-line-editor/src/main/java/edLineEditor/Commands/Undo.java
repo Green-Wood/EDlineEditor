@@ -11,8 +11,7 @@ public class Undo extends Command{
     }
 
     @Override
-    public boolean run(){
+    public void run(){
         page.unDo();
-        return true;
     }
 }

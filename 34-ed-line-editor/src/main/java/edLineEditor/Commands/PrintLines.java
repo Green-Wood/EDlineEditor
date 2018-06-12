@@ -9,11 +9,10 @@ public class PrintLines extends Command{
     }
 
     @Override
-    public boolean run() {
+    public void run() {
         for (int i = begIndex; i <= endIndex; i++){
             System.out.println(page.getLine(i));
         }
         page.setCurrLine(endIndex);
-        return true;
     }
 }

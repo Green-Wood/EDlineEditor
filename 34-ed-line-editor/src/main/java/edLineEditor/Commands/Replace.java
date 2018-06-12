@@ -18,14 +18,13 @@ public class Replace extends Command{
     }
 
     @Override
-    public boolean run(){
+    public void run(){
         if (isReplaceAll){            // 全部替换
             replaceAll(info.originStr(), info.changeToStr());
         }
         else {
             replace(info.originStr(), info.changeToStr());
         }
-        return true;
     }
 
     private void replace(String Old, String New){

@@ -9,7 +9,7 @@ public class PrintLinesTo extends Command{
     }
 
     @Override
-    public boolean run() {
+    public void run() {
         if (info.isDefaultLoc()) begIndex++;
         if (info.getToIndex() == -1){        // 如果没有指定参数
             endIndex = page.getSize() - 1;
@@ -26,6 +26,5 @@ public class PrintLinesTo extends Command{
             System.out.println(page.getLine(i));
         }
         page.setCurrLine(endIndex);
-        return true;
     }
 }

@@ -14,13 +14,12 @@ public class FileName extends Command{
     }
 
     @Override
-    public boolean run() {
+    public void run() {
         if (info.fileName().equals("")){
             System.out.println(page.getFilename());
         }
         else {
             page.setFilename(info.fileName());
         }
-        return true;
     }
 }

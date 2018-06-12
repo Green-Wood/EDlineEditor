@@ -48,8 +48,7 @@ public class Input extends Command{
     }
 
     @Override
-    public boolean run(){
-        return true;
+    public void run(){
     }
 
 }

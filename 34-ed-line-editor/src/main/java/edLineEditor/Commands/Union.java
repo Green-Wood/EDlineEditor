@@ -13,7 +13,7 @@ public class Union extends Command {
     }
 
     @Override
-    public boolean run() {
+    public void run() {
         if (info.isDefaultLoc()){
             begIndex = page.getCurrLine();
             endIndex = begIndex + 1;
@@ -24,7 +24,6 @@ public class Union extends Command {
             union(begIndex, endIndex);
             page.setCurrLine(begIndex);
         }
-        return true;
     }
 
     private void union(int begIndex, int endIndex){

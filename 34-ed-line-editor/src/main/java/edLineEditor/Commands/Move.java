@@ -17,7 +17,7 @@ public class Move extends Command {
     }
 
     @Override
-    public boolean run() {
+    public void run() {
         if (toIndex == -1){
             toIndex = page.getCurrLine();
         }
@@ -38,6 +38,5 @@ public class Move extends Command {
         }
         page.setCurrLine(toIndex);
         page.isSaved = false;
-        return true;
     }
 }

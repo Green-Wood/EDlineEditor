@@ -22,14 +22,13 @@ public class SaveFile extends Command {
     }
 
     @Override
-    public boolean run() {
+    public void run() {
         if (info.fileName().equals("")){
             saveFile(page.getFilename(), isAdd);
         }
         else {
             saveFile(info.fileName(), isAdd);
         }
-        return true;
     }
 
     private void saveFile(String fileName, boolean isAdd){               // 保存指定行

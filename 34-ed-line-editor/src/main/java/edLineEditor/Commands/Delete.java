@@ -12,7 +12,7 @@ public class Delete extends Command {
     }
 
     @Override
-    public boolean run() {
+    public void run() {
         page.saveCurrent();
         if (endIndex >= page.getSize() - 1)   // 如果删除的后面没有，则设为前一行
             page.setCurrLine(begIndex - 1);
@@ -21,6 +21,5 @@ public class Delete extends Command {
             page.deleteLine(begIndex);
         }
         page.isSaved = false;
-        return true;
     }
 }
