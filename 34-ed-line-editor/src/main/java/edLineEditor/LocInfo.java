@@ -23,7 +23,7 @@ public class LocInfo {
 
     public LocInfo(String command, Page page) throws FalseInputFormatException{
         this.page = page;
-        if (command.length() == 0 || command == null) throw new FalseInputFormatException();
+        if (command.length() == 0) throw new FalseInputFormatException();
         String originStr = command;
         command = dealReplace(command);                            // 检查是否为替换,进行特殊处理
         check$AndStr(command);                          // 检查是否含有 $-/str/
@@ -173,21 +173,19 @@ public class LocInfo {
     }
 
     private static void check$AndStr(String command) throws FalseInputFormatException {
-        Pattern p1 = Pattern.compile("\\$(\\+|-)(/.+/|\\?.+\\?)");          // 不合法 $(+-)(/str/|?str?)
-        Pattern p2 = Pattern.compile("\\$(\\+|-)\\$");                      // 不合法 $(+-)$
-        Pattern p3 = Pattern.compile("(/.+/|\\?.+\\?)(\\+|-)(/.+/|\\?.+\\?)");  // 不合法 /str/+-/str/
-//        Pattern p4 = Pattern.compile("(//|\\?\\?)");                     // 地址不合法 //  ??
-        Pattern p5 = Pattern.compile("(^[/])*[a-z],[a-z](^[/])+");
-        Pattern p6 = Pattern.compile("/.*\\?.*/|\\?.*/.*\\?");          // 合法的模式/?/ or ?/?
+        Pattern p1 = Pattern.compile("\\$([+\\-])(/.+/|\\?.+\\?)");          // 不合法 $(+-)(/str/|?str?)
+        Pattern p2 = Pattern.compile("\\$([+\\-])\\$");                      // 不合法 $(+-)$
+        Pattern p3 = Pattern.compile("(/.+/|\\?.+\\?)([+\\-])(/.+/|\\?.+\\?)");  // 不合法 /str/+-/str/
+        Pattern p4 = Pattern.compile("(^[/])*[a-z],[a-z](^[/])+");
+        Pattern p5 = Pattern.compile("/.*\\?.*/|\\?.*/.*\\?");          // 合法的模式/?/ or ?/?
         Matcher m1 = p1.matcher(command);
         Matcher m2 = p2.matcher(command);
         Matcher m3 = p3.matcher(command);
-//        Matcher m4 = p4.matcher(command);
+        Matcher m4 = p4.matcher(command);
         Matcher m5 = p5.matcher(command);
-        Matcher m6 = p6.matcher(command);
-        if (m1.find() || m2.find() || m3.find() || m5.find())
+        if (m1.find() || m2.find() || m3.find() || m4.find())
             throw new FalseInputFormatException();
-        if ((times(command, "?") == 1 || times(command, "/") == 1) && !m6.find()){
+        if ((times(command, "?") == 1 || times(command, "/") == 1) && !m5.find()){
             throw new FalseInputFormatException();
         }
     }
