@@ -28,13 +28,13 @@ public class Union extends Command {
 
     private void union(int begIndex, int endIndex){
         page.saveCurrent();
-        String str = page.getLine(begIndex);
+        StringBuilder str = new StringBuilder(page.getLine(begIndex));
         for (int i = begIndex; i < endIndex; i++){
-            str += page.getLine(begIndex + 1);
+            str.append(page.getLine(begIndex + 1));
             page.deleteLine(begIndex + 1);
         }
         page.deleteLine(begIndex);
-        page.addLine(begIndex, str);
+        page.addLine(begIndex, str.toString());
         page.isSaved = false;
     }
 }
