@@ -9,7 +9,7 @@ public class PrintLines extends Command{
     }
 
     @Override
-    public void run() {
+    public void execute() {
         for (int i = begIndex; i <= endIndex; i++){
             System.out.println(page.getLine(i));
         }

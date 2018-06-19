@@ -9,7 +9,7 @@ public class PrintLineNumber extends Command {
     }
 
     @Override
-    public void run() {
+    public void execute() {
         System.out.println(begIndex + 1);
     }
 }

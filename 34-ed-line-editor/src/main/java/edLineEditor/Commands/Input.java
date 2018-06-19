@@ -48,7 +48,6 @@ public class Input extends Command{
     }
 
     @Override
-    public void run(){
+    public void execute(){
     }
-
 }

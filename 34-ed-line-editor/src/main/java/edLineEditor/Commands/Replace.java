@@ -15,7 +15,7 @@ public class Replace extends Command{
     }
 
     @Override
-    public void run(){
+    public void execute(){
         if (isReplaceAll){            // 全部替换
             replaceAll(info.originStr(), info.changeToStr());
         }

@@ -13,7 +13,7 @@ public class Union extends Command {
     }
 
     @Override
-    public void run() {
+    public void execute() {
         if (info.isDefaultLoc()){
             begIndex = page.getCurrLine();
             endIndex = begIndex + 1;

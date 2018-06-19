@@ -16,7 +16,7 @@ public class MarkLine extends Command{
     }
 
     @Override
-    public void run(){
+    public void execute(){
         page.setMark(markChara, begIndex);
     }
 }

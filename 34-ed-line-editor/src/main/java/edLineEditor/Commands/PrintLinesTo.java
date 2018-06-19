@@ -9,7 +9,7 @@ public class PrintLinesTo extends Command{
     }
 
     @Override
-    public void run() {
+    public void execute() {
         if (info.isDefaultLoc()) begIndex++;
         if (info.getToIndex() == -1){        // 如果没有指定参数
             endIndex = page.getSize() - 1;

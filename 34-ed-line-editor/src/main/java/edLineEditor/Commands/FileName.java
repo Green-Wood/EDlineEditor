@@ -14,7 +14,7 @@ public class FileName extends Command{
     }
 
     @Override
-    public void run() {
+    public void execute() {
         if (info.fileName().equals("")){
             System.out.println(page.getFilename());
         }

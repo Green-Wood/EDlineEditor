@@ -16,7 +16,7 @@ public class Copy extends Command {
     }
 
     @Override
-    public void run() {
+    public void execute() {
         if (toIndex == -1){
             toIndex = page.getCurrLine();
         }

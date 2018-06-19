@@ -22,7 +22,7 @@ public class SaveFile extends Command {
     }
 
     @Override
-    public void run() {
+    public void execute() {
         if (info.fileName().equals("")){
             saveFile(page.getFilename(), isAdd);
         }

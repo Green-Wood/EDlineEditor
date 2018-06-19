@@ -66,7 +66,7 @@ public class EDLineEditor {
                     }
                     Replace replace = new Replace(info, page);
                     replace.isContain(info.originStr());
-                    replace.run();
+                    replace.execute();
                     oldStr = info.originStr();
                     newStr = info.changeToStr();
                     count = info.replaceCount();
@@ -106,7 +106,7 @@ public class EDLineEditor {
                     command = new Undo(info, page);
                 }
                 else throw new FalseInputFormatException();
-                command.run();                                  // 开始操作
+                command.execute();                                  // 开始操作
             }catch (FalseInputFormatException e){
                 System.out.println("?");
             }

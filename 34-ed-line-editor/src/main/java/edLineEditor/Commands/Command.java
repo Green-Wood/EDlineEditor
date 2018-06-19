@@ -15,5 +15,5 @@ public abstract class Command {
         this.begIndex = info.getBeginIndex();
         this.endIndex = info.getEndIndex();
     }
-    public abstract void run() throws FalseInputFormatException;
+    public abstract void execute() throws FalseInputFormatException;
 }
