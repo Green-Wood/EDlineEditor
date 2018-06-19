@@ -1,11 +1,11 @@
 package edLineEditor.Commands;
 
 import edLineEditor.FalseInputFormatException;
-import edLineEditor.LocInfo;
+import edLineEditor.CommandInfo;
 import edLineEditor.Page;
 
 public class Delete extends Command {
-    public Delete(LocInfo info, Page page) throws FalseInputFormatException {
+    public Delete(CommandInfo info, Page page) throws FalseInputFormatException {
         super(info, page);
         if (begIndex == -1)
             throw new FalseInputFormatException();

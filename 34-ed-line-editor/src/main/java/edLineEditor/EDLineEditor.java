@@ -18,7 +18,7 @@ public class EDLineEditor {
 
 	public static void main(String[] args) {
         Page page;
-        LocInfo info;
+        CommandInfo info;
         Command command;
         String fileName;
         boolean isConfirmed = false;                      // 是否确定退出
@@ -37,7 +37,7 @@ public class EDLineEditor {
         while (in.hasNextLine()){
             try {
                 String line = in.nextLine();
-                info = new LocInfo(line, page);
+                info = new CommandInfo(line, page);
                 char c = info.getCommand();
                 if (c == 'a' || c == 'i' || c == 'c'){
                     Input input = new Input(info, page);

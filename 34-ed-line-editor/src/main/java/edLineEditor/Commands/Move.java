@@ -1,14 +1,14 @@
 package edLineEditor.Commands;
 
 import edLineEditor.FalseInputFormatException;
-import edLineEditor.LocInfo;
+import edLineEditor.CommandInfo;
 import edLineEditor.Page;
 
 import java.util.ArrayList;
 
 public class Move extends Command {
     private int toIndex;
-    public Move(LocInfo info, Page page) throws FalseInputFormatException {
+    public Move(CommandInfo info, Page page) throws FalseInputFormatException {
         super(info, page);
         toIndex = info.getToIndex();
         if (toIndex >= page.getSize()

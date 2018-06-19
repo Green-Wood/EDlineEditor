@@ -1,16 +1,13 @@
 package edLineEditor.Commands;
 
 import edLineEditor.FalseInputFormatException;
-import edLineEditor.LocInfo;
+import edLineEditor.CommandInfo;
 import edLineEditor.Page;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Replace extends Command{
     private boolean isReplaceAll;
     private int replaceCount;
-    public Replace(LocInfo info, Page page) throws FalseInputFormatException {
+    public Replace(CommandInfo info, Page page) throws FalseInputFormatException {
         super(info, page);
         if (info.getBeginIndex() <= -1) throw new FalseInputFormatException();
         replaceCount = info.replaceCount();
@@ -80,7 +77,7 @@ public class Replace extends Command{
         else {
             for (int i = begIndex; i <= endIndex; i++){
                 String line = page.getLine(i);
-                if (LocInfo.times(line, info.originStr()) >= replaceCount) return;
+                if (CommandInfo.times(line, info.originStr()) >= replaceCount) return;
             }
         }
         throw new FalseInputFormatException();

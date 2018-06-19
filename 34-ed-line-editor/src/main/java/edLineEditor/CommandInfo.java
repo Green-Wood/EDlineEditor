@@ -1,17 +1,12 @@
 package edLineEditor;
 
 
-import edLineEditor.Commands.Replace;
-
-import java.util.Arrays;
-import java.util.Dictionary;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class LocInfo {
-    private Page page;
-    private int BeginIndex;
-    private int EndIndex;
+public class CommandInfo {
+    private int beginIndex;
+    private int endIndex;
     private int toIndex;
     private char commandMark;
     private boolean isDefaultLoc;
@@ -21,8 +16,7 @@ public class LocInfo {
     private int replaceCount;
     private char markChara;
 
-    public LocInfo(String command, Page page) throws FalseInputFormatException{
-        this.page = page;
+    public CommandInfo(String command, Page page) throws FalseInputFormatException{
         if (command.length() == 0) throw new FalseInputFormatException();
         String originStr = command;
         command = dealReplace(command);                            // 检查是否为替换,进行特殊处理
@@ -30,18 +24,18 @@ public class LocInfo {
         if (Character.isAlphabetic(command.charAt(0))
                 || command.charAt(0) == '=') {              // 检查是否为默认地址
             isDefaultLoc = true;
-            BeginIndex = page.getCurrLine();
-            EndIndex = page.getCurrLine();
+            beginIndex = page.getCurrLine();
+            endIndex = page.getCurrLine();
             commandMark = command.charAt(0);
         }
         else if (command.charAt(0) == ';'){
-            BeginIndex = page.getCurrLine();
-            EndIndex = page.getSize() - 1;
+            beginIndex = page.getCurrLine();
+            endIndex = page.getSize() - 1;
             commandMark = command.charAt(1);
         }
         else if (command.charAt(0) == ','){
-            BeginIndex = 0;
-            EndIndex = page.getSize() - 1;
+            beginIndex = 0;
+            endIndex = page.getSize() - 1;
             try {
                 commandMark = command.charAt(1);
             }catch (StringIndexOutOfBoundsException e){
@@ -94,10 +88,10 @@ public class LocInfo {
                 command = command.replace("$", Integer.toString(page.getSize()));
             }
             if (command.contains("-")) {
-                command = dealMin(command);
+                command = dealMin(command, page);
             }
             if (command.contains("+")){
-                command = dealPlus(command);
+                command = dealPlus(command, page);
             }
             if (command.charAt(0) == ',' &&
                     Character.isDigit(command.charAt(command.indexOf(",") + 1))){ // 逗号右边有数字，左边没有
@@ -138,12 +132,13 @@ public class LocInfo {
             command = command.substring(0, i) + " " + command.substring(i, command.length());
 
             String[] loc = command.split(" ")[0].split(",");
-            BeginIndex = Integer.parseInt(loc[0]) - 1;
-            EndIndex = Integer.parseInt(loc[1]) - 1;
+            beginIndex = Integer.parseInt(loc[0]) - 1;
+            endIndex = Integer.parseInt(loc[1]) - 1;
             commandMark = command.split(" ")[1].charAt(0);
         }
+        // 分别对某些指令进行特殊处理
         if (commandMark == 'm' || commandMark == 't'){
-            dealMoveAndCopy(command, commandMark);
+            dealMoveAndCopy(command, commandMark, page);
         }
         else if (commandMark == 'z'){
             if (originStr.charAt(originStr.length() - 1) == 'z'){
@@ -163,16 +158,16 @@ public class LocInfo {
             int i = command.indexOf("k");
             markChara = command.charAt(i+1);
         }
-        check();
+        check(page);
     }
 
-    private void check() throws FalseInputFormatException {
-        if (BeginIndex < -1 || EndIndex < BeginIndex || EndIndex >= page.getSize()){
+    private void check(Page page) throws FalseInputFormatException {          // 检查开始和结束地址
+        if (beginIndex < -1 || endIndex < beginIndex || endIndex >= page.getSize()){
             throw new FalseInputFormatException();
         }
     }
 
-    private static void check$AndStr(String command) throws FalseInputFormatException {
+    private static void check$AndStr(String command) throws FalseInputFormatException {         // 初始检查输入是否合法
         Pattern p1 = Pattern.compile("\\$([+-])(/.+/|\\?.+\\?)");          // 不合法 $(+-)(/str/|?str?)
         Pattern p2 = Pattern.compile("\\$([+-])\\$");                      // 不合法 $(+-)$
         Pattern p3 = Pattern.compile("(/.+/|\\?.+\\?)([+-])(/.+/|\\?.+\\?)");  // 不合法 /str/+-/str/
@@ -190,18 +185,19 @@ public class LocInfo {
         }
     }
 
-    private void dealMoveAndCopy(String command, char commandMark) throws FalseInputFormatException {
+    private void dealMoveAndCopy(String command, char commandMark, Page page) throws FalseInputFormatException {
+        // 处理剪切和复制
         if (command.indexOf(commandMark) == command.length() - 1){
             toIndex = page.getCurrLine();
         }
         else {
             String to = command.substring(command.indexOf(commandMark) + 1, command.length());
-            LocInfo toInfo = new LocInfo(to+"p", page);
+            CommandInfo toInfo = new CommandInfo(to+"p", page);
             toIndex = toInfo.getBeginIndex();
         }
     }
 
-    private String dealReplace(String command) throws FalseInputFormatException {
+    private String dealReplace(String command) throws FalseInputFormatException {       // 处理替换指令
         Pattern p = Pattern.compile("s/.+/.*/(g|\\d*)");
         Pattern p1 = Pattern.compile(".+//(g|\\d*)");                 // 匹配/str//模式
         Matcher m = p.matcher(command);
@@ -237,7 +233,7 @@ public class LocInfo {
         return command.substring(0, i + 1);
     }
 
-    private String dealMin(String commandLine){
+    private String dealMin(String commandLine, Page page){             // 处理减号
         int index = 0;
         for (int i = 0; i < commandLine.length(); i++){
             if (Character.isAlphabetic(commandLine.charAt(i)) || commandLine.charAt(i) == '=') break;
@@ -292,7 +288,7 @@ public class LocInfo {
         return commandLine;
     }
 
-    private String dealPlus(String commandLine){
+    private String dealPlus(String commandLine, Page page){
         int index = 0;
         for (int i = 0; i < commandLine.length(); i++){
             if (Character.isAlphabetic(commandLine.charAt(i))
@@ -366,11 +362,11 @@ public class LocInfo {
     }
 
     public int getBeginIndex(){
-        return this.BeginIndex;
+        return this.beginIndex;
     }
 
     public int getEndIndex(){
-        return this.EndIndex;
+        return this.endIndex;
     }
 
     public int getToIndex() {

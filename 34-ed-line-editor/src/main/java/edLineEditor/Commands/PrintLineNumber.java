@@ -1,10 +1,10 @@
 package edLineEditor.Commands;
 
-import edLineEditor.LocInfo;
+import edLineEditor.CommandInfo;
 import edLineEditor.Page;
 
 public class PrintLineNumber extends Command {
-    public PrintLineNumber(LocInfo info, Page page) {
+    public PrintLineNumber(CommandInfo info, Page page) {
         super(info, page);
     }
 

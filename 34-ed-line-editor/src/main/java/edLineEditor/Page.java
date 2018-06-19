@@ -52,11 +52,11 @@ public class Page {
 
     public void setCurrLine(int line){
         this.currLine = line;
-    }
+    }          // 设置当前行行号
 
     public void setMark(char c, int lineNum){
         mark.put(c, currPage.get(lineNum));
-    }
+    }          // 设置标记行
 
     int getMark(char c) throws FalseInputFormatException {
         return searchLine(mark.getOrDefault(c, ""));
@@ -64,15 +64,15 @@ public class Page {
 
     public void addLine(int index, String s){
         currPage.add(index, s);
-    }
+    }   // 增加指定行
 
     public void deleteLine(int index){
         currPage.remove(index);
-    }
+    }        // 删除指定行
 
     public String getLine(int index){
         return currPage.get(index);
-    }
+    }       // 得到指定行
 
     public void saveCurrent(){     // 保存当前状态
         allPages.push((LinkedList<String>) currPage.clone());
@@ -95,10 +95,10 @@ public class Page {
                 return i;
             }
         }
-        throw new FalseInputFormatException();
+        throw new FalseInputFormatException();             // 找不到就抛出异常
     }
 
-    public int findDownLineNumber(String str){      // 从本行往下寻找相匹配的字符串
+    int findDownLineNumber(String str){      // 从本行往下寻找相匹配的字符串
         for (int i = currLine + 1; i < currPage.size(); i++){
             String s = currPage.get(i);
             if (s.contains(str)) return i;
@@ -110,7 +110,7 @@ public class Page {
         return -1;
     }
 
-    int findUpLineNumber(String str){
+    int findUpLineNumber(String str){              // 从本行往上寻找相匹配的字符串
         for (int i = currLine - 1; i >= 0; i--){
             String s = currPage.get(i);
             if (s.contains(str)) return i;

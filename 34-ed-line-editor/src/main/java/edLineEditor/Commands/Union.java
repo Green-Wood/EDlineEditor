@@ -1,11 +1,11 @@
 package edLineEditor.Commands;
 
 import edLineEditor.FalseInputFormatException;
-import edLineEditor.LocInfo;
+import edLineEditor.CommandInfo;
 import edLineEditor.Page;
 
 public class Union extends Command {
-    public Union(LocInfo info, Page page) throws FalseInputFormatException {
+    public Union(CommandInfo info, Page page) throws FalseInputFormatException {
         super(info, page);
         if (info.isDefaultLoc() && page.getCurrLine() + 1 >= page.getSize()
                 || begIndex == -1)

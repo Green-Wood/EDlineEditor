@@ -1,7 +1,7 @@
 package edLineEditor.Commands;
 
 import edLineEditor.FalseInputFormatException;
-import edLineEditor.LocInfo;
+import edLineEditor.CommandInfo;
 import edLineEditor.Page;
 
 import java.io.File;
@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class SaveFile extends Command {
     private boolean isAdd;
-    public SaveFile(LocInfo info, Page page) throws FalseInputFormatException {
+    public SaveFile(CommandInfo info, Page page) throws FalseInputFormatException {
         super(info, page);
         if (info.fileName().equals("") && page.getFilename().equals(""))
             throw new FalseInputFormatException();
