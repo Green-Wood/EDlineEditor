@@ -4,4 +4,11 @@ public class FalseInputFormatException extends Exception {            // 任何�
     public FalseInputFormatException(){
         super();
     }
+    public FalseInputFormatException(String message){
+        super(message);
+    }
+    public FalseInputFormatException(Throwable cause){
+        super(cause);
+    }
+
 }
