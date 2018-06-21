@@ -5,20 +5,19 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CommandInfo {
-    private int beginIndex;
-    private int endIndex;
-    private int toIndex;
-    private char commandMark;
-    private boolean isDefaultLoc;
-    private String fileName;
-    private String originStr;
-    private String changeToStr;
-    private int replaceCount;
-    private char markChara;
-    private int currentLine;
+    private int beginIndex;   // 开始的地址
+    private int endIndex;      // 结束的地址
+    private int toIndex;         // 复制和剪切指向的行数
+    private char commandMark;     // 指令标记
+    private boolean isDefaultLoc;  // 是否使用了默认的地址
+    private String fileName;       // 命令中设置的文件名
+    private String originStr;        // 所要替换的原本的字符串
+    private String changeToStr;       // 用于替换的字符串
+    private int replaceCount;           // 替换的计数
+    private char markChara;           // 用于标记行的字符
+
 
     public CommandInfo(String command, Page page) throws FalseInputFormatException{
-        currentLine = page.getCurrLine();
         if (command.length() == 0) throw new FalseInputFormatException();
         String originStr = command;
         command = dealReplace(command);                            // 检查是否为替换,进行特殊处理
@@ -26,12 +25,12 @@ public class CommandInfo {
         if (Character.isAlphabetic(command.charAt(0))
                 || command.charAt(0) == '=') {              // 检查是否为默认地址
             isDefaultLoc = true;
-            beginIndex = currentLine;
-            endIndex = currentLine;
+            beginIndex = page.getCurrLine();
+            endIndex = page.getCurrLine();
             commandMark = command.charAt(0);
         }
         else if (command.charAt(0) == ';'){
-            beginIndex = currentLine;
+            beginIndex = page.getCurrLine();
             endIndex = page.getSize() - 1;
             commandMark = command.charAt(1);
         }
@@ -84,16 +83,16 @@ public class CommandInfo {
                 command = command.replace(o, Integer.toString(lineNumber + 1));
             }
             if (command.contains(".")){                // 替换默认地址
-                command = command.replace(".", Integer.toString(currentLine + 1));
+                command = command.replace(".", Integer.toString(page.getCurrLine() + 1));
             }
             if (command.contains("$")){
                 command = command.replace("$", Integer.toString(page.getSize()));
             }
             if (command.contains("-")) {
-                command = dealOperation(command, "-");
+                command = dealOperation(command, "-", page.getCurrLine());
             }
             if (command.contains("+")){
-                command = dealOperation(command, "+");
+                command = dealOperation(command, "+", page.getCurrLine());
             }
             if (command.charAt(0) == ',' &&
                     Character.isDigit(command.charAt(command.indexOf(",") + 1))){ // 逗号右边有数字，左边没有
@@ -102,7 +101,7 @@ public class CommandInfo {
                     if (Character.isAlphabetic(command.charAt(i)) || command.charAt(i) == '=') break;
                 }
                 String old = command.substring(0, i);
-                String New = Integer.toString(currentLine + 1) + old;
+                String New = Integer.toString(page.getCurrLine() + 1) + old;
                 command = command.replace(old, New);
             }
             if (command.contains(",") &&
@@ -110,7 +109,7 @@ public class CommandInfo {
                     && (Character.isAlphabetic(command.charAt(command.indexOf(",") + 1))
                     || command.charAt(command.indexOf(",") + 1) == '=')){  // 逗号左边有数字，右边没有
                 String old = command.substring(0, command.indexOf(",") + 1);
-                String New = old + Integer.toString(currentLine + 1);
+                String New = old + Integer.toString(page.getCurrLine() + 1);
                 command = command.replace(old, New);
             }
             if (!command.contains(",")){
@@ -190,7 +189,7 @@ public class CommandInfo {
     private void dealMoveAndCopy(String command, char commandMark, Page page) throws FalseInputFormatException {
         // 处理剪切和复制
         if (command.indexOf(commandMark) == command.length() - 1){
-            toIndex = currentLine;
+            toIndex = page.getCurrLine();
         }
         else {
             String to = command.substring(command.indexOf(commandMark) + 1, command.length());
@@ -235,7 +234,7 @@ public class CommandInfo {
         return command.substring(0, i + 1);
     }
 
-    private String extractNumber(String s, String operator){          // 处理两个数的加法和减法
+    private String extractNumber(String s, String operator, int currentLine){          // 处理两个数的加法和减法
         int beginNumber;
         int endNumber;
         if (s.indexOf(operator) == 0) {
@@ -253,7 +252,7 @@ public class CommandInfo {
         return s;
     }
 
-    private String dealOperation(String commandLine, String operator){             // 处理加减号
+    private String dealOperation(String commandLine, String operator, int currentLine){             // 处理加减号
         int index = 0;
         for (int i = 0; i < commandLine.length(); i++){
             if (Character.isAlphabetic(commandLine.charAt(i)) || commandLine.charAt(i) == '=') break;
@@ -262,12 +261,12 @@ public class CommandInfo {
         String loc = commandLine.substring(0, index);
         String s1 = loc.split(",")[0];
         if (s1.contains(operator)){
-            s1 = extractNumber(s1, operator);
+            s1 = extractNumber(s1, operator, currentLine);
         }
         if (loc.contains(",")){
             String s2 = loc.split(",")[1];
             if (s2.contains(operator)){
-                s2 = extractNumber(s2, operator);
+                s2 = extractNumber(s2, operator, currentLine);
             }
             commandLine = s1 + "," + s2 + commandLine.substring(index, commandLine.length());
         }
