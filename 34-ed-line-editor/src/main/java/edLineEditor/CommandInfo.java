@@ -88,10 +88,10 @@ public class CommandInfo {
                 command = command.replace("$", Integer.toString(page.getSize()));
             }
             if (command.contains("-")) {
-                command = dealMin(command, page);
+                command = dealOperation(command, page, "-");
             }
             if (command.contains("+")){
-                command = dealPlus(command, page);
+                command = dealOperation(command, page, "+");
             }
             if (command.charAt(0) == ',' &&
                     Character.isDigit(command.charAt(command.indexOf(",") + 1))){ // 逗号右边有数字，左边没有
@@ -233,113 +233,44 @@ public class CommandInfo {
         return command.substring(0, i + 1);
     }
 
-    private String dealMin(String commandLine, Page page){             // 处理减号
+    private String extractNumber(String s, String operator, Page page){          // 处理两个数的加法和减法
+        int beginIndex;
+        int endIndex;
+        if (s.indexOf(operator) == 0) {
+            beginIndex = page.getCurrLine() + 1;
+        }
+        else {
+            beginIndex = Integer.parseInt(s.split("[+-]")[0]);
+        }
+        endIndex = Integer.parseInt(s.split("[+-]")[1]);
+        if (operator.equals("-")){
+            s = Integer.toString(beginIndex - endIndex);
+        }else {
+            s = Integer.toString(beginIndex + endIndex);
+        }
+        return s;
+    }
+
+    private String dealOperation(String commandLine, Page page, String operator){             // 处理加减号
         int index = 0;
         for (int i = 0; i < commandLine.length(); i++){
             if (Character.isAlphabetic(commandLine.charAt(i)) || commandLine.charAt(i) == '=') break;
             index++;
         }
         String loc = commandLine.substring(0, index);
-
+        String s1 = loc.split(",")[0];
+        if (s1.contains(operator)){
+            s1 = extractNumber(s1, operator, page);
+        }
         if (loc.contains(",")){
-            String s1 = loc.split(",")[0];
             String s2 = loc.split(",")[1];
-            if (s1.contains("-")){
-                int beginIndex;
-                int endIndex;
-                if (s1.indexOf("-") == 0) {
-                    beginIndex = page.getCurrLine() + 1;
-                }
-                else {
-                    beginIndex = Integer.parseInt(s1.split("-")[0]);
-                }
-                endIndex = Integer.parseInt(s1.split("-")[1]);
-                s1 = Integer.toString(beginIndex - endIndex);
-            }
-            if (s2.contains("-")){
-                int beginIndex;
-                int endIndex;
-                if (s2.indexOf("-") == 0) {
-                    beginIndex = page.getCurrLine() + 1;
-                }
-                else {
-                    beginIndex = Integer.parseInt(s2.split("-")[0]);
-                }
-                endIndex = Integer.parseInt(s2.split("-")[1]);
-                s2 = Integer.toString(beginIndex - endIndex);
+            if (s2.contains(operator)){
+                s2 = extractNumber(s2, operator, page);
             }
             commandLine = s1 + "," + s2 + commandLine.substring(index, commandLine.length());
         }
         else {
-            if (loc.contains("-")){
-                int beginIndex;
-                int endIndex;
-                if (loc.indexOf("-") == 0) {
-                    beginIndex = page.getCurrLine() + 1;
-                }
-                else {
-                    beginIndex = Integer.parseInt(loc.split("-")[0]);
-                }
-                endIndex = Integer.parseInt(loc.split("-")[1]);
-                loc = Integer.toString(beginIndex - endIndex);
-            }
-            commandLine = loc + commandLine.substring(index, commandLine.length());
-        }
-        return commandLine;
-    }
-
-    private String dealPlus(String commandLine, Page page){
-        int index = 0;
-        for (int i = 0; i < commandLine.length(); i++){
-            if (Character.isAlphabetic(commandLine.charAt(i))
-                    || commandLine.charAt(i) == '=') break;
-            index++;
-        }
-        String loc = commandLine.substring(0, index);
-
-        if (loc.contains(",")){
-            String s1 = loc.split(",")[0];
-            String s2 = loc.split(",")[1];
-            if (s1.contains("+")){
-                int beginIndex;
-                int endIndex;
-                if (s1.indexOf("+") == 0) {
-                    beginIndex = page.getCurrLine() + 1;
-                }
-                else {
-                    beginIndex = Integer.parseInt(s1.split("\\+")[0]);
-                }
-                endIndex = Integer.parseInt(s1.split("\\+")[1]);
-                s1 = Integer.toString(beginIndex + endIndex);
-            }
-            if (s2.contains("+")){
-                int beginIndex;
-                int endIndex;
-                if (s2.indexOf("+") == 0) {
-                    beginIndex = page.getCurrLine() + 1;
-                }
-                else {
-                    beginIndex = Integer.parseInt(s2.split("\\+")[0]);
-                }
-                endIndex = Integer.parseInt(s2.split("\\+")[1]);
-                s2 = Integer.toString(beginIndex + endIndex);
-            }
-            commandLine = s1 + "," + s2 + commandLine.substring(index, commandLine.length());
-        }
-        else {
-            if (loc.contains("+")){
-                int beginIndex;
-                int endIndex;
-                if (loc.indexOf("+") == 0) {
-                    beginIndex = page.getCurrLine() + 1;
-                }
-                else {
-                    beginIndex = Integer.parseInt(loc.split("\\+")[0]);
-                }
-                endIndex = Integer.parseInt(loc.split("\\+")[1]);
-                loc = Integer.toString(beginIndex + endIndex);
-            }
-            commandLine = loc + commandLine.substring(index, commandLine.length());
+            commandLine = s1 + commandLine.substring(index, commandLine.length());
         }
         return commandLine;
     }
