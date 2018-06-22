@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 public class CommandInfo {
     private int beginIndex;   // 开始的地址
     private int endIndex;      // 结束的地址
-    private int toIndex;         // 复制和剪切指向的行数
+    private int toIndex;         // 复制和剪切指向的行数， 为-1时则为默认当前行
     private char commandMark;     // 指令标记
     private boolean isDefaultLoc;  // 是否使用了默认的地址
     private String fileName;       // 命令中设置的文件名
@@ -19,7 +19,7 @@ public class CommandInfo {
 
     public CommandInfo(String command, Page page) throws FalseInputFormatException{
         if (command.length() == 0) throw new FalseInputFormatException();
-        String originStr = command;
+        String originCommand = command;
         command = dealReplace(command);                            // 检查是否为替换,进行特殊处理
         check$AndStr(command);                          // 检查是否含有 $-/str/
         if (Character.isAlphabetic(command.charAt(0))
@@ -142,16 +142,16 @@ public class CommandInfo {
             dealMoveAndCopy(command, commandMark, page);
         }
         else if (commandMark == 'z'){
-            if (originStr.charAt(originStr.length() - 1) == 'z'){
-                toIndex = -1;
+            if (originCommand.charAt(originCommand.length() - 1) == 'z'){
+                toIndex = page.getSize() - 1;                       // 如果没有指定参数则打印到文末
             }
             else {
-                toIndex = Integer.parseInt(originStr.split("z")[1]);
+                toIndex = Integer.parseInt(originCommand.split("z")[1]);
             }
         }
         else if (commandMark == 'w' || commandMark == 'W' || commandMark == 'f'){
-            if (originStr.split(" ").length == 2){
-                fileName = originStr.split(" ")[1];
+            if (originCommand.split(" ").length == 2){       // 是否指定了文件名
+                fileName = originCommand.split(" ")[1];
             }
             else fileName = "";
         }
@@ -162,7 +162,7 @@ public class CommandInfo {
         check(page);
     }
 
-    private void check(Page page) throws FalseInputFormatException {          // 检查开始和结束地址
+    private void check(Page page) throws FalseInputFormatException {          // 统一检查开始和结束地址
         if (beginIndex < -1 || endIndex < beginIndex || endIndex >= page.getSize()){
             throw new FalseInputFormatException();
         }
@@ -188,13 +188,13 @@ public class CommandInfo {
 
     private void dealMoveAndCopy(String command, char commandMark, Page page) throws FalseInputFormatException {
         // 处理剪切和复制
-        if (command.indexOf(commandMark) == command.length() - 1){
+        if (command.indexOf(commandMark) == command.length() - 1){     // 如果没有指定参数则使用当前行
             toIndex = page.getCurrLine();
         }
         else {
             String to = command.substring(command.indexOf(commandMark) + 1, command.length());
-            CommandInfo toInfo = new CommandInfo(to+"p", page);
-            toIndex = toInfo.getBeginIndex();
+            CommandInfo toInfo = new CommandInfo(to+"p", page);            // 再解析一次
+            toIndex = toInfo.getBeginIndex();                        // 第二次解析的开始行即为本次的指向行
         }
     }
 

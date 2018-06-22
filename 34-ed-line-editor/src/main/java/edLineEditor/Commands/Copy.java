@@ -17,13 +17,10 @@ public class Copy extends Command {
 
     @Override
     public void execute() {
-        if (toIndex == -1){
-            toIndex = page.getCurrLine();
-        }
         page.saveCurrent();
         ArrayList<String> l = new ArrayList<>();
         for (int i = begIndex; i <= endIndex; i++){
-            String s = new String(page.getLine(i));
+            String s = new String(page.getLine(i));           // 防止出现两个字符串引用指向同一个对象
             l.add(s);
         }
         for (String s: l){

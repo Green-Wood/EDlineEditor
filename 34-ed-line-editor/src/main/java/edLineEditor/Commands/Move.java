@@ -18,9 +18,6 @@ public class Move extends Command {
 
     @Override
     public void execute() {
-        if (toIndex == -1){
-            toIndex = page.getCurrLine();
-        }
         page.saveCurrent();
         if (toIndex > endIndex)
             toIndex = toIndex - (endIndex - begIndex + 1);
