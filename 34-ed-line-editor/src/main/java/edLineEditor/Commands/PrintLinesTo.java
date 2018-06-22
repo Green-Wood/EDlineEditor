@@ -10,7 +10,10 @@ public class PrintLinesTo extends Command{
 
     @Override
     public void execute() {
-        if (info.isDefaultLoc()) begIndex++;
+        if (info.isDefaultLoc()) {
+            begIndex++;
+            endIndex = info.getToIndex() + begIndex;
+        }
         else {    // 有参数
             if (begIndex + info.getToIndex() >= page.getSize()){   // 如果超出
                 endIndex = page.getSize() - 1;

@@ -14,7 +14,7 @@ public class Page {
     private int currLine;            // 当前行
     public boolean isSaved;              // 是否已经保存为文件
 
-    public Page(){
+    public Page(){                       // 从控制台写入
         currPage = new LinkedList<>();
         allPages = new Stack<>();
         allCurrLine = new Stack<>();
@@ -23,7 +23,7 @@ public class Page {
         currLine = -1;
     }
 
-    public Page(String fileName){
+    public Page(String fileName){               // 从文件读入
         ArrayList<String> file = readFile(fileName);
         currPage = new LinkedList<>();
         allPages = new Stack<>();
@@ -38,16 +38,25 @@ public class Page {
     public int getSize(){
         return currPage.size();
     }
+
     public String getFilename(){
         return this.fileName;
     }
 
-    public void setFilename(String filename) {
-        this.fileName = filename;
+    public int getCurrLineNumber(){
+        return this.currLine ;
     }
 
-    public int getCurrLine(){
-        return this.currLine ;
+    int getMark(char c) throws FalseInputFormatException {
+        return searchLine(mark.getOrDefault(c, ""));
+    }
+
+    public String getLine(int index){
+        return currPage.get(index);
+    }       // 得到所指定的行
+
+    public void setFilename(String filename) {
+        this.fileName = filename;
     }
 
     public void setCurrLine(int line){
@@ -58,21 +67,13 @@ public class Page {
         mark.put(c, currPage.get(lineNum));
     }          // 设置标记行
 
-    int getMark(char c) throws FalseInputFormatException {
-        return searchLine(mark.getOrDefault(c, ""));
-    }
-
     public void addLine(int index, String s){
         currPage.add(index, s);
-    }   // 增加指定行
+    }   // 增加所指定的行
 
     public void deleteLine(int index){
         currPage.remove(index);
-    }        // 删除指定行
-
-    public String getLine(int index){
-        return currPage.get(index);
-    }       // 得到指定行
+    }        // 删除所指定的行
 
     public void saveCurrent(){     // 保存当前状态
         allPages.push((LinkedList<String>) currPage.clone());

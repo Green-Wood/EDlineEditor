@@ -7,7 +7,7 @@ import edLineEditor.Page;
 public class Union extends Command {
     public Union(CommandInfo info, Page page) throws FalseInputFormatException {
         super(info, page);
-        if (info.isDefaultLoc() && page.getCurrLine() + 1 >= page.getSize()
+        if (info.isDefaultLoc() && page.getCurrLineNumber() + 1 >= page.getSize()
                 || begIndex == -1)
             throw new FalseInputFormatException();
     }
@@ -15,7 +15,7 @@ public class Union extends Command {
     @Override
     public void execute() {
         if (info.isDefaultLoc()){
-            begIndex = page.getCurrLine();
+            begIndex = page.getCurrLineNumber();
             endIndex = begIndex + 1;
             union(begIndex, endIndex);
             page.setCurrLine(begIndex);

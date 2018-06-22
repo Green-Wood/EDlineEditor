@@ -25,12 +25,12 @@ public class CommandInfo {
         if (Character.isAlphabetic(command.charAt(0))
                 || command.charAt(0) == '=') {              // 检查是否为默认地址
             isDefaultLoc = true;
-            beginIndex = page.getCurrLine();
-            endIndex = page.getCurrLine();
+            beginIndex = page.getCurrLineNumber();
+            endIndex = page.getCurrLineNumber();
             commandMark = command.charAt(0);
         }
         else if (command.charAt(0) == ';'){
-            beginIndex = page.getCurrLine();
+            beginIndex = page.getCurrLineNumber();
             endIndex = page.getSize() - 1;
             commandMark = command.charAt(1);
         }
@@ -83,16 +83,16 @@ public class CommandInfo {
                 command = command.replace(o, Integer.toString(lineNumber + 1));
             }
             if (command.contains(".")){                // 替换默认地址
-                command = command.replace(".", Integer.toString(page.getCurrLine() + 1));
+                command = command.replace(".", Integer.toString(page.getCurrLineNumber() + 1));
             }
             if (command.contains("$")){
                 command = command.replace("$", Integer.toString(page.getSize()));
             }
             if (command.contains("-")) {
-                command = dealOperation(command, "-", page.getCurrLine());
+                command = dealOperation(command, "-", page.getCurrLineNumber());
             }
             if (command.contains("+")){
-                command = dealOperation(command, "+", page.getCurrLine());
+                command = dealOperation(command, "+", page.getCurrLineNumber());
             }
             if (command.charAt(0) == ',' &&
                     Character.isDigit(command.charAt(command.indexOf(",") + 1))){ // 逗号右边有数字，左边没有
@@ -101,7 +101,7 @@ public class CommandInfo {
                     if (Character.isAlphabetic(command.charAt(i)) || command.charAt(i) == '=') break;
                 }
                 String old = command.substring(0, i);
-                String New = Integer.toString(page.getCurrLine() + 1) + old;
+                String New = Integer.toString(page.getCurrLineNumber() + 1) + old;
                 command = command.replace(old, New);
             }
             if (command.contains(",") &&
@@ -109,7 +109,7 @@ public class CommandInfo {
                     && (Character.isAlphabetic(command.charAt(command.indexOf(",") + 1))
                     || command.charAt(command.indexOf(",") + 1) == '=')){  // 逗号左边有数字，右边没有
                 String old = command.substring(0, command.indexOf(",") + 1);
-                String New = old + Integer.toString(page.getCurrLine() + 1);
+                String New = old + Integer.toString(page.getCurrLineNumber() + 1);
                 command = command.replace(old, New);
             }
             if (!command.contains(",")){
@@ -189,7 +189,7 @@ public class CommandInfo {
     private void dealMoveAndCopy(String command, char commandMark, Page page) throws FalseInputFormatException {
         // 处理剪切和复制
         if (command.indexOf(commandMark) == command.length() - 1){     // 如果没有指定参数则使用当前行
-            toIndex = page.getCurrLine();
+            toIndex = page.getCurrLineNumber();
         }
         else {
             String to = command.substring(command.indexOf(commandMark) + 1, command.length());
