@@ -9,9 +9,9 @@ public class MarkLine extends Command{
     public MarkLine(CommandInfo info, Page page) throws FalseInputFormatException {
         super(info, page);
         markChara = info.markChara();
-        if (endIndex != begIndex)
+        if (endIndex != begIndex)                                 // 只允许指定一个地址
             throw new FalseInputFormatException();
-        if (!Character.isLowerCase(markChara))
+        if (!Character.isLowerCase(markChara))                  // 标记符必须是小写字母
             throw new FalseInputFormatException();
     }
 

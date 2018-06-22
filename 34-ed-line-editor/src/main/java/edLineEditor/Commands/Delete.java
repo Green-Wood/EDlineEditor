@@ -7,7 +7,7 @@ import edLineEditor.Page;
 public class Delete extends Command {
     public Delete(CommandInfo info, Page page) throws FalseInputFormatException {
         super(info, page);
-        if (begIndex == -1)
+        if (begIndex <= -1)
             throw new FalseInputFormatException();
     }
 

@@ -10,7 +10,7 @@ public class Input extends Command{
     private int startWritingIndex;
     public Input(CommandInfo info, Page page) throws FalseInputFormatException {
         super(info, page);
-        if (info.getCommand() == 'c'){
+        if (info.getCommand() == 'c'){                // 替换文中的指定行
             if (begIndex == -1)
                 throw new FalseInputFormatException();
 

@@ -8,7 +8,7 @@ public class Union extends Command {
     public Union(CommandInfo info, Page page) throws FalseInputFormatException {
         super(info, page);
         if (info.isDefaultLoc() && page.getCurrLineNumber() + 1 >= page.getSize()
-                || begIndex == -1)
+                || begIndex == -1)                       // 不能指定最后一行作为合并目标
             throw new FalseInputFormatException();
     }
 

@@ -283,11 +283,11 @@ public class CommandInfo {
     }
 
     public static int times(String line, String sub){
-        if (sub.equals("?")) sub = "\\?";
-        Pattern p = Pattern.compile(sub);
-        Matcher m = p.matcher(line);
         int times = 0;
-        while (m.find()){
+        int i = -1;
+        int swap;
+        while ((swap = line.indexOf(sub, i + 1)) != -1){
+            i = swap;
             times++;
         }
         return times;
