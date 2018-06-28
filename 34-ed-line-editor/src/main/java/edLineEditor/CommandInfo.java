@@ -29,17 +29,17 @@ public class CommandInfo {
             endIndex = page.getCurrLineNumber();
             commandMark = command.charAt(0);
         }
-        else if (command.charAt(0) == ';'){
+        else if (command.charAt(0) == ';'){       // 检查是否从当前行到最后一行
             beginIndex = page.getCurrLineNumber();
             endIndex = page.getSize() - 1;
             commandMark = command.charAt(1);
         }
-        else if (command.charAt(0) == ','){
+        else if (command.charAt(0) == ','){         // 检查是否指示全部行
             beginIndex = 0;
             endIndex = page.getSize() - 1;
             try {
                 commandMark = command.charAt(1);
-            }catch (StringIndexOutOfBoundsException e){
+            }catch (StringIndexOutOfBoundsException e){                // 不合法的输入,2p
                 throw new FalseInputFormatException();
             }
         }

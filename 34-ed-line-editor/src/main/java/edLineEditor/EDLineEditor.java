@@ -105,7 +105,7 @@ public class EDLineEditor {
                 }
                 else throw new FalseInputFormatException();
                 command.execute();                                  // 开始操作
-            }catch (FalseInputFormatException e){
+            }catch (FalseInputFormatException e){             // catch到不合法输入，即显示问号
                 System.out.println("?");
             }
         }
