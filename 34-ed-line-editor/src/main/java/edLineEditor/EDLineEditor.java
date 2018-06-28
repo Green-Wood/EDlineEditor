@@ -17,9 +17,9 @@ public class EDLineEditor {
 	 */
 
 	public static void main(String[] args) {
-        Page page;
-        CommandInfo info;
-        Command command;
+        Page page;                            // 操作的当前页
+        CommandInfo info;                      // 命令信息对象
+        Command command;                       // 命令
         String fileName;
         boolean isConfirmed = false;                      // 是否确定退出
         String oldStr = "";                        // 记录上一次替换指令的参数
@@ -62,15 +62,13 @@ public class EDLineEditor {
                 else if (c == 's'){
                     if (line.charAt(line.length() - 1) == 's'){    // 不指定参数则使用以前的
                         if (count == -1) throw new FalseInputFormatException();
-                        info.set_S_Param(oldStr, newStr, count);
+                        info.setReplaceCommandParam(oldStr, newStr, count);
                     }
-                    Replace replace = new Replace(info, page);
-                    replace.isContain(info.originStr());
-                    replace.execute();
+                    command = new Replace(info, page);
+                    ((Replace) command).isContain(info.originStr());
                     oldStr = info.originStr();
                     newStr = info.changeToStr();
                     count = info.replaceCount();
-                    continue;
                 }
                 else if (c == 'd'){
                     command = new Delete(info, page);

@@ -276,7 +276,7 @@ public class CommandInfo {
         return commandLine;
     }
 
-    void set_S_Param(String old, String New, int count){
+    void setReplaceCommandParam(String old, String New, int count){
         originStr = old;
         changeToStr = New;
         replaceCount = count;
