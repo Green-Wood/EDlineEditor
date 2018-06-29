@@ -48,7 +48,8 @@ public class Page {
     }
 
     int getMark(char c) throws FalseInputFormatException {
-        return searchLine(mark.getOrDefault(c, ""));
+        if (!mark.containsKey(c)) throw new FalseInputFormatException();
+        return searchLine(mark.get(c));
     }
 
     public String getLine(int index){
