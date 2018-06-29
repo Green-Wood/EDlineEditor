@@ -91,7 +91,7 @@ public class Page {
         return !first.equals(currPage);
     }
 
-    private int searchLine(String s) throws FalseInputFormatException {          // 由string指针寻找地址相同的string
+    private int searchLine(String s) throws FalseInputFormatException {          // 由string指针寻找地址相同的string(同一个对象)
         for (int i = 0; i < currPage.size(); i++){
             if (currPage.get(i) == s){
                 return i;

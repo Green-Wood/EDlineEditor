@@ -14,7 +14,7 @@ public class Union extends Command {
 
     @Override
     public void execute() {
-        if (info.isDefaultLoc()){
+        if (info.isDefaultLoc()){                  // 默认地址则为当前行和当前行后一行
             begIndex = page.getCurrLineNumber();
             endIndex = begIndex + 1;
             union(begIndex, endIndex);
@@ -23,7 +23,7 @@ public class Union extends Command {
         else if (begIndex != endIndex){
             union(begIndex, endIndex);
             page.setCurrLine(begIndex);
-        }
+        }                                                // 若指定单行，则不做任何操作
     }
 
     private void union(int begIndex, int endIndex){
