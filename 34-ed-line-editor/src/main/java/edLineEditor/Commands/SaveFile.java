@@ -12,7 +12,7 @@ public class SaveFile extends Command {
     private boolean isAdd;
     public SaveFile(CommandInfo info, Page page) throws FalseInputFormatException {
         super(info, page);
-        if (info.fileName().equals("") && page.getFilename().equals(""))
+        if (info.fileName().equals("") && page.getFilename().equals(""))      // 如果命令中没用文件名，且文件本身没有名字
             throw new FalseInputFormatException();
         isAdd = info.getCommand() != 'w';
         if (info.isDefaultLoc()){           // 默认保存全文
@@ -35,7 +35,7 @@ public class SaveFile extends Command {
         File file = new File(fileName);
         FileWriter fw;
         try {
-            fw = new FileWriter(file, isAdd);
+            fw = new FileWriter(file, isAdd);                     // 是否追加
             for (int i = begIndex; i <= endIndex; i++){
                 try {
                     fw.write(page.getLine(i) + "\n");

@@ -19,7 +19,6 @@ public class Input extends Command{
                 page.deleteLine(begIndex);
             }
             startWritingIndex = begIndex;
-            this.page = page;
         }
         else {
             page.saveCurrent();
@@ -32,7 +31,6 @@ public class Input extends Command{
                 if (begIndex == -1) startWritingIndex = 0;
                 else startWritingIndex = begIndex;
             }
-            this.page = page;
         }
     }
 

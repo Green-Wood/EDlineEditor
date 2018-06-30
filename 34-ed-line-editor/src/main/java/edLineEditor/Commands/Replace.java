@@ -27,15 +27,6 @@ public class Replace extends Command{
         else {
             replace(info.originStr(), info.changeToStr());
         }
-
-        int i = 0;                          // 清除可能由替换产生的空行
-        while (i < page.getSize()){
-            if (page.getLine(i).equals("")){
-                page.deleteLine(i);
-                i--;
-            }
-            i++;
-        }
     }
 
     private void replace(String Old, String New){

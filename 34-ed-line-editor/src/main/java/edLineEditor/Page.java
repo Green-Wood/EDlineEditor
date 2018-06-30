@@ -35,6 +35,7 @@ public class Page {
         allPages.push((LinkedList<String>) currPage.clone());
         allCurrLine.push(currLine);
     }
+
     public int getSize(){
         return currPage.size();
     }
