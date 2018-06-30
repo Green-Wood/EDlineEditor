@@ -10,6 +10,11 @@ public class PrintLineNumber extends Command {
 
     @Override
     public void execute() {
-        System.out.println(begIndex + 1);
+        if (info.isDefaultLoc()){
+            System.out.println(page.getSize());
+        }
+        else {
+            System.out.println(begIndex + 1);
+        }
     }
 }

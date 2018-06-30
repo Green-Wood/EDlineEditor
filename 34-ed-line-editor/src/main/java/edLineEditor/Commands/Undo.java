@@ -4,6 +4,8 @@ import edLineEditor.FalseInputFormatException;
 import edLineEditor.CommandInfo;
 import edLineEditor.Page;
 
+import java.util.ArrayList;
+
 public class Undo extends Command{
     public Undo(CommandInfo info, Page page) throws FalseInputFormatException {
         super(info, page);
