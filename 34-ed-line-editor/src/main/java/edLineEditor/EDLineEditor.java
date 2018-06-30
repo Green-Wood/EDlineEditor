@@ -50,7 +50,7 @@ public class EDLineEditor {
                         break;
                     }
                     else {
-                        if (!page.isSaved && !isConfirmed && page.hasChanged()){
+                        if (!page.isSaved && !isConfirmed && page.hasChanged()){               // 未保存直接退出则发出问号
                             isConfirmed = true;
                             throw new FalseInputFormatException();
                         }
@@ -65,7 +65,6 @@ public class EDLineEditor {
                         info.setReplaceCommandParam(oldStr, newStr, count);
                     }
                     command = new Replace(info, page);
-                    ((Replace) command).isContain(info.originStr());
                     oldStr = info.originStr();
                     newStr = info.changeToStr();
                     count = info.replaceCount();

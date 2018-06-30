@@ -7,11 +7,16 @@ import edLineEditor.Page;
 public class Replace extends Command{
     private boolean isReplaceAll;
     private int replaceCount;
+    private String originStr;
+    private String changeToStr;
     public Replace(CommandInfo info, Page page) throws FalseInputFormatException {
         super(info, page);
-        if (info.getBeginIndex() <= -1) throw new FalseInputFormatException();
         replaceCount = info.replaceCount();
         isReplaceAll = info.replaceCount() == -1;
+        originStr = info.originStr();
+        changeToStr = info.changeToStr();
+        if (begIndex <= -1) throw new FalseInputFormatException();
+        if (!isContain()) throw new FalseInputFormatException();                           // 检查能否成功替换
     }
 
     @Override
@@ -67,20 +72,20 @@ public class Replace extends Command{
         page.isSaved = false;
     }
 
-    public void isContain(String s) throws FalseInputFormatException {         // 只要有一行有目标，就能够替换
+    private boolean isContain(){         // 只要有一行有目标，就能够替换
         if (isReplaceAll){
             for (int i = begIndex; i <= endIndex; i++){
                 String line = page.getLine(i);
-                if (line.contains(s)) return;
+                if (line.contains(originStr)) return true;
             }
         }
         else {
             for (int i = begIndex; i <= endIndex; i++){
                 String line = page.getLine(i);
-                if (CommandInfo.times(line, info.originStr()) >= replaceCount) return;
+                if (CommandInfo.times(line, originStr) >= replaceCount)
+                    return true;
             }
         }
-        throw new FalseInputFormatException();
+        return false;
     }
-
 }
