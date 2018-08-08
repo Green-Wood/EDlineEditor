@@ -1,2 +1,3 @@
 # EDlineEditor
-a final work in class software engineering and calculation
+The final work in class software engineering and calculation 1
+Finished in 2018 summer
