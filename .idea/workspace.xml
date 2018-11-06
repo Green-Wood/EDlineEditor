@@ -1,0 +1,1180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="eebac05e-14db-4360-bcb9-f7b7513d1158" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/34-ed-line-editor/out/production/7e2a49212504424a857076a17e279ec3/edLineEditor/CommandInfo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/34-ed-line-editor/src/main/java/Antlr/Array.g4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/34-ed-line-editor/src/main/java/Antlr/EDline.g4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/CommandFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testA" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testB" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testC" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testD" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/测试文件/testA" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/测试文件/testB" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/测试文件/testC" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/测试文件/testD" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/测试文件/testE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/测试文件/testF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/测试文件/testG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/34-ed-line-editor/out/production/7e2a49212504424a857076a17e279ec3/edLineEditor/Commands/Input.class" beforeDir="false" afterPath="$PROJECT_DIR$/34-ed-line-editor/out/production/7e2a49212504424a857076a17e279ec3/edLineEditor/Commands/Input.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/34-ed-line-editor/out/production/7e2a49212504424a857076a17e279ec3/edLineEditor/Commands/PrintLineNumber.class" beforeDir="false" afterPath="$PROJECT_DIR$/34-ed-line-editor/out/production/7e2a49212504424a857076a17e279ec3/edLineEditor/Commands/PrintLineNumber.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/34-ed-line-editor/out/production/7e2a49212504424a857076a17e279ec3/edLineEditor/Commands/Replace.class" beforeDir="false" afterPath="$PROJECT_DIR$/34-ed-line-editor/out/production/7e2a49212504424a857076a17e279ec3/edLineEditor/Commands/Replace.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/34-ed-line-editor/out/production/7e2a49212504424a857076a17e279ec3/edLineEditor/Commands/Undo.class" beforeDir="false" afterPath="$PROJECT_DIR$/34-ed-line-editor/out/production/7e2a49212504424a857076a17e279ec3/edLineEditor/Commands/Undo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/34-ed-line-editor/out/production/7e2a49212504424a857076a17e279ec3/edLineEditor/Commands/Union.class" beforeDir="false" afterPath="$PROJECT_DIR$/34-ed-line-editor/out/production/7e2a49212504424a857076a17e279ec3/edLineEditor/Commands/Union.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/34-ed-line-editor/out/production/7e2a49212504424a857076a17e279ec3/edLineEditor/EDLineEditor.class" beforeDir="false" afterPath="$PROJECT_DIR$/34-ed-line-editor/out/production/7e2a49212504424a857076a17e279ec3/edLineEditor/EDLineEditor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/34-ed-line-editor/out/production/7e2a49212504424a857076a17e279ec3/edLineEditor/Page.class" beforeDir="false" afterPath="$PROJECT_DIR$/34-ed-line-editor/out/production/7e2a49212504424a857076a17e279ec3/edLineEditor/Page.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/34-ed-line-editor/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/34-ed-line-editor/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/EDLineEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/EDLineEditor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/7e2a49212504424a857076a17e279ec3$EDLineEditor.ic" NAME="EDLineEditor Coverage Results" MODIFIED="1528767496890" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>edLineEditor.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/7e2a49212504424a857076a17e279ec3$InputMode.ic" NAME="InputMode Coverage Results" MODIFIED="1527648798603" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>edLineEditor.*</FILTER>
+    </SUITE>
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="340013903">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="163" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="163" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/PrintLines.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/Command.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/Delete.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/EDLineEditor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/CommandFactory.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="96">
+              <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/CommandInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2160">
+              <caret line="91" column="72" selection-start-line="91" selection-start-column="72" selection-end-line="91" selection-end-column="72" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/FalseInputFormatException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="96">
+              <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/Union.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="696">
+              <caret line="31" column="70" selection-start-line="31" selection-start-column="70" selection-end-line="31" selection-end-column="70" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Page.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1632">
+              <caret line="88" selection-start-line="88" selection-end-line="88" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/Input.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="16" column="31" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>currentLine</find>
+      <find>todo</find>
+      <find>?</find>
+      <find>isAl</find>
+      <find>Begin</find>
+      <find>fileName</find>
+      <find>getCurrLine</find>
+      <find>page</find>
+      <find>get</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/inputMode.java" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/FileTool.java" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/InputMode.java" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Editor.java" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/TransLoc.java" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Command/Command.java" />
+        <option value="$PROJECT_DIR$/test80" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/PrintLines.java" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/LocInfo.java" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/Command.java" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/FalseInputFormatException.java" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/Move.java" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/Copy.java" />
+        <option value="$PROJECT_DIR$/test" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/PrintLinesTo.java" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/Delete.java" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/FileName.java" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/MarkLine.java" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/CommandInfo.java" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/Replace.java" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/SaveFile.java" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Page.java" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/Input.java" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/Union.java" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/Undo.java" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/PrintLineNumber.java" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/CommandFactory.java" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/EDLineEditor.java" />
+        <option value="$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/CommandFactory.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="7e2a49212504424a857076a17e279ec3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="7e2a49212504424a857076a17e279ec3" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="7e2a49212504424a857076a17e279ec3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="7e2a49212504424a857076a17e279ec3" type="462c0819:PsiDirectoryNode" />
+              <item name="34-ed-line-editor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="7e2a49212504424a857076a17e279ec3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="7e2a49212504424a857076a17e279ec3" type="462c0819:PsiDirectoryNode" />
+              <item name="34-ed-line-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="7e2a49212504424a857076a17e279ec3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="7e2a49212504424a857076a17e279ec3" type="462c0819:PsiDirectoryNode" />
+              <item name="34-ed-line-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="7e2a49212504424a857076a17e279ec3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="7e2a49212504424a857076a17e279ec3" type="462c0819:PsiDirectoryNode" />
+              <item name="34-ed-line-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="7e2a49212504424a857076a17e279ec3" type="b2602c69:ProjectViewProjectNode" />
+              <item name="7e2a49212504424a857076a17e279ec3" type="462c0819:PsiDirectoryNode" />
+              <item name="34-ed-line-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="edLineEditor" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="isDe&#9;PSI&#9;JAVA://edLineEditor.CommandInfo#isDefaultLoc" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541512926851" />
+    <property name="last.edited.regexp" value="Sample Text" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.EDLineEditor">
+    <configuration name="CommandInfo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="edLineEditor.CommandInfo" />
+      <module name="7e2a49212504424a857076a17e279ec3" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edLineEditor.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EDLineEditor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="edLineEditor.EDLineEditor" />
+      <module name="7e2a49212504424a857076a17e279ec3" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edLineEditor.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="InputMode" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="edLineEditor.InputMode" />
+      <module name="7e2a49212504424a857076a17e279ec3" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edLineEditor.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TransLoc" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="edLineEditor.TransLoc" />
+      <module name="7e2a49212504424a857076a17e279ec3" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edLineEditor.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="inputMode" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="edLineEditor.inputMode" />
+      <module name="7e2a49212504424a857076a17e279ec3" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edLineEditor.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.inputMode" />
+      <item itemvalue="Application.InputMode" />
+      <item itemvalue="Application.EDLineEditor" />
+      <item itemvalue="Application.TransLoc" />
+      <item itemvalue="Application.CommandInfo" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.EDLineEditor" />
+        <item itemvalue="Application.CommandInfo" />
+        <item itemvalue="Application.TransLoc" />
+        <item itemvalue="Application.InputMode" />
+        <item itemvalue="Application.inputMode" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="eebac05e-14db-4360-bcb9-f7b7513d1158" name="Default" comment="" />
+      <created>1527509837385</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1527509837385</updated>
+      <workItem from="1529507531082" duration="78000" />
+      <workItem from="1529507646371" duration="244000" />
+      <workItem from="1529560687577" duration="106000" />
+      <workItem from="1529561523677" duration="62000" />
+      <workItem from="1529591256043" duration="721000" />
+      <workItem from="1529592322877" duration="3057000" />
+      <workItem from="1529595416226" duration="729000" />
+      <workItem from="1529630902640" duration="59000" />
+      <workItem from="1529653203250" duration="2578000" />
+      <workItem from="1530011076252" duration="60000" />
+      <workItem from="1530019296430" duration="421000" />
+      <workItem from="1530159013845" duration="1665000" />
+      <workItem from="1530266878947" duration="53000" />
+      <workItem from="1530266965712" duration="2389000" />
+      <workItem from="1530357992310" duration="1471000" />
+      <workItem from="1530367797251" duration="1893000" />
+      <workItem from="1530372847384" duration="190000" />
+      <workItem from="1530405921584" duration="292000" />
+      <workItem from="1530427999113" duration="609000" />
+      <workItem from="1530428871981" duration="113000" />
+      <workItem from="1531206744062" duration="34000" />
+      <workItem from="1541512520633" duration="405000" />
+    </task>
+    <task id="LOCAL-00043" summary="finish 1.1">
+      <created>1528277685441</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1528277685441</updated>
+    </task>
+    <task id="LOCAL-00044" summary="finish 1.2">
+      <created>1528278849736</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1528278849736</updated>
+    </task>
+    <task id="LOCAL-00045" summary="finish 1.3">
+      <created>1528279127197</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1528279127197</updated>
+    </task>
+    <task id="LOCAL-00046" summary="finish 1.4">
+      <created>1528279654448</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1528279654448</updated>
+    </task>
+    <task id="LOCAL-00047" summary="finish 1.4">
+      <created>1528279843535</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1528279843535</updated>
+    </task>
+    <task id="LOCAL-00048" summary="finish 2.0">
+      <created>1528284091763</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1528284091763</updated>
+    </task>
+    <task id="LOCAL-00049" summary="finish 2.0">
+      <created>1528284420041</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1528284420041</updated>
+    </task>
+    <task id="LOCAL-00050" summary="finish 2.1">
+      <created>1528284672022</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1528284672025</updated>
+    </task>
+    <task id="LOCAL-00051" summary="finish 2.2">
+      <created>1528285764683</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1528285764683</updated>
+    </task>
+    <task id="LOCAL-00052" summary="finish 2.3">
+      <created>1528286497366</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1528286497366</updated>
+    </task>
+    <task id="LOCAL-00053" summary="finish 2.4">
+      <created>1528286913578</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1528286913579</updated>
+    </task>
+    <task id="LOCAL-00054" summary="finish 2.5">
+      <created>1528288155112</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1528288155112</updated>
+    </task>
+    <task id="LOCAL-00055" summary="finish 3.0">
+      <created>1528289784583</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1528289784583</updated>
+    </task>
+    <task id="LOCAL-00056" summary="finish 3.0">
+      <created>1528291016555</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1528291016555</updated>
+    </task>
+    <task id="LOCAL-00057" summary="finish 3.0">
+      <created>1528291193292</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1528291193292</updated>
+    </task>
+    <task id="LOCAL-00058" summary="finish 3.1">
+      <created>1528291778921</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1528291778921</updated>
+    </task>
+    <task id="LOCAL-00059" summary="finish 3.1">
+      <created>1528291875473</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1528291875473</updated>
+    </task>
+    <task id="LOCAL-00060" summary="finish 3.1">
+      <created>1528292995528</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1528292995529</updated>
+    </task>
+    <task id="LOCAL-00061" summary="finish 3.1">
+      <created>1528293217236</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1528293217236</updated>
+    </task>
+    <task id="LOCAL-00062" summary="finish 3.1">
+      <created>1528293576504</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1528293576504</updated>
+    </task>
+    <task id="LOCAL-00063" summary="finish 3.1">
+      <created>1528721322232</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1528721322233</updated>
+    </task>
+    <task id="LOCAL-00064" summary="finish 3.1">
+      <created>1528721397166</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1528721397167</updated>
+    </task>
+    <task id="LOCAL-00065" summary="3.2">
+      <created>1528724733530</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1528724733530</updated>
+    </task>
+    <task id="LOCAL-00066" summary="6">
+      <created>1528732901441</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1528732901441</updated>
+    </task>
+    <task id="LOCAL-00067" summary="7">
+      <created>1528765453668</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1528765453669</updated>
+    </task>
+    <task id="LOCAL-00068" summary="8">
+      <created>1528767181330</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1528767181330</updated>
+    </task>
+    <task id="LOCAL-00069" summary="final">
+      <created>1528768098132</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1528768098132</updated>
+    </task>
+    <task id="LOCAL-00070" summary="final">
+      <created>1528769413492</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1528769413492</updated>
+    </task>
+    <task id="LOCAL-00071" summary="final">
+      <created>1528772875469</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1528772875469</updated>
+    </task>
+    <task id="LOCAL-00072" summary="change run method to return void">
+      <created>1528773304548</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1528773304548</updated>
+    </task>
+    <task id="LOCAL-00073" summary="delete a pattern">
+      <created>1528774903826</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1528774903827</updated>
+    </task>
+    <task id="LOCAL-00074" summary="change a pattern">
+      <created>1528775167414</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1528775167414</updated>
+    </task>
+    <task id="LOCAL-00075" summary="change a pattern">
+      <created>1528775238369</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1528775238369</updated>
+    </task>
+    <task id="LOCAL-00076" summary="StringBuffer">
+      <created>1528775348947</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1528775348947</updated>
+    </task>
+    <task id="LOCAL-00077" summary="Update some details &#10;1、注释&#10;2、更名LocInfo为CommandInfo">
+      <created>1529403368305</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1529403368307</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Update some details &#10;1、更新FalseInputFormatException的构造方法">
+      <created>1529485581704</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1529485581704</updated>
+    </task>
+    <task id="LOCAL-00079" summary="Update some details &#10;1、更新计算表达式的方法">
+      <created>1529594900100</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1529594900102</updated>
+    </task>
+    <task id="LOCAL-00080" summary="Update some details &#10;1、在CommandInfo中加入currentLine以减少page引用的依赖">
+      <created>1529595521050</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1529595521051</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Update some details &#10;1、增加了注释">
+      <created>1529596057754</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1529596057754</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Update some details &#10;1、简化了toIndex的使用">
+      <created>1529653808002</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1529653808002</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Update some details &#10;1、更新了printLinesTo">
+      <created>1529654623245</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1529654623245</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Update some details &#10;1、更新了times实现方法，避免了正则表达式的错误">
+      <created>1529655682155</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1529655682155</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Update some details &#10;1、更新了replace方法的调用">
+      <created>1530159518874</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1530159518878</updated>
+    </task>
+    <task id="LOCAL-00086" summary="Update some details &#10;1、更新了注释">
+      <created>1530161985208</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1530161985208</updated>
+    </task>
+    <task id="LOCAL-00087" summary="Update some details &#10;1、更新了寻找地址的方法">
+      <created>1530267173308</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1530267173309</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Update some details &#10;1、更新了寻找地址的方法">
+      <created>1530268866751</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1530268866751</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Update some details &#10;            1、更新了replace内部实现">
+      <created>1530369140294</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1530369140295</updated>
+    </task>
+    <task id="LOCAL-00090" summary="Update some details">
+      <created>1530369458630</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1530369458630</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Update some details&#10;1、修复打印行号的bug">
+      <created>1530372978926</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1530372978926</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="17229000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1440" height="900" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49848023" visible="true" weight="0.23319027" />
+      <window_info id="Structure" order="1" sideWeight="0.50151974" side_tool="true" weight="0.22453083" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.3252315" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.32919955" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.59422493" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.39361703" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32892805" />
+      <window_info anchor="bottom" id="Tool Output" order="9" />
+      <window_info anchor="bottom" id="ANTLR Preview" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="13" />
+      <window_info anchor="bottom" id="Statistic" order="14" weight="0.7152778" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Maven Projects" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.3294271" />
+      <window_info anchor="right" id="Database" order="9" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="finish 3.0" />
+    <MESSAGE value="finish 3.1" />
+    <MESSAGE value="3.2" />
+    <MESSAGE value="6" />
+    <MESSAGE value="7" />
+    <MESSAGE value="8" />
+    <MESSAGE value="final" />
+    <MESSAGE value="change run method to return void" />
+    <MESSAGE value="delete a pattern" />
+    <MESSAGE value="change a pattern" />
+    <MESSAGE value="StringBuffer" />
+    <MESSAGE value="Update some details &#10;1、注释&#10;2、更名LocInfo为CommandInfo" />
+    <MESSAGE value="Update some details &#10;1、更新FalseInputFormatException的构造方法" />
+    <MESSAGE value="Update some details &#10;1、更新计算表达式的方法" />
+    <MESSAGE value="Update some details &#10;1、在CommandInfo中加入currentLine以减少page引用的依赖" />
+    <MESSAGE value="Update some details &#10;1、增加了注释" />
+    <MESSAGE value="Update some details &#10;1、简化了toIndex的使用" />
+    <MESSAGE value="Update some details &#10;1、更新了printLinesTo" />
+    <MESSAGE value="Update some details &#10;1、更新了times实现方法，避免了正则表达式的错误" />
+    <MESSAGE value="Update some details &#10;1、更新了replace方法的调用" />
+    <MESSAGE value="Update some details &#10;1、更新了注释" />
+    <MESSAGE value="Update some details &#10;1、更新了寻找地址的方法" />
+    <MESSAGE value="Update some details &#10;            1、更新了replace内部实现" />
+    <MESSAGE value="Update some details" />
+    <MESSAGE value="Update some details&#10;1、修复打印行号的bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update some details&#10;1、修复打印行号的bug" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url />
+          <line>116</line>
+          <properties />
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url />
+          <line>56</line>
+          <properties />
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_141/src.zip!/java/lang/String.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_141/src.zip!/java/util/AbstractList.java" />
+    <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/FileTool.java" />
+    <entry file="file://$PROJECT_DIR$/../../newBigHowework/7e2a49212504424a857076a17e279ec3/34-ed-line-editor/src/main/java/edLineEditor/Editor.java" />
+    <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Command/Command.java" />
+    <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Editor.java" />
+    <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/InputMode.java" />
+    <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/TransLoc.java" />
+    <entry file="file://$PROJECT_DIR$/test.txt" />
+    <entry file="file://$PROJECT_DIR$/test80" />
+    <entry file="file://$PROJECT_DIR$/newTest" />
+    <entry file="file://$PROJECT_DIR$/34-ed-line-editor/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="1890">
+            <caret line="70" column="81" selection-start-line="70" selection-start-column="81" selection-end-line="70" selection-end-column="81" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/FileName.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/MarkLine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="11" column="78" selection-start-line="11" selection-start-column="78" selection-end-line="11" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/PrintLinesTo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/Replace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/Copy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/Move.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/SaveFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="837">
+          <caret line="37" column="73" selection-start-line="37" selection-start-column="73" selection-end-line="37" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/Undo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_141/src.zip!/java/util/ArrayList.java" />
+    <entry file="file://$PROJECT_DIR$/test" />
+    <entry file="file://$PROJECT_DIR$/testB">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testD">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testC">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testG">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/PrintLineNumber.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/PrintLines.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/Command.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/Delete.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/CommandInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2160">
+          <caret line="91" column="72" selection-start-line="91" selection-start-column="72" selection-end-line="91" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/FalseInputFormatException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/Union.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="696">
+          <caret line="31" column="70" selection-start-line="31" selection-start-column="70" selection-end-line="31" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Page.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1632">
+          <caret line="88" selection-start-line="88" selection-end-line="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/Commands/Input.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="31" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/CommandFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/34-ed-line-editor/src/main/java/edLineEditor/EDLineEditor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>junit:junit:4.9</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>7e2a49212504424a857076a17e279ec3</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

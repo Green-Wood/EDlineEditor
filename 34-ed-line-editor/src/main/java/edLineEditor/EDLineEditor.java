@@ -68,41 +68,9 @@ public class EDLineEditor {
                     oldStr = info.originStr();
                     newStr = info.changeToStr();
                     count = info.replaceCount();
+                } else {
+                    command = CommandFactory.getCommand(c, page, info);                  // 使用工厂方法得到指令
                 }
-                else if (c == 'd'){
-                    command = new Delete(info, page);
-                }
-                else if (c == '='){
-                    command = new PrintLineNumber(info, page);
-                }
-                else if (c == 'p'){
-                    command = new PrintLines(info, page);
-                }
-                else if (c == 'z'){
-                    command = new PrintLinesTo(info, page);
-                }
-                else if (c == 'f'){
-                    command = new FileName(info, page);
-                }
-                else if (c == 'w' || c == 'W'){
-                    command = new SaveFile(info, page);
-                }
-                else if (c == 'm'){
-                    command = new Move(info, page);
-                }
-                else if (c == 't'){
-                    command = new Copy(info, page);
-                }
-                else if (c == 'j'){
-                    command = new Union(info, page);
-                }
-                else if (c == 'k'){
-                    command = new MarkLine(info, page);
-                }
-                else if (c == 'u'){
-                    command = new Undo(info, page);
-                }
-                else throw new FalseInputFormatException();
                 command.execute();                                  // 开始操作
             }catch (FalseInputFormatException e){             // catch到不合法输入，即显示问号
                 System.out.println("?");
